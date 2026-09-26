@@ -80,13 +80,16 @@ export function renderEquationsPage(container, params = {}) {
                   </h3>
                   <div class="variables-inspector-grid">
                     ${activeEq.variables.map(v => `
-                      <div class="variable-pill" style="cursor: pointer;" title="Klik untuk rincian ${v.name}">
-                        <div class="variable-sym">${v.symbol}</div>
+                      <a href="${v.quantityId ? `#/entity/${v.quantityId}` : '#/explore'}" class="variable-pill" style="text-decoration: none; display: flex; flex-direction: column;" title="Buka entitas fisis ${v.name}">
+                        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+                          <div class="variable-sym">${v.symbol}</div>
+                          <span style="font-size: 0.72rem; color: var(--cyan-bright); font-weight: 600;">Lihat Entitas ➔</span>
+                        </div>
                         <div class="variable-name">${v.name}</div>
                         <div class="variable-unit">Satuan SI: ${v.unit}</div>
                         <div class="variable-unit">Dimensi: ${v.dimension}</div>
                         <div class="variable-role">${v.role}</div>
-                      </div>
+                      </a>
                     `).join('')}
                   </div>
                 </div>

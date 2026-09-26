@@ -62,8 +62,13 @@ export function renderEntityDetailPage(container, params = {}) {
         <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 32px; margin-bottom: 28px; position: relative;">
           <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; flex-wrap: wrap;">
             <div>
-              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px;">
+              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 12px; flex-wrap: wrap;">
                 <span class="entity-type-badge badge-${entity.entityType.toLowerCase()}">${entity.entityType}</span>
+                ${entity.scientificStatus ? `
+                  <span class="status-badge status-${entity.scientificStatus.toLowerCase().replace(/[^a-z0-9]/g, '-')}">
+                    ${entity.scientificStatus === 'ESTABLISHED SCIENCE' ? '✓ ' : entity.scientificStatus === 'ACTIVE RESEARCH' ? '⚡ ' : '❓ '}${entity.scientificStatus}
+                  </span>
+                ` : ''}
                 ${entity.subdomain ? `<span style="font-size: 0.8rem; color: var(--text-muted);">${entity.subdomain}</span>` : ''}
               </div>
               <h1 style="font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: 4px;">${entity.name}</h1>

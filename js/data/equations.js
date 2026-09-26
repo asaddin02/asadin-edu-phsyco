@@ -584,5 +584,300 @@ export const PHYSICS_EQUATIONS = [
       }
     },
     relatedConceptIds: ['pressure', 'fluids', 'energy', 'bernoulli']
+  },
+  {
+    id: 'ohms-law',
+    name: 'Ohm’s Law',
+    indonesianName: 'Hukum Ohm',
+    domainId: 'electromagnetism',
+    category: 'Elektromagnetisme',
+    latexDisplay: 'V = I \\cdot R',
+    htmlDisplay: '<strong>V</strong> = <em>I</em> · <em>R</em>',
+    summary: 'Beda potensial listrik (tegangan) yang melintasi konduktor berbanding lurus dengan kuat arus listrik yang mengalir melaluinya pada suhu konstan.',
+    variables: [
+      {
+        symbol: 'V',
+        name: 'Electric Potential Difference / Voltage (Tegangan Listrik)',
+        unit: 'Volt (V = J/C = kg·m²·s⁻³·A⁻¹)',
+        quantityId: 'voltage',
+        dimension: '[M][L]²[T]⁻³[I]⁻¹',
+        role: 'Energi potensial per satuan muatan listrik yang mendorong arus'
+      },
+      {
+        symbol: 'I',
+        name: 'Electric Current (Kuat Arus Listrik)',
+        unit: 'Ampere (A = C/s)',
+        quantityId: 'electric-current',
+        dimension: '[I]',
+        role: 'Laju aliran netto muatan listrik melewati penampang konduktor'
+      },
+      {
+        symbol: 'R',
+        name: 'Electrical Resistance (Hambatan Listrik)',
+        unit: 'Ohm (Ω = V/A)',
+        quantityId: 'resistance',
+        dimension: '[M][L]²[T]⁻³[I]⁻²',
+        role: 'Ukuran hambatan material terhadap aliran elektron'
+      }
+    ],
+    assumptions: [
+      'Bahan bersifat Ohmik (resistivitas material independen terhadap besar kuat medan listrik).',
+      'Suhu penghantar dipertahankan konstan (mengabaikan kenaikan suhu akibat disipasi panas Joule P = I²R).'
+    ],
+    limitations: 'Tidak berlaku untuk komponen non-linear seperti semikonduktor (dioda, transistor), gas bertekanan rendah, tabung hampa, dan material superkonduktor.',
+    exampleProblem: {
+      problem: 'Sebuah lampu LED memiliki hambatan internal 240 Ω dan dihubungkan dengan sumber tegangan DC 12 V. Berapakah kuat arus listrik yang mengalir?',
+      solution: 'I = V / R = 12 V / 240 Ω = 0.05 A = 50 mA.',
+      resultUnit: 'A'
+    },
+    calculator: {
+      inputs: [
+        { key: 'V', label: 'Tegangan Listrik (V)', default: 12, min: 0.1, max: 1000, step: 1, unit: 'V' },
+        { key: 'R', label: 'Hambatan Listrik (R)', default: 240, min: 0.1, max: 10000, step: 10, unit: 'Ω' }
+      ],
+      output: { key: 'I', label: 'Kuat Arus (I)', unit: 'A' },
+      compute: (inputs) => (inputs.V / inputs.R).toFixed(4)
+    },
+    relatedConceptIds: ['electric-current', 'electromagnetism', 'energy']
+  },
+  {
+    id: 'wave-speed-frequency',
+    name: 'Fundamental Wave Equation',
+    indonesianName: 'Persamaan Dasar Gelombang',
+    domainId: 'waves',
+    category: 'Gelombang & Akustik',
+    latexDisplay: 'v = f \\cdot \\lambda',
+    htmlDisplay: '<strong>v</strong> = <em>f</em> · <strong>λ</strong>',
+    summary: 'Kecepatan rambat gelombang sama dengan hasil kali frekuensi getaran sumber dengan panjang gelombangnya dalam medium tersebut.',
+    variables: [
+      {
+        symbol: 'v',
+        name: 'Wave Phase Velocity (Cepat Rambat Gelombang)',
+        unit: 'Meter per detik (m·s⁻¹)',
+        quantityId: 'velocity',
+        dimension: '[L][T]⁻¹',
+        role: 'Kecepatan perpindahan fase muka gelombang dalam medium'
+      },
+      {
+        symbol: 'f',
+        name: 'Wave Frequency (Frekuensi Gelombang)',
+        unit: 'Hertz (Hz = s⁻¹)',
+        quantityId: 'frequency',
+        dimension: '[T]⁻¹',
+        role: 'Jumlah siklus osilasi gelombang per satuan detik'
+      },
+      {
+        symbol: 'λ',
+        name: 'Wavelength (Panjang Gelombang)',
+        unit: 'Meter (m)',
+        quantityId: 'wavelength',
+        dimension: '[L]',
+        role: 'Jarak spasial antara dua puncak gelombang berturut-turut'
+      }
+    ],
+    assumptions: [
+      'Medium bersifat linier, homogen, dan isotropik (kecepatan fase konstan ke segala arah).',
+      'Gelombang harmonik tunggal (monokromatik).'
+    ],
+    limitations: 'Pada medium dispersif (seperti kaca optik), cepat rambat gelombang bervariasi bergantung pada frekuensi (v = v(f)).',
+    exampleProblem: {
+      problem: 'Gelombang suara di udara merambat dengan cepat rambat 340 m/s. Jika garputala bergetar dengan frekuensi nada 440 Hz (nada A4), berapa panjang gelombangnya?',
+      solution: 'λ = v / f = 340 m/s / 440 Hz = 0.7727 m (77.3 cm).',
+      resultUnit: 'm'
+    },
+    calculator: {
+      inputs: [
+        { key: 'f', label: 'Frekuensi (f)', default: 440, min: 1, max: 20000, step: 10, unit: 'Hz' },
+        { key: 'lambda', label: 'Panjang Gelombang (λ)', default: 0.7727, min: 0.001, max: 100, step: 0.05, unit: 'm' }
+      ],
+      output: { key: 'v', label: 'Cepat Rambat (v)', unit: 'm/s' },
+      compute: (inputs) => (inputs.f * inputs.lambda).toFixed(2)
+    },
+    relatedConceptIds: ['wave-particle-duality', 'optics', 'sound']
+  },
+  {
+    id: 'carnot-efficiency',
+    name: 'Carnot Heat Engine Maximum Efficiency',
+    indonesianName: 'Efisiensi Teoretis Maksimum Mesin Carnot',
+    domainId: 'thermodynamics',
+    category: 'Termodinamika',
+    latexDisplay: '\\eta_{\\text{max}} = 1 - \\frac{T_C}{T_H}',
+    htmlDisplay: '<strong>η<sub>max</sub></strong> = 1 - (<em>T<sub>C</sub></em> / <em>T<sub>H</sub></em>)',
+    summary: 'Batas efisiensi termal tertinggi yang dapat dicapai oleh mesin kalor reversibel ideal yang beroperasi di antara dua suhu reservoir mutlak TH dan TC.',
+    variables: [
+      {
+        symbol: 'η_max',
+        name: 'Maximum Thermal Efficiency (Efisiensi Maksimum)',
+        unit: 'Tanpa Satuan / Persentase (0 - 100%)',
+        quantityId: 'efficiency',
+        dimension: '[1]',
+        role: 'Fraksi kalor masukan yang berhasil diubah menjadi kerja mekanik netto'
+      },
+      {
+        symbol: 'TH',
+        name: 'Hot Reservoir Absolute Temperature (Suhu Reservoir Panas)',
+        unit: 'Kelvin (K)',
+        quantityId: 'temperature',
+        dimension: '[Θ]',
+        role: 'Suhu mutlak sumber panas kalor masukan Q_H'
+      },
+      {
+        symbol: 'TC',
+        name: 'Cold Reservoir Absolute Temperature (Suhu Reservoir Dingin)',
+        unit: 'Kelvin (K)',
+        quantityId: 'temperature',
+        dimension: '[Θ]',
+        role: 'Suhu mutlak pembuangan kalor sisa Q_C'
+      }
+    ],
+    assumptions: [
+      'Siklus bekerja secara reversibel sempurna tanpa disipasi gesekan atau perpindahan panas irreversibel.',
+      'Suhu dinyatakan dalam skala termodinamika mutlak Kelvin (K), bukan Celsius (°C).'
+    ],
+    limitations: 'Tidak ada mesin nyata yang dapat mencapai efisiensi Carnot karena entropi tak terhindarkan selalu diproduksi oleh gesekan dan turbulensi (Hukum II Termodinamika).',
+    exampleProblem: {
+      problem: 'Sebuah pembangkit listrik tenaga uap bekerja dengan reservoir uap bersuhu 500°C (773.15 K) dan membuang kalor sisa ke menara pendingin bersuhu 25°C (298.15 K). Berapakah batas efisiensi Carnot maksimumnya?',
+      solution: 'η = 1 - (298.15 / 773.15) = 1 - 0.3856 = 0.6144 (61.44%).',
+      resultUnit: '%'
+    },
+    calculator: {
+      inputs: [
+        { key: 'TH_K', label: 'Suhu Reservoir Panas (T_H)', default: 773.15, min: 10, max: 5000, step: 10, unit: 'K' },
+        { key: 'TC_K', label: 'Suhu Reservoir Dingin (T_C)', default: 298.15, min: 1, max: 4000, step: 5, unit: 'K' }
+      ],
+      output: { key: 'efficiency_percent', label: 'Efisiensi Teoretis Maksimum', unit: '%' },
+      compute: (inputs) => {
+        if (inputs.TC_K >= inputs.TH_K) return '0.00 (TC harus < TH)';
+        const eff = (1 - inputs.TC_K / inputs.TH_K) * 100;
+        return eff.toFixed(2);
+      }
+    },
+    relatedConceptIds: ['entropy', 'thermodynamic-equilibrium', 'temperature', 'energy']
+  },
+  {
+    id: 'lorentz-factor',
+    name: 'Relativistic Lorentz Factor',
+    indonesianName: 'Faktor Lorentz Relativistik',
+    domainId: 'relativity',
+    category: 'Relativitas Khusus',
+    latexDisplay: '\\gamma = \\frac{1}{\\sqrt{1 - \\frac{v^2}{c^2}}}',
+    htmlDisplay: '<strong>γ</strong> = 1 / √(1 - <em>v</em>² / <em>c</em>²)',
+    summary: 'Faktor dilatasi waktu dan kontraksi panjang dalam relativitas khusus yang mengukur besarnya efek kinematika relativistik saat suatu benda melaju mendekati kelajuan cahaya.',
+    variables: [
+      {
+        symbol: 'γ',
+        name: 'Lorentz Factor (Faktor Lorentz)',
+        unit: 'Tanpa Satuan (γ ≥ 1)',
+        quantityId: 'dimensionless',
+        dimension: '[1]',
+        role: 'Faktor pelebaran interval waktu dan pemendekan panjang spasial'
+      },
+      {
+        symbol: 'v',
+        name: 'Relative Velocity (Kelajuan Relatif)',
+        unit: 'Meter per detik (m·s⁻¹)',
+        quantityId: 'velocity',
+        dimension: '[L][T]⁻¹',
+        role: 'Kelajuan relatif antar kerangka acuan inersial'
+      },
+      {
+        symbol: 'c',
+        name: 'Speed of Light in Vacuum (Kelajuan Cahaya)',
+        unit: '299,792,458 m·s⁻¹',
+        quantityId: 'speed-of-light',
+        dimension: '[L][T]⁻¹',
+        role: 'Batas kelajuan universal informasi dan kausalitas'
+      }
+    ],
+    assumptions: [
+      'Ruang-waktu Minkowski datar tanpa kelengkungan gravitasi ekstrim (relativitas khusus).',
+      'Kelajuan v berada di bawah kelajuan cahaya c (v < c).'
+    ],
+    limitations: 'Benda bermassa riil (m₀ > 0) memerlukan energi tak hingga untuk mencapai v = c, sehingga γ mendekati tak hingga ketika v → c.',
+    exampleProblem: {
+      problem: 'Sebuah wahana antariksa meluncur dengan kelajuan 0.8 c (80% kelajuan cahaya). Berapakah nilai faktor Lorentz-nya?',
+      solution: 'γ = 1 / √(1 - (0.8)²) = 1 / √(1 - 0.64) = 1 / √0.36 = 1 / 0.6 = 1.667. Waktu di dalam wahana berjalan 1.667 kali lebih lambat relatif terhadap pengamat diam!',
+      resultUnit: ''
+    },
+    calculator: {
+      inputs: [
+        { key: 'beta', label: 'Fraksi Kelajuan Cahaya (v / c)', default: 0.8, min: 0, max: 0.9999, step: 0.05, unit: 'c' }
+      ],
+      output: { key: 'gamma', label: 'Faktor Lorentz (γ)', unit: '' },
+      compute: (inputs) => {
+        const b = Math.min(0.9999, Math.max(0, inputs.beta));
+        const gamma = 1 / Math.sqrt(1 - Math.pow(b, 2));
+        return gamma.toFixed(4);
+      }
+    },
+    relatedConceptIds: ['special-relativity', 'spacetime', 'speed-of-light']
+  },
+  {
+    id: 'radioactive-decay-law',
+    name: 'Radioactive Decay Law',
+    indonesianName: 'Hukum Peluruhan Radioaktif',
+    domainId: 'nuclear',
+    category: 'Fisika Nuklir',
+    latexDisplay: 'N(t) = N_0 \\cdot e^{-\\lambda t} = N_0 \\left(\\frac{1}{2}\\right)^{t / T_{1/2}}',
+    htmlDisplay: '<strong>N(t)</strong> = <em>N</em>₀ · e<sup>-<em>λt</em></sup>',
+    summary: 'Hukum statistik fisika nuklir yang menyatakan bahwa jumlah inti radioaktif yang belum meluruh berkurang secara eksponensial terhadap waktu dengan laju proporsional terhadap konstanta peluruhan λ.',
+    variables: [
+      {
+        symbol: 'N(t)',
+        name: 'Remaining Unstable Nuclei (Jumlah Inti Radioaktif Tersisa)',
+        unit: 'Inti Atom (Partikel)',
+        quantityId: 'quantity',
+        dimension: '[1]',
+        role: 'Jumlah populasi inti atom induk yang belum mengalami transmutasi peluruhan'
+      },
+      {
+        symbol: 'N₀',
+        name: 'Initial Nuclei Count (Jumlah Inti Awal)',
+        unit: 'Inti Atom (Partikel)',
+        quantityId: 'quantity',
+        dimension: '[1]',
+        role: 'Jumlah populasi sampel inti mula-mula pada t = 0'
+      },
+      {
+        symbol: 'T_1/2',
+        name: 'Half-Life (Waktu Paruh)',
+        unit: 'Detik / Tahun',
+        quantityId: 'time',
+        dimension: '[T]',
+        role: 'Waktu yang dibutuhkan separuh populasi inti radioaktif untuk meluruh (T_1/2 = ln(2)/λ)'
+      },
+      {
+        symbol: 't',
+        name: 'Elapsed Time (Waktu Berjalan)',
+        unit: 'Detik / Tahun',
+        quantityId: 'time',
+        dimension: '[T]',
+        role: 'Durasi waktu peluruhan'
+      }
+    ],
+    assumptions: [
+      'Jumlah sampel inti atom sangat besar (N >> 1) sehingga hukum probabilitas statistik kuantum berlaku.',
+      'Setiap inti memiliki probabilitas peluruhan per satuan waktu yang identik dan saling independen.'
+    ],
+    limitations: 'Tidak dapat memprediksi kapan secara tepat satu inti atom tertentu akan meluruh (peluruhan kuantum bersifat probabilistik murni).',
+    exampleProblem: {
+      problem: 'Sebuah fosil purba memiliki sampel Karbon-14 (C-14, waktu paruh 5,730 tahun). Jika saat ini tersisa 25% (0.25) dari jumlah awal N₀, berapakah perkiraan umur fosil tersebut?',
+      solution: 'N(t)/N₀ = (1/2)^(t / 5730) = 0.25 = (1/2)² ⇒ t / 5730 = 2 ⇒ t = 11,460 tahun.',
+      resultUnit: 'tahun'
+    },
+    calculator: {
+      inputs: [
+        { key: 'N0', label: 'Populasi Awal Inti (N₀)', default: 1000000, min: 10, max: 1e9, step: 10000, unit: 'inti' },
+        { key: 'halfLife', label: 'Waktu Paruh (T½)', default: 5730, min: 0.1, max: 1e10, step: 100, unit: 'tahun' },
+        { key: 't', label: 'Waktu Berjalan (t)', default: 11460, min: 0, max: 1e10, step: 100, unit: 'tahun' }
+      ],
+      output: { key: 'N_remaining', label: 'Inti Tersisa N(t)', unit: 'inti' },
+      compute: (inputs) => {
+        const fraction = Math.pow(0.5, inputs.t / inputs.halfLife);
+        const remaining = inputs.N0 * fraction;
+        return `${Math.round(remaining).toLocaleString()} (${(fraction * 100).toFixed(2)}%)`;
+      }
+    },
+    relatedConceptIds: ['quantum', 'nuclear', 'energy']
   }
 ];

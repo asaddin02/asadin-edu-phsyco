@@ -22,7 +22,11 @@ export function renderExplorePage(container, params = {}) {
 
   function render() {
     const filtered = filterEntities();
-    const entityTypes = ['Concept', 'Law', 'Principle', 'Quantity', 'Particle', 'Field', 'Theory', 'Phenomenon'];
+    const entityTypes = [
+      'Concept', 'Law', 'Principle', 'Quantity', 'Unit', 'Constant', 
+      'Equation', 'Phenomenon', 'Particle', 'Field', 'Experiment', 
+      'Instrument', 'Theory', 'System'
+    ];
 
     container.innerHTML = `
       <div class="content-wrap" style="padding-top: 36px; padding-bottom: 80px;">
@@ -85,7 +89,14 @@ export function renderExplorePage(container, params = {}) {
             ${filtered.map(e => `
               <a href="#/entity/${e.id}" class="entity-card">
                 <div class="entity-card-top">
-                  <span class="entity-type-badge badge-${e.entityType.toLowerCase()}">${e.entityType}</span>
+                  <div style="display: flex; gap: 6px; align-items: center; flex-wrap: wrap;">
+                    <span class="entity-type-badge badge-${e.entityType.toLowerCase()}">${e.entityType}</span>
+                    ${e.scientificStatus ? `
+                      <span class="status-badge status-${e.scientificStatus.toLowerCase().replace(/[^a-z0-9]/g, '-')}">
+                        ${e.scientificStatus === 'ESTABLISHED SCIENCE' ? '✓ ' : e.scientificStatus === 'ACTIVE RESEARCH' ? '⚡ ' : '❓ '}${e.scientificStatus}
+                      </span>
+                    ` : ''}
+                  </div>
                   ${e.symbol ? `<span class="entity-symbol">${e.symbol}</span>` : ''}
                 </div>
                 <h3 class="entity-card-title">${e.name}</h3>

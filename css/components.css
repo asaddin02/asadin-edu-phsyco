@@ -287,11 +287,45 @@
 .badge-law { background: rgba(246, 211, 101, 0.15); color: var(--amber-solar); }
 .badge-principle { background: rgba(56, 239, 125, 0.15); color: var(--emerald-neon); }
 .badge-quantity { background: rgba(79, 172, 254, 0.15); color: var(--azure-glow); }
+.badge-unit { background: rgba(130, 204, 221, 0.15); color: #82ccdd; }
+.badge-constant { background: rgba(250, 177, 160, 0.15); color: #fab1a0; }
+.badge-equation { background: rgba(162, 155, 254, 0.15); color: #a29bfe; }
 .badge-particle { background: rgba(179, 136, 255, 0.15); color: var(--violet-quantum); }
 .badge-theory { background: rgba(255, 65, 108, 0.15); color: var(--rose-relativity); }
 .badge-phenomenon { background: rgba(255, 154, 68, 0.15); color: var(--orange-thermo); }
 .badge-field { background: rgba(0, 198, 255, 0.15); color: #00c6ff; }
 .badge-experiment { background: rgba(240, 147, 251, 0.15); color: #f093fb; }
+.badge-instrument { background: rgba(255, 234, 167, 0.15); color: #ffeaa7; }
+.badge-system { background: rgba(85, 239, 196, 0.15); color: #55efc4; }
+
+/* Scientific Demarcation Status Badges */
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 3px 8px;
+  border-radius: var(--radius-full);
+  text-transform: uppercase;
+}
+.status-established-science {
+  background: rgba(56, 239, 125, 0.12);
+  color: #38ef7d;
+  border: 1px solid rgba(56, 239, 125, 0.3);
+}
+.status-active-research {
+  background: rgba(246, 211, 101, 0.12);
+  color: #f6d365;
+  border: 1px solid rgba(246, 211, 101, 0.3);
+}
+.status-speculative---hypothetical,
+.status-speculative-hypothetical {
+  background: rgba(255, 65, 108, 0.12);
+  color: #ff416c;
+  border: 1px solid rgba(255, 65, 108, 0.35);
+}
 
 .entity-symbol {
   font-family: var(--font-mono);
