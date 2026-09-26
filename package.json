@@ -1,0 +1,22 @@
+{
+  "name": "asadin-edu-physics",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Asadin Edu Physics — Ensiklopedia Fisika Interaktif & Platform Pembelajaran Lengkap dari SD sampai Kuliah",
+  "scripts": {
+    "start": "node server/server.mjs",
+    "dev": "PORT=8088 HOST=127.0.0.1 LOG=1 node server/server.mjs",
+    "test": "node tests/test-runner.mjs"
+  },
+  "keywords": [
+    "physics",
+    "education",
+    "encyclopedia",
+    "interactive-simulations",
+    "science",
+    "indonesia",
+    "stem"
+  ],
+  "author": "Asadin Edu & Google DeepMind Antigravity",
+  "license": "MIT"
+}

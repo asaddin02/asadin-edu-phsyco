@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="orbitGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00f2fe" />
+      <stop offset="100%" stop-color="#4facfe" />
+    </linearGradient>
+    <linearGradient id="orbitGrad2" x1="100%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f6d365" />
+      <stop offset="100%" stop-color="#fda085" />
+    </linearGradient>
+    <linearGradient id="orbitGrad3" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#b388ff" />
+      <stop offset="100%" stop-color="#7c4dff" />
+    </linearGradient>
+    <radialGradient id="coreGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="30%" stop-color="#00f2fe" stop-opacity="0.9" />
+      <stop offset="70%" stop-color="#4facfe" stop-opacity="0.4" />
+      <stop offset="100%" stop-color="#080b14" stop-opacity="0" />
+    </radialGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Deep Cosmos Background -->
+  <rect width="512" height="512" rx="128" fill="#080b14" />
+  <rect width="504" height="504" x="4" y="4" rx="124" fill="none" stroke="rgba(0, 242, 254, 0.2)" stroke-width="2" />
+
+  <!-- Quantum / Field Wave Background Grid -->
+  <circle cx="256" cy="256" r="180" fill="none" stroke="rgba(255, 255, 255, 0.05)" stroke-width="1.5" stroke-dasharray="6,6" />
+  <circle cx="256" cy="256" r="120" fill="none" stroke="rgba(255, 255, 255, 0.07)" stroke-width="1.5" />
+
+  <!-- Orbit 1: 0 deg -->
+  <ellipse cx="256" cy="256" rx="200" ry="70" fill="none" stroke="url(#orbitGrad1)" stroke-width="5" filter="url(#glow)" transform="rotate(-30 256 256)" opacity="0.95" />
+  <circle cx="90" cy="210" r="10" fill="#00f2fe" filter="url(#glow)" />
+
+  <!-- Orbit 2: 60 deg -->
+  <ellipse cx="256" cy="256" rx="200" ry="70" fill="none" stroke="url(#orbitGrad2)" stroke-width="5" filter="url(#glow)" transform="rotate(30 256 256)" opacity="0.95" />
+  <circle cx="410" cy="200" r="10" fill="#f6d365" filter="url(#glow)" />
+
+  <!-- Orbit 3: 90 deg -->
+  <ellipse cx="256" cy="256" rx="200" ry="70" fill="none" stroke="url(#orbitGrad3)" stroke-width="5" filter="url(#glow)" transform="rotate(90 256 256)" opacity="0.95" />
+  <circle cx="256" cy="65" r="10" fill="#b388ff" filter="url(#glow)" />
+
+  <!-- Center Quantum Nucleus -->
+  <circle cx="256" cy="256" r="45" fill="url(#coreGlow)" filter="url(#glow)" />
+  <circle cx="256" cy="256" r="20" fill="#ffffff" />
+  
+  <!-- Subtle Wave Coordinate Axes -->
+  <path d="M 120 256 L 392 256" stroke="rgba(255,255,255,0.2)" stroke-width="2" stroke-linecap="round" />
+  <path d="M 256 120 L 256 392" stroke="rgba(255,255,255,0.2)" stroke-width="2" stroke-linecap="round" />
+</svg>

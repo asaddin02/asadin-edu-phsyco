@@ -1,0 +1,237 @@
+/* Asadin Edu Physics · Interactive Physics Lab & Simulations Styles */
+
+.sim-hub-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 24px;
+  align-items: start;
+  margin-top: 24px;
+}
+
+.sim-sidebar {
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.sim-tab-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--trans-fast);
+  border: 1px solid transparent;
+  text-decoration: none;
+}
+
+.sim-tab-item:hover {
+  background: var(--bg-glass);
+  color: var(--text-primary);
+}
+
+.sim-tab-item.active {
+  background: rgba(0, 242, 254, 0.1);
+  border-color: rgba(0, 242, 254, 0.35);
+  color: var(--cyan-bright);
+  font-weight: 600;
+}
+
+.sim-tab-icon {
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+/* Simulation Arena Stage */
+.sim-stage-container {
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.sim-stage-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 24px;
+  background: rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.sim-title-group h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.sim-title-group p {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.sim-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Canvas Viewport */
+.sim-canvas-wrap {
+  position: relative;
+  width: 100%;
+  height: 480px;
+  background: radial-gradient(circle at center, #0c1220 0%, #060912 100%);
+  overflow: hidden;
+}
+
+.sim-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* On-Canvas Telemetry HUD Overlay */
+.sim-hud-overlay {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: rgba(8, 11, 20, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  color: var(--cyan-bright);
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hud-line {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.hud-val {
+  color: #fff;
+  font-weight: 600;
+}
+
+/* Simulation Controls Panel */
+.sim-controls-panel {
+  padding: 22px 24px;
+  background: rgba(0, 0, 0, 0.25);
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.sim-sliders-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.sim-control-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.sim-control-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.sim-control-val {
+  font-family: var(--font-mono);
+  color: var(--cyan-bright);
+}
+
+.sim-range-input {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 3px;
+  outline: none;
+}
+
+.sim-range-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--cyan-bright);
+  cursor: pointer;
+  box-shadow: 0 0 8px rgba(0, 242, 254, 0.6);
+  transition: transform var(--trans-fast);
+}
+
+.sim-range-input::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.sim-buttons-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-top: 10px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.sim-btn-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sim-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  border-radius: var(--radius-sm);
+  font-size: 0.84rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--trans-fast);
+}
+
+.sim-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(0, 242, 254, 0.3);
+}
+
+.sim-btn-active {
+  background: var(--cyan-bright);
+  color: #05070e;
+  border-color: var(--cyan-bright);
+}
