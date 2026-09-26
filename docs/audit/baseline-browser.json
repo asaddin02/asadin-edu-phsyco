@@ -1,0 +1,295 @@
+{
+  "rows": [
+    {
+      "width": 320,
+      "route": "/",
+      "scrollWidth": 436,
+      "heading": "\n          Bagaimana Alam Bekerja: Materi, Energi, Ruang & Waktu\n        "
+    },
+    {
+      "width": 320,
+      "route": "/explore",
+      "scrollWidth": 551,
+      "heading": "Atlas Fisika & Eksplorasi Entitas"
+    },
+    {
+      "width": 320,
+      "route": "/equations",
+      "scrollWidth": 690,
+      "heading": "Penjelajah Persamaan Fisika (Equation Explorer)"
+    },
+    {
+      "width": 320,
+      "route": "/constants",
+      "scrollWidth": 384,
+      "heading": "Penjelajah Konstanta Fisika Fundamental"
+    },
+    {
+      "width": 320,
+      "route": "/experiments",
+      "scrollWidth": 708,
+      "heading": "Ensiklopedia Eksperimen Bersejarah Fisika"
+    },
+    {
+      "width": 320,
+      "route": "/learn",
+      "scrollWidth": 373,
+      "heading": "Jalur Belajar Fisika: Dari Intuisi Hingga Analitik"
+    },
+    {
+      "width": 320,
+      "route": "/graph",
+      "scrollWidth": 350,
+      "heading": "Physics Knowledge Graph"
+    },
+    {
+      "width": 320,
+      "route": "/simulations",
+      "scrollWidth": 320,
+      "heading": "Laboratorium Virtual & Simulasi Interaktif"
+    },
+    {
+      "width": 375,
+      "route": "/",
+      "scrollWidth": 436,
+      "heading": "\n          Bagaimana Alam Bekerja: Materi, Energi, Ruang & Waktu\n        "
+    },
+    {
+      "width": 375,
+      "route": "/explore",
+      "scrollWidth": 551,
+      "heading": "Atlas Fisika & Eksplorasi Entitas"
+    },
+    {
+      "width": 375,
+      "route": "/equations",
+      "scrollWidth": 690,
+      "heading": "Penjelajah Persamaan Fisika (Equation Explorer)"
+    },
+    {
+      "width": 375,
+      "route": "/constants",
+      "scrollWidth": 384,
+      "heading": "Penjelajah Konstanta Fisika Fundamental"
+    },
+    {
+      "width": 375,
+      "route": "/experiments",
+      "scrollWidth": 708,
+      "heading": "Ensiklopedia Eksperimen Bersejarah Fisika"
+    },
+    {
+      "width": 375,
+      "route": "/learn",
+      "scrollWidth": 375,
+      "heading": "Jalur Belajar Fisika: Dari Intuisi Hingga Analitik"
+    },
+    {
+      "width": 375,
+      "route": "/graph",
+      "scrollWidth": 375,
+      "heading": "Physics Knowledge Graph"
+    },
+    {
+      "width": 375,
+      "route": "/simulations",
+      "scrollWidth": 375,
+      "heading": "Laboratorium Virtual & Simulasi Interaktif"
+    },
+    {
+      "width": 414,
+      "route": "/",
+      "scrollWidth": 436,
+      "heading": "\n          Bagaimana Alam Bekerja: Materi, Energi, Ruang & Waktu\n        "
+    },
+    {
+      "width": 414,
+      "route": "/explore",
+      "scrollWidth": 551,
+      "heading": "Atlas Fisika & Eksplorasi Entitas"
+    },
+    {
+      "width": 414,
+      "route": "/equations",
+      "scrollWidth": 690,
+      "heading": "Penjelajah Persamaan Fisika (Equation Explorer)"
+    },
+    {
+      "width": 414,
+      "route": "/constants",
+      "scrollWidth": 414,
+      "heading": "Penjelajah Konstanta Fisika Fundamental"
+    },
+    {
+      "width": 414,
+      "route": "/experiments",
+      "scrollWidth": 708,
+      "heading": "Ensiklopedia Eksperimen Bersejarah Fisika"
+    },
+    {
+      "width": 414,
+      "route": "/learn",
+      "scrollWidth": 414,
+      "heading": "Jalur Belajar Fisika: Dari Intuisi Hingga Analitik"
+    },
+    {
+      "width": 414,
+      "route": "/graph",
+      "scrollWidth": 414,
+      "heading": "Physics Knowledge Graph"
+    },
+    {
+      "width": 414,
+      "route": "/simulations",
+      "scrollWidth": 414,
+      "heading": "Laboratorium Virtual & Simulasi Interaktif"
+    },
+    {
+      "width": 768,
+      "route": "/",
+      "scrollWidth": 768,
+      "heading": "\n          Bagaimana Alam Bekerja: Materi, Energi, Ruang & Waktu\n        "
+    },
+    {
+      "width": 768,
+      "route": "/explore",
+      "scrollWidth": 768,
+      "heading": "Atlas Fisika & Eksplorasi Entitas"
+    },
+    {
+      "width": 768,
+      "route": "/equations",
+      "scrollWidth": 768,
+      "heading": "Penjelajah Persamaan Fisika (Equation Explorer)"
+    },
+    {
+      "width": 768,
+      "route": "/constants",
+      "scrollWidth": 768,
+      "heading": "Penjelajah Konstanta Fisika Fundamental"
+    },
+    {
+      "width": 768,
+      "route": "/experiments",
+      "scrollWidth": 768,
+      "heading": "Ensiklopedia Eksperimen Bersejarah Fisika"
+    },
+    {
+      "width": 768,
+      "route": "/learn",
+      "scrollWidth": 768,
+      "heading": "Jalur Belajar Fisika: Dari Intuisi Hingga Analitik"
+    },
+    {
+      "width": 768,
+      "route": "/graph",
+      "scrollWidth": 768,
+      "heading": "Physics Knowledge Graph"
+    },
+    {
+      "width": 768,
+      "route": "/simulations",
+      "scrollWidth": 768,
+      "heading": "Laboratorium Virtual & Simulasi Interaktif"
+    },
+    {
+      "width": 1366,
+      "route": "/",
+      "scrollWidth": 1366,
+      "heading": "\n          Bagaimana Alam Bekerja: Materi, Energi, Ruang & Waktu\n        "
+    },
+    {
+      "width": 1366,
+      "route": "/explore",
+      "scrollWidth": 1366,
+      "heading": "Atlas Fisika & Eksplorasi Entitas"
+    },
+    {
+      "width": 1366,
+      "route": "/equations",
+      "scrollWidth": 1366,
+      "heading": "Penjelajah Persamaan Fisika (Equation Explorer)"
+    },
+    {
+      "width": 1366,
+      "route": "/constants",
+      "scrollWidth": 1366,
+      "heading": "Penjelajah Konstanta Fisika Fundamental"
+    },
+    {
+      "width": 1366,
+      "route": "/experiments",
+      "scrollWidth": 1366,
+      "heading": "Ensiklopedia Eksperimen Bersejarah Fisika"
+    },
+    {
+      "width": 1366,
+      "route": "/learn",
+      "scrollWidth": 1366,
+      "heading": "Jalur Belajar Fisika: Dari Intuisi Hingga Analitik"
+    },
+    {
+      "width": 1366,
+      "route": "/graph",
+      "scrollWidth": 1366,
+      "heading": "Physics Knowledge Graph"
+    },
+    {
+      "width": 1366,
+      "route": "/simulations",
+      "scrollWidth": 1366,
+      "heading": "Laboratorium Virtual & Simulasi Interaktif"
+    },
+    {
+      "width": 1920,
+      "route": "/",
+      "scrollWidth": 1920,
+      "heading": "\n          Bagaimana Alam Bekerja: Materi, Energi, Ruang & Waktu\n        "
+    },
+    {
+      "width": 1920,
+      "route": "/explore",
+      "scrollWidth": 1920,
+      "heading": "Atlas Fisika & Eksplorasi Entitas"
+    },
+    {
+      "width": 1920,
+      "route": "/equations",
+      "scrollWidth": 1920,
+      "heading": "Penjelajah Persamaan Fisika (Equation Explorer)"
+    },
+    {
+      "width": 1920,
+      "route": "/constants",
+      "scrollWidth": 1920,
+      "heading": "Penjelajah Konstanta Fisika Fundamental"
+    },
+    {
+      "width": 1920,
+      "route": "/experiments",
+      "scrollWidth": 1920,
+      "heading": "Ensiklopedia Eksperimen Bersejarah Fisika"
+    },
+    {
+      "width": 1920,
+      "route": "/learn",
+      "scrollWidth": 1920,
+      "heading": "Jalur Belajar Fisika: Dari Intuisi Hingga Analitik"
+    },
+    {
+      "width": 1920,
+      "route": "/graph",
+      "scrollWidth": 1920,
+      "heading": "Physics Knowledge Graph"
+    },
+    {
+      "width": 1920,
+      "route": "/simulations",
+      "scrollWidth": 1920,
+      "heading": "Laboratorium Virtual & Simulasi Interaktif"
+    }
+  ],
+  "errors": [],
+  "framesAfterLeavingSimulation": 216,
+  "xss": true
+}

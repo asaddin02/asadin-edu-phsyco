@@ -1,4 +1,4 @@
-// Asadin Edu Physics · Comprehensive Physical Constants Database (CODATA 2018/2022 & 2019 SI Redefinition)
+// Asadin Edu Physics · Comprehensive Physical Constants Database (CODATA 2022 & 2019 SI Redefinition)
 
 export const PHYSICAL_CONSTANTS = [
   {
@@ -15,7 +15,7 @@ export const PHYSICAL_CONSTANTS = [
     description: 'Batas kelajuan universal tertinggi di mana seluruh materi tak bermassa dan informasi kausal dapat merambat melintasi ruang hampa. Merupakan fondasi relativitas khusus Einstein dan konversi massa ke energi.',
     equations: ['E = mc²', 'c = 1 / √(ε₀μ₀)', 'c = f · λ', 'p = E / c'],
     significance: 'Menghubungkan geometri ruang dan waktu menjadi satu kontinuum 4-dimensi ruang-waktu (spacetime).',
-    source: 'BIPM SI Brochure (9th Edition), CODATA 2018'
+    source: 'BIPM SI Brochure (9th Edition), CODATA 2022'
   },
   {
     id: 'planck-constant',
@@ -32,15 +32,15 @@ export const PHYSICAL_CONSTANTS = [
     description: 'Kuantum aksi fundamental dalam fisika kuantum yang menghubungkan energi foton dengan frekuensi gelombangnya. Digunakan untuk mendefinisikan ulang kilogram melalui Timbangan Kibble.',
     equations: ['E = hf', 'λ = h / p', 'Δx · Δp ≥ ℏ / 2'],
     significance: 'Menentukan skala diskret (kuantisasi) di mana efek mekanika kuantum mendominasi perilaku partikel mikroskopis.',
-    source: 'BIPM SI Brochure (9th Edition), CODATA 2018'
+    source: 'BIPM SI Brochure (9th Edition), CODATA 2022'
   },
   {
     id: 'reduced-planck-constant',
     symbol: 'ℏ',
     name: 'Reduced Planck Constant (Dirac Constant)',
     indonesianName: 'Konstanta Planck Tereduksi (Konstanta Dirac)',
-    value: '1.054571817 × 10⁻³⁴',
-    scientificNotation: '1.054571817 × 10⁻³⁴',
+    value: '1.054571817… × 10⁻³⁴',
+    scientificNotation: '1.054571817… × 10⁻³⁴',
     unit: 'J·s',
     alternateUnits: '6.582119569 × 10⁻¹⁶ eV·s',
     uncertainty: 'Tepat (h / 2π)',
@@ -49,12 +49,13 @@ export const PHYSICAL_CONSTANTS = [
     description: 'Konstanta Planck dibagi dengan 2π. Digunakan secara luas dalam perumusan persamaan gelombang Schrödinger, momentum sudut spin kuantum, dan prinsip ketidakpastian Heisenberg.',
     equations: ['iℏ ∂Ψ/∂t = ĤΨ', '[x̂, p̂] = iℏ', 'S = ℏ √(s(s+1))'],
     significance: 'Satuan alami momentum sudut dalam mekanika kuantum.',
-    source: 'CODATA 2018'
+    source: 'CODATA 2022'
   },
   {
     id: 'gravitational-constant',
     symbol: 'G',
     name: 'Newtonian Constant of Gravitation',
+    aliases: ['Gravitational Constant'],
     indonesianName: 'Konstanta Gravitasi Universal Newton',
     value: '6.67430 × 10⁻¹¹',
     scientificNotation: '6.67430 × 10⁻¹¹',
@@ -62,10 +63,10 @@ export const PHYSICAL_CONSTANTS = [
     uncertainty: '± 0.00015 × 10⁻¹¹ (Ketidakpastian relatif: 2.2 × 10⁻⁵)',
     category: 'Universal & Gravitasi',
     isExact: false,
-    description: 'Konstanta proporsionalitas empiris dalam Hukum Gravitasi Universal Newton dan Persamaan Medan Gravitasi Einstein (Relativitas Umum). Salah satu konstanta tertua yang diukur pertama kali oleh Henry Cavendish.',
+    description: 'Konstanta proporsionalitas empiris dalam Hukum Gravitasi Universal Newton dan Persamaan Medan Gravitasi Einstein (Relativitas Umum). Eksperimen Cavendish menaksir densitas Bumi; nilai G dapat diturunkan dari pengukuran gaya tersebut.',
     equations: ['F = G (m₁m₂ / r²)', 'U = - G (Mm / r)', 'G_μν = (8πG / c⁴) T_μν'],
     significance: 'Menentukan kekuatan interaksi gravitasi antara materi bermassa di seluruh penjuru kosmos.',
-    source: 'CODATA 2018 / 2022 recommended value'
+    source: 'CODATA 2022 recommended value'
   },
   {
     id: 'elementary-charge',
@@ -81,7 +82,7 @@ export const PHYSICAL_CONSTANTS = [
     description: 'Magnitudo muatan listrik diskret yang dibawa oleh satu proton (+e) atau satu elektron (-e). Digunakan dalam definisi ampere modern dan satuan energi elektronvolt (1 eV = 1.602176634 × 10⁻¹⁹ J).',
     equations: ['q = n · e', 'F = (1 / 4πε₀) · (|q₁q₂| / r²)', 'I = dq / dt'],
     significance: 'Kuantum terkecil dari muatan listrik bebas stabil yang teramati di alam semesta.',
-    source: 'BIPM SI Brochure (9th Edition), CODATA 2018'
+    source: 'BIPM SI Brochure (9th Edition), CODATA 2022'
   },
   {
     id: 'boltzmann-constant',
@@ -97,7 +98,7 @@ export const PHYSICAL_CONSTANTS = [
     description: 'Jembatan fundamental antara temperatur makroskopik zat dengan energi kinetik mikroskopis rata-rata partikel penyusunnya. Menghubungkan entropi dengan jumlah keadaan mikro (microstates).',
     equations: ['⟨E_k⟩ = (3/2) k_B T', 'S = k_B ln(Ω)', 'P = n k_B T'],
     significance: 'Mengaitkan skala energi mikroskopis per partikel dengan skala termal makroskopis temperatur Kelvin.',
-    source: 'BIPM SI Brochure (9th Edition), CODATA 2018'
+    source: 'BIPM SI Brochure (9th Edition), CODATA 2022'
   },
   {
     id: 'avogadro-constant',
@@ -113,98 +114,98 @@ export const PHYSICAL_CONSTANTS = [
     description: 'Jumlah entitas partikel konstituen (atom, molekul, atau ion) dalam satu mol zat. Ditetapkan persis untuk mengaitkan massa mikroskopis dengan massa gram makroskopis.',
     equations: ['n = N / N_A', 'R = N_A · k_B', 'F = N_A · e'],
     significance: 'Faktor konversi universal antara hitungan atom/molekul mikroskopis dan jumlah zat (mol).',
-    source: 'BIPM SI Brochure (9th Edition), CODATA 2018'
+    source: 'BIPM SI Brochure (9th Edition), CODATA 2022'
   },
   {
     id: 'electron-mass',
     symbol: 'm_e',
     name: 'Electron Rest Mass',
     indonesianName: 'Massa Diam Elektron',
-    value: '9.1093837015 × 10⁻³¹',
-    scientificNotation: '9.1093837015 × 10⁻³¹',
+    value: '9.1093837139 × 10⁻³¹',
+    scientificNotation: '9.1093837139 × 10⁻³¹',
     unit: 'kg',
-    alternateUnits: '0.51099895000 MeV/c²',
+    alternateUnits: '0.51099895069 MeV/c²',
     uncertainty: '± 0.0000000028 × 10⁻³¹ kg',
     category: 'Fisika Partikel & Atom',
     isExact: false,
     description: 'Massa diam invarian elektron, lepton bermuatan paling ringan yang stabil. Menentukan jari-jari Bohr, energi ionisasi atom, dan struktur ikatan kimia zat.',
     equations: ['a₀ = 4πε₀ℏ² / (m_e e²)', 'E_n = - (m_e e⁴) / (8 ε₀² h² n²)', 'r_c = m_e v / (q B)'],
     significance: 'Kira-kira 1/1836 dari massa proton, menjadikannya sangat mudah dipercepat oleh medan elektromagnetik.',
-    source: 'CODATA 2018'
+    source: 'CODATA 2022'
   },
   {
     id: 'proton-mass',
     symbol: 'm_p',
     name: 'Proton Rest Mass',
     indonesianName: 'Massa Diam Proton',
-    value: '1.67262192369 × 10⁻²⁷',
-    scientificNotation: '1.67262192369 × 10⁻²⁷',
+    value: '1.67262192595 × 10⁻²⁷',
+    scientificNotation: '1.67262192595 × 10⁻²⁷',
     unit: 'kg',
-    alternateUnits: '938.27208816 MeV/c²',
-    uncertainty: '± 0.00000000051 × 10⁻²⁷ kg',
+    alternateUnits: '938.27208943 MeV/c²',
+    uncertainty: '± 0.00000000052 × 10⁻²⁷ kg',
     category: 'Fisika Nuklir & Partikel',
     isExact: false,
     description: 'Massa diam hadron baryon stabil penyusun inti atom. Sebagian besar massa proton (sekitar 99%) bukan berasal dari massa diam quark konstituennya, melainkan dari energi kinetik dan gaya gluon medan kromodinamika kuantum (QCD).',
     equations: ['E_bind = (Z m_p + N m_n - M_nucleus) c²', 'E_0 = m_p c²'],
     significance: 'Penyumbang utama massa materi tampak biasa (baryonic matter) di alam semesta.',
-    source: 'CODATA 2018'
+    source: 'CODATA 2022'
   },
   {
     id: 'neutron-mass',
     symbol: 'm_n',
     name: 'Neutron Rest Mass',
     indonesianName: 'Massa Diam Neutron',
-    value: '1.67492749804 × 10⁻²⁷',
-    scientificNotation: '1.67492749804 × 10⁻²⁷',
+    value: '1.67492750056 × 10⁻²⁷',
+    scientificNotation: '1.67492750056 × 10⁻²⁷',
     unit: 'kg',
-    alternateUnits: '939.56542052 MeV/c²',
-    uncertainty: '± 0.00000000095 × 10⁻²⁷ kg',
+    alternateUnits: '939.56542194 MeV/c²',
+    uncertainty: '± 0.00000000085 × 10⁻²⁷ kg',
     category: 'Fisika Nuklir & Partikel',
     isExact: false,
-    description: 'Massa diam nukleon netral. Sedikit lebih berat dari proton (selisih ~1.293 MeV), yang memungkinkan neutron bebas mengalami peluruhan beta negatif spontan menjadi proton, elektron, dan antineutrino dengan waktu paruh sekitar 14.7 menit.',
+    description: 'Massa diam nukleon netral. Sedikit lebih berat dari proton (selisih ~1.293 MeV), yang memungkinkan neutron bebas mengalami peluruhan beta negatif spontan menjadi proton, elektron, dan antineutrino dengan waktu hidup rata-rata sekitar 878 s; waktu paruh adalah τ ln(2), sekitar 609 s (10.1 menit).',
     equations: ['n → p + e⁻ + ν̄_e', 'Δm = m_n - (m_p + m_e) ≈ 0.782 MeV/c²'],
     significance: 'Stabilitas inti atom dan pembentukan bintang neutron bergantung pada massa presisi ini.',
-    source: 'CODATA 2018'
+    source: 'CODATA 2022'
   },
   {
     id: 'vacuum-permittivity',
     symbol: 'ε₀',
     name: 'Vacuum Electric Permittivity',
     indonesianName: 'Permitivitas Listrik Ruang Hampa',
-    value: '8.8541878128 × 10⁻¹²',
-    scientificNotation: '8.8541878128 × 10⁻¹²',
+    value: '8.8541878188 × 10⁻¹²',
+    scientificNotation: '8.8541878188 × 10⁻¹²',
     unit: 'F·m⁻¹ (atau C²·N⁻¹·m⁻²)',
-    uncertainty: '± 0.0000000013 × 10⁻¹² F·m⁻¹',
+    uncertainty: '± 0.0000000014 × 10⁻¹² F·m⁻¹',
     category: 'Elektromagnetisme',
     isExact: false,
     description: 'Kemampuan ruang hampa untuk melewatkan garis gaya medan listrik. Mengatur kekuatan interaksi elektrostatik Coulomb antara muatan-muatan listrik dalam ruang hampa.',
     equations: ['c = 1 / √(ε₀μ₀)', 'k = 1 / (4πε₀) ≈ 8.98755 × 10⁹ N·m²/C²', 'C = ε₀ A / d'],
     significance: 'Menentukan kapasitansi ruang hampa dan kecepatan perambatan gelombang elektromagnetik.',
-    source: 'CODATA 2018 (paska redefinisi SI 2019)'
+    source: 'CODATA 2022 (paska redefinisi SI 2019)'
   },
   {
     id: 'vacuum-permeability',
     symbol: 'μ₀',
     name: 'Vacuum Magnetic Permeability',
     indonesianName: 'Permeabilitas Magnetik Ruang Hampa',
-    value: '1.25663706212 × 10⁻⁶',
-    scientificNotation: '1.25663706212 × 10⁻⁶',
+    value: '1.25663706127 × 10⁻⁶',
+    scientificNotation: '1.25663706127 × 10⁻⁶',
     unit: 'N·A⁻² (atau T·m·A⁻¹)',
-    uncertainty: '± 0.00000000019 × 10⁻⁶ N·A⁻²',
+    uncertainty: '± 0.00000000020 × 10⁻⁶ N·A⁻²',
     category: 'Elektromagnetisme',
     isExact: false,
     description: 'Konstanta medan magnetik dalam ruang hampa. Mengatur magnitudo induksi magnetik B yang dihasilkan oleh kawat konduktor berarus listrik dalam ruang hampa.',
     equations: ['B = μ₀ I / (2πr)', 'c = 1 / √(ε₀μ₀)', '∮ B·dl = μ₀ I_enc + μ₀ε₀ dΦ_E/dt'],
     significance: 'Fondasi Hukum Biot-Savart, Hukum Ampere, dan persamaan gelombang Maxwell.',
-    source: 'CODATA 2018'
+    source: 'CODATA 2022'
   },
   {
     id: 'stefan-boltzmann-constant',
     symbol: 'σ',
     name: 'Stefan-Boltzmann Constant',
     indonesianName: 'Konstanta Stefan-Boltzmann',
-    value: '5.670374419 × 10⁻⁸',
-    scientificNotation: '5.670374419 × 10⁻⁸',
+    value: '5.670374419… × 10⁻⁸',
+    scientificNotation: '5.670374419… × 10⁻⁸',
     unit: 'W·m⁻²·K⁻⁴',
     uncertainty: 'Tepat (σ = 2π⁵ k_B⁴ / (15 c² h³))',
     category: 'Termal & Radiasi Kuantum',
@@ -212,31 +213,31 @@ export const PHYSICAL_CONSTANTS = [
     description: 'Konstanta kesebandingan antara daya radiasi total per satuan luas yang dipancarkan oleh benda hitam sempurna dengan pangkat empat temperatur mutlaknya (T⁴).',
     equations: ['j* = σ T⁴', 'L = 4π R² σ T⁴ (Luminositas Bintang)'],
     significance: 'Digunakan oleh astrofisikawan untuk menghitung luminositas bintang dan temperatur permukaan benda langit.',
-    source: 'CODATA 2018'
+    source: 'CODATA 2022'
   },
   {
     id: 'rydberg-constant',
     symbol: 'R_∞',
     name: 'Rydberg Constant',
     indonesianName: 'Konstanta Rydberg',
-    value: '1.0973731568160 × 10⁷',
-    scientificNotation: '1.0973731568160 × 10⁷',
+    value: '1.0973731568157 × 10⁷',
+    scientificNotation: '1.0973731568157 × 10⁷',
     unit: 'm⁻¹',
-    uncertainty: '± 0.0000000000021 × 10⁷ m⁻¹',
+    uncertainty: '± 0.0000000000012 × 10⁷ m⁻¹',
     category: 'Fisika Atom & Spektrum',
     isExact: false,
     description: 'Salah satu konstanta paling presisi yang pernah diukur dalam fisika eksperimental. Menentukan panjang gelombang garis-garis spektrum emisi dan absorpsi pada atom mirip hidrogen.',
     equations: ['1/λ = R_∞ (1/n₁² - 1/n₂²)', 'R_∞ = m_e e⁴ / (8 ε₀² h³ c)'],
     significance: 'Kunci pembuktian eksperimen spektroskopi terhadap model atom Bohr dan mekanika kuantum awal.',
-    source: 'CODATA 2018'
+    source: 'CODATA 2022'
   },
   {
     id: 'gas-constant',
     symbol: 'R',
     name: 'Molar Gas Constant',
     indonesianName: 'Konstanta Gas Universal',
-    value: '8.314462618',
-    scientificNotation: '8.314462618',
+    value: '8.31446261815324',
+    scientificNotation: '8.31446261815324',
     unit: 'J·mol⁻¹·K⁻¹',
     uncertainty: 'Tepat (R = N_A · k_B)',
     category: 'Termodinamika',
@@ -244,15 +245,15 @@ export const PHYSICAL_CONSTANTS = [
     description: 'Konstanta gas ideal per mol zat. Menghubungkan tekanan, volume, jumlah mol, dan temperatur mutlak dalam persamaan keadaan gas ideal.',
     equations: ['P V = n R T', 'C_p - C_v = R', 'W = n R T ln(V₂/V₁)'],
     significance: 'Pilar utama termodinamika kimia dan teknik mesin untuk siklus fluida kerja.',
-    source: 'CODATA 2018'
+    source: 'CODATA 2022'
   },
   {
     id: 'fine-structure-constant',
     symbol: 'α',
     name: 'Fine-Structure Constant',
     indonesianName: 'Konstanta Struktur Halus',
-    value: '7.2973525693 × 10⁻³',
-    scientificNotation: '7.2973525693 × 10⁻³ (≈ 1 / 137.035999084)',
+    value: '7.2973525643 × 10⁻³',
+    scientificNotation: '7.2973525643 × 10⁻³ (≈ 1 / 137.035999177)',
     unit: 'Adimensional (Tanpa Satuan)',
     uncertainty: '± 0.0000000011 × 10⁻³',
     category: 'Kuantum Elektrodinamika (QED)',
@@ -260,7 +261,7 @@ export const PHYSICAL_CONSTANTS = [
     description: 'Konstanta kopling nirdimensi yang mengukur kekuatan interaksi elektromagnetik antara partikel bermuatan elementer dengan foton dalam elektrodinamika kuantum.',
     equations: ['α = e² / (4πε₀ ℏ c)', 'v₁ / c = α (Kecepatan elektron orbit dasar Bohr)'],
     significance: 'Salah satu misteri terbesar dalam fisika teoretis; nilainya menentukan apakah atom stabil dan molekul biologis dapat terbentuk.',
-    source: 'CODATA 2018'
+    source: 'CODATA 2022'
   },
   {
     id: 'standard-gravity',
@@ -273,7 +274,7 @@ export const PHYSICAL_CONSTANTS = [
     uncertainty: 'Tepat (Nilai Konvensi Standar Internasional)',
     category: 'Mekanika & Gravitasi Bumi',
     isExact: true,
-    description: 'Nilai nominal standar percepatan jatuh bebas benda di dekat permukaan laut pada garis lintang geodetik 45°.',
+    description: 'Nilai konvensional eksak untuk percepatan gravitasi standar; bukan hasil pengukuran gravitasi lokal, yang berubah menurut lokasi dan ketinggian.',
     equations: ['W = m · g₀', 'v = g₀ · t', 'h = ½ g₀ · t²'],
     significance: 'Digunakan sebagai acuan baku perhitungan gaya berat dan konversi kilogram-gaya.',
     source: 'ISO 80000-3, CGPM 1901'
@@ -290,8 +291,37 @@ export const PHYSICAL_CONSTANTS = [
     category: 'Kosmologi & Riset Aktif',
     isExact: false,
     description: 'Laju ekspansi metrik ruang alam semesta saat ini. Menghubungkan kecepatan resesi galaksi jauh dengan jaraknya dari kita.',
-    equations: ['v = H₀ · d', 't_H ≈ 1 / H₀ (Waktu Hubble ~ 13.8 Miliar Tahun)'],
+    equations: ['v = H₀ · d', 't_H = 1/H₀ (bukan usia alam semesta; usia juga bergantung sejarah ekspansi)'],
     significance: 'Riset aktif paling hangat dalam kosmologi modern; disparitas antara metode alam semesta awal dan lokal memicu pencarian fisika baru.',
     source: 'Planck Collaboration (2018) & SH0ES Team (Riess et al. 2022)'
   }
 ];
+
+// Per-record numerical provenance. CODATA 2022 is a named edition, not a live feed.
+const nistKeys = {
+  'speed-of-light':'c', 'planck-constant':'h', 'reduced-planck-constant':'hbar',
+  'gravitational-constant':'bg', 'elementary-charge':'e', 'boltzmann-constant':'k',
+  'avogadro-constant':'na', 'electron-mass':'me', 'proton-mass':'mp', 'neutron-mass':'mn',
+  'vacuum-permittivity':'ep0', 'vacuum-permeability':'mu0', 'stefan-boltzmann-constant':'sigma',
+  'rydberg-constant':'ryd', 'gas-constant':'r', 'fine-structure-constant':'alph', 'standard-gravity':'gn'
+};
+for (const record of PHYSICAL_CONSTANTS) {
+  record.sourceUrl = nistKeys[record.id] ? `https://physics.nist.gov/cgi-bin/cuu/Value?${nistKeys[record.id]}` : 'https://arxiv.org/abs/1807.06209';
+  record.sourceIdentifier = nistKeys[record.id] ? `NIST SRD 121 / CODATA 2022 / ${nistKeys[record.id]}` : 'Planck 2018 VI; Riess et al. 2022';
+  record.reviewedAt = '2026-09-26';
+  record.sources = [{title: record.source, url: record.sourceUrl, scope: 'Nilai dan ketidakpastian; uraian aplikasi tidak diaudit menyeluruh.'}];
+  if (record.id === 'neutron-mass') record.sources.push({title: 'PDG: neutron mean life', url: 'https://pdg.lbl.gov/2025/AtomicNuclearProperties/neutron.html', scope: 'Waktu hidup rata-rata dan konversi waktu paruh.'});
+  if (record.id === 'hubble-constant') {
+    record.scientificStatus = 'ACTIVE RESEARCH';
+    record.sources.push({title: 'Riess et al. 2022, SH0ES', url: 'https://arxiv.org/abs/2112.04510', scope: 'H₀ lokal; contoh hasil studi 2022, bukan konsensus terbaru.'});
+  }
+}
+PHYSICAL_CONSTANTS.push({
+  id: 'coulomb-constant', symbol: 'k_e', name: 'Coulomb Constant', indonesianName: 'Konstanta Coulomb',
+  value: '8.9875517862 × 10⁹', scientificNotation: '8.9875517862 × 10⁹', unit: 'N·m²·C⁻²',
+  uncertainty: '± 0.0000000014 × 10⁹ N·m²·C⁻² (dari ε₀)', category: 'Elektromagnetisme', isExact: false,
+  description: 'Faktor gaya elektrostatik dalam ruang hampa, k_e = 1/(4πε₀). Diturunkan dari permitivitas CODATA 2022; bukan konstanta eksak pasca redefinisi SI 2019.',
+  equations: ['F = k_e |q₁q₂|/r²'], source: 'Turunan CODATA 2022: vacuum electric permittivity',
+  sourceUrl: 'https://physics.nist.gov/cgi-bin/cuu/Value?ep0', sourceIdentifier: 'NIST SRD 121 / CODATA 2022 / ep0; k_e=1/(4πε₀)', reviewedAt: '2026-09-26',
+  sources: [{title: 'NIST CODATA 2022: ε₀', url: 'https://physics.nist.gov/cgi-bin/cuu/Value?ep0', scope: 'k_e dihitung dari 1/(4πε₀); ketidakpastian relatif sama.'}]
+});

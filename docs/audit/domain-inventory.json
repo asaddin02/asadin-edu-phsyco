@@ -1,0 +1,432 @@
+[
+  {
+    "domain": "foundations",
+    "entityIds": [
+      "mass",
+      "kilogram",
+      "dimensional-analysis",
+      "length",
+      "time",
+      "volume",
+      "amount-of-substance",
+      "angle",
+      "dimensionless"
+    ],
+    "equationIds": [],
+    "experimentIds": [],
+    "resourceLinkedLessonIds": [
+      "sd-1-2",
+      "smp-1-1"
+    ],
+    "status": "PARTIAL"
+  },
+  {
+    "domain": "kinematics",
+    "entityIds": [
+      "velocity",
+      "acceleration"
+    ],
+    "equationIds": [],
+    "experimentIds": [],
+    "resourceLinkedLessonIds": [
+      "smp-1-1",
+      "smp-1-2",
+      "sma-1-1"
+    ],
+    "status": "PARTIAL"
+  },
+  {
+    "domain": "dynamics",
+    "entityIds": [
+      "inertia",
+      "force",
+      "newton",
+      "newton-first-law",
+      "newton-second-law",
+      "newton-third-law"
+    ],
+    "equationIds": [
+      "newton-second-law"
+    ],
+    "experimentIds": [],
+    "resourceLinkedLessonIds": [
+      "sd-1-1",
+      "smp-1-2",
+      "edu-1-1"
+    ],
+    "status": "PARTIAL"
+  },
+  {
+    "domain": "work-energy",
+    "entityIds": [
+      "energy",
+      "joule",
+      "work",
+      "conservation-of-energy"
+    ],
+    "equationIds": [
+      "kinetic-energy-classic"
+    ],
+    "experimentIds": [],
+    "resourceLinkedLessonIds": [
+      "univ-1-1"
+    ],
+    "status": "PARTIAL"
+  },
+  {
+    "domain": "momentum",
+    "entityIds": [
+      "linear-momentum"
+    ],
+    "equationIds": [],
+    "experimentIds": [],
+    "resourceLinkedLessonIds": [],
+    "status": "PARTIAL"
+  },
+  {
+    "domain": "rotation",
+    "entityIds": [
+      "torque",
+      "angular-momentum"
+    ],
+    "equationIds": [],
+    "experimentIds": [],
+    "resourceLinkedLessonIds": [
+      "sma-1-2",
+      "edu-2-1"
+    ],
+    "status": "PARTIAL"
+  },
+  {
+    "domain": "gravitation",
+    "entityIds": [
+      "gravity",
+      "orbit"
+    ],
+    "equationIds": [
+      "universal-gravitation"
+    ],
+    "experimentIds": [
+      "cavendish-torsion-balance"
+    ],
+    "resourceLinkedLessonIds": [
+      "sd-1-2"
+    ],
+    "status": "PARTIAL"
+  },
+  {
+    "domain": "fluids",
+    "entityIds": [
+      "pressure",
+      "pascal",
+      "fluids",
+      "density"
+    ],
+    "equationIds": [
+      "bernoulli-equation"
+    ],
+    "experimentIds": [],
+    "resourceLinkedLessonIds": [
+      "smp-2-1",
+      "smp-2-2"
+    ],
+    "status": "PARTIAL"
+  },
+  {
+    "domain": "oscillations",
+    "entityIds": [
+      "frequency",
+      "hertz"
+    ],
+    "equationIds": [],
+    "experimentIds": [],
+    "resourceLinkedLessonIds": [
+      "sd-2-2"
+    ],
+    "status": "PARTIAL"
+  },
+  {
+    "domain": "waves",
+    "entityIds": [
+      "wavelength"
+    ],
+    "equationIds": [
+      "wave-speed-frequency"
+    ],
+    "experimentIds": [],
+    "resourceLinkedLessonIds": [],
+    "status": "PARTIAL"
+  },
+  {
+    "domain": "sound",
+    "entityIds": [
+      "sound",
+      "doppler-effect"
+    ],
+    "equationIds": [],
+    "experimentIds": [],
+    "resourceLinkedLessonIds": [
+      "sd-2-2",
+      "sma-2-2"
+    ],
+    "status": "PARTIAL"
+  },
+  {
+    "domain": "thermal",
+    "entityIds": [
+      "temperature",
+      "kelvin",
+      "heat"
+    ],
+    "equationIds": [
+      "ideal-gas-equation"
+    ],
+    "experimentIds": [],
+    "resourceLinkedLessonIds": [
+      "sd-2-1"
+    ],
+    "status": "PARTIAL"
+  },
+  {
+    "domain": "thermodynamics",
+    "entityIds": [
+      "entropy",
+      "carnot-engine",
+      "efficiency",
+      "thermodynamic-laws"
+    ],
+    "equationIds": [
+      "carnot-efficiency"
+    ],
+    "experimentIds": [],
+    "resourceLinkedLessonIds": [
+      "sma-2-1"
+    ],
+    "status": "PARTIAL"
+  },
+  {
+    "domain": "electricity",
+    "entityIds": [
+      "electric-charge",
+      "coulomb",
+      "electric-field",
+      "voltage",
+      "electric-current",
+      "resistance",
+      "charge-density",
+      "current-density"
+    ],
+    "equationIds": [
+      "coulombs-law"
+    ],
+    "experimentIds": [
+      "millikan-oil-drop"
+    ],
+    "resourceLinkedLessonIds": [
+      "smp-3-1",
+      "smp-3-2"
+    ],
+    "status": "PARTIAL"
+  },
+  {
+    "domain": "magnetism",
+    "entityIds": [
+      "magnetic-field",
+      "tesla",
+      "lorentz-force"
+    ],
+    "equationIds": [],
+    "experimentIds": [],
+    "resourceLinkedLessonIds": [
+      "sd-3-2",
+      "sma-3-1"
+    ],
+    "status": "PARTIAL"
+  },
+  {
+    "domain": "electromagnetism",
+    "entityIds": [
+      "electromagnetism"
+    ],
+    "equationIds": [
+      "ohms-law",
+      "maxwell-gauss-electric",
+      "maxwell-gauss-magnetic",
+      "maxwell-faraday",
+      "maxwell-ampere"
+    ],
+    "experimentIds": [],
+    "resourceLinkedLessonIds": [
+      "smp-3-1",
+      "sma-3-1",
+      "univ-2-1"
+    ],
+    "status": "PARTIAL"
+  },
+  {
+    "domain": "optics",
+    "entityIds": [
+      "light",
+      "refractive-index"
+    ],
+    "equationIds": [
+      "snells-law-refraction"
+    ],
+    "experimentIds": [
+      "young-double-slit"
+    ],
+    "resourceLinkedLessonIds": [
+      "sd-3-1"
+    ],
+    "status": "PARTIAL"
+  },
+  {
+    "domain": "special-relativity",
+    "entityIds": [
+      "spacetime",
+      "speed-of-light-constant",
+      "equation-mass-energy-rel",
+      "experiment-michelson-morley-exp"
+    ],
+    "equationIds": [
+      "mass-energy-equivalence",
+      "lorentz-factor"
+    ],
+    "experimentIds": [
+      "michelson-morley"
+    ],
+    "resourceLinkedLessonIds": [
+      "sma-3-2"
+    ],
+    "status": "PARTIAL"
+  },
+  {
+    "domain": "general-relativity",
+    "entityIds": [
+      "general-relativity-theory",
+      "gravitational-waves"
+    ],
+    "equationIds": [],
+    "experimentIds": [],
+    "resourceLinkedLessonIds": [],
+    "status": "PARTIAL"
+  },
+  {
+    "domain": "quantum",
+    "entityIds": [
+      "quantum",
+      "wave-particle-duality",
+      "heisenberg-uncertainty-principle",
+      "planck-constant",
+      "photoelectric-effect"
+    ],
+    "equationIds": [
+      "planck-einstein-relation",
+      "schrodinger-equation"
+    ],
+    "experimentIds": [
+      "photoelectric-effect-exp"
+    ],
+    "resourceLinkedLessonIds": [
+      "univ-2-2"
+    ],
+    "status": "PARTIAL"
+  },
+  {
+    "domain": "atomic",
+    "entityIds": [
+      "atomic-structure"
+    ],
+    "equationIds": [],
+    "experimentIds": [
+      "rutherford-gold-foil"
+    ],
+    "resourceLinkedLessonIds": [],
+    "status": "PARTIAL"
+  },
+  {
+    "domain": "nuclear",
+    "entityIds": [
+      "particle-count",
+      "nuclear-structure",
+      "nuclear-fission"
+    ],
+    "equationIds": [
+      "radioactive-decay-law"
+    ],
+    "experimentIds": [],
+    "resourceLinkedLessonIds": [],
+    "status": "PARTIAL"
+  },
+  {
+    "domain": "particle-physics",
+    "entityIds": [
+      "electron",
+      "photon",
+      "higgs-boson",
+      "standard-model",
+      "lhc-instrument"
+    ],
+    "equationIds": [],
+    "experimentIds": [],
+    "resourceLinkedLessonIds": [
+      "sd-3-1"
+    ],
+    "status": "PARTIAL"
+  },
+  {
+    "domain": "condensed-matter",
+    "entityIds": [
+      "superconductivity",
+      "crystal-lattice"
+    ],
+    "equationIds": [],
+    "experimentIds": [],
+    "resourceLinkedLessonIds": [],
+    "status": "PARTIAL"
+  },
+  {
+    "domain": "plasma",
+    "entityIds": [
+      "tokamak",
+      "plasma-state"
+    ],
+    "equationIds": [],
+    "experimentIds": [],
+    "resourceLinkedLessonIds": [],
+    "status": "PARTIAL"
+  },
+  {
+    "domain": "astrophysics",
+    "entityIds": [
+      "black-hole"
+    ],
+    "equationIds": [],
+    "experimentIds": [],
+    "resourceLinkedLessonIds": [],
+    "status": "PARTIAL"
+  },
+  {
+    "domain": "cosmology",
+    "entityIds": [
+      "big-bang",
+      "dark-matter",
+      "dark-energy",
+      "string-theory-multiverse"
+    ],
+    "equationIds": [],
+    "experimentIds": [],
+    "resourceLinkedLessonIds": [],
+    "status": "PARTIAL"
+  },
+  {
+    "domain": "applied-physics",
+    "entityIds": [
+      "computational-physics"
+    ],
+    "equationIds": [],
+    "experimentIds": [],
+    "resourceLinkedLessonIds": [],
+    "status": "PARTIAL"
+  }
+]

@@ -51,6 +51,7 @@ export class OrbitalGravitySimulation {
   }
 
   reset() {
+    this.state.running = true;
     this.state.x = this.params.r0;
     this.state.y = 0;
     this.state.vx = 0;
@@ -69,7 +70,7 @@ export class OrbitalGravitySimulation {
 
     let type = 'Elips Tertutup';
     let typeCol = '#00f2fe';
-    if (Math.abs(v - vCircular) < 0.1) {
+    if (Math.abs(this.params.v0 - Math.sqrt(this.params.centralMass / this.params.r0)) < 1e-8) {
       type = 'Lingkaran Sempurna';
       typeCol = '#38ef7d';
     } else if (v >= vEscape) {
@@ -183,9 +184,10 @@ export class OrbitalGravitySimulation {
     this.ctx.stroke();
   }
 
-  loop = () => {
-    this.update(0.018);
-    this.draw();
+  loop = (now = performance.now()) => {
+    const dt = Math.min(0.04, Math.max(0, (now - (this.lastFrame ?? now))/1000));
+    this.lastFrame = now;
+    if (!document.hidden && !this.animationPaused) { this.update(dt); this.draw(); }
     this.animId = requestAnimationFrame(this.loop);
   };
 

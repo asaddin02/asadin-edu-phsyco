@@ -2,11 +2,16 @@
   "name": "asadin-edu-physics",
   "version": "1.0.0",
   "type": "module",
-  "description": "Asadin Edu Physics — Ensiklopedia Fisika Interaktif & Platform Pembelajaran Lengkap dari SD sampai Kuliah",
+  "description": "Asadin Edu Physics — Ensiklopedia fisika interaktif dan jalur belajar mandiri",
   "scripts": {
     "start": "node server/server.mjs",
     "dev": "PORT=8088 HOST=127.0.0.1 LOG=1 node server/server.mjs",
-    "test": "node tests/test-runner.mjs"
+    "test": "node tests/test-runner.mjs && node --test tests/regression.test.mjs tests/courses.test.mjs",
+    "test:browser": "node tests/browser-audit.mjs",
+    "test:accessibility": "node tests/accessibility.mjs",
+    "build": "node scripts/build.mjs",
+    "coverage": "node scripts/coverage.mjs",
+    "test:build": "npm run build && node tests/deployment.mjs"
   },
   "keywords": [
     "physics",
@@ -18,5 +23,12 @@
     "stem"
   ],
   "author": "Asadin Edu & Google DeepMind Antigravity",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@axe-core/playwright": "4.13.0",
+    "playwright": "1.63.0"
+  },
+  "engines": {
+    "node": ">=22"
+  }
 }

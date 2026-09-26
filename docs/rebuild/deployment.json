@@ -1,0 +1,46 @@
+{
+  "date": "2026-09-26T06:20:32.038Z",
+  "cases": [
+    {
+      "prefix": "/",
+      "route": "#/",
+      "status": "PASS"
+    },
+    {
+      "prefix": "/",
+      "route": "#/learn?level=educator",
+      "status": "PASS"
+    },
+    {
+      "prefix": "/",
+      "route": "#/lesson/maxwell-course?level=university",
+      "status": "PASS"
+    },
+    {
+      "prefix": "/",
+      "route": "#/simulations?sim=circuits",
+      "status": "PASS"
+    },
+    {
+      "prefix": "/physics/",
+      "route": "#/",
+      "status": "PASS"
+    },
+    {
+      "prefix": "/physics/",
+      "route": "#/learn?level=educator",
+      "status": "PASS"
+    },
+    {
+      "prefix": "/physics/",
+      "route": "#/lesson/maxwell-course?level=university",
+      "status": "PASS"
+    },
+    {
+      "prefix": "/physics/",
+      "route": "#/simulations?sim=circuits",
+      "status": "PASS"
+    }
+  ],
+  "errors": []
+}

@@ -60,7 +60,8 @@ class PhysicsState {
   loadBookmarks() {
     try {
       const saved = localStorage.getItem('asadin_physics_bookmarks');
-      return saved ? JSON.parse(saved) : [];
+      const parsed = saved ? JSON.parse(saved) : [];
+      return Array.isArray(parsed) ? parsed.filter(id => typeof id === 'string') : [];
     } catch {
       return [];
     }

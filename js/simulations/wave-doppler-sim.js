@@ -69,7 +69,7 @@ export class WaveDopplerSimulation {
 
     const fForward = (this.params.sourceSpeed < this.params.waveSpeed)
       ? (this.params.emitFrequency / (1 - this.params.sourceSpeed / this.params.waveSpeed)).toFixed(1)
-      : 'Tak Terhingga (Shockwave)';
+      : 'Tidak berlaku: sumber sonik/supersonik';
     const fBackward = (this.params.emitFrequency / (1 + this.params.sourceSpeed / this.params.waveSpeed)).toFixed(1);
 
     this.hudElement.innerHTML = `
@@ -192,9 +192,10 @@ export class WaveDopplerSimulation {
     this.ctx.fillText('Sumber Bunyi', this.state.sourceX - 35, this.state.sourceY - 16);
   }
 
-  loop = () => {
-    this.update(0.018);
-    this.draw();
+  loop = (now = performance.now()) => {
+    const dt = Math.min(0.04, Math.max(0, (now - (this.lastFrame ?? now))/1000));
+    this.lastFrame = now;
+    if (!document.hidden && !this.animationPaused) { this.update(dt); this.draw(); }
     this.animId = requestAnimationFrame(this.loop);
   };
 

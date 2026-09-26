@@ -89,9 +89,9 @@ export class BohrAtomSimulation {
     if (!this.hudElement) return;
     const ni = this.params.nInitial;
     const nf = this.params.nFinal;
-    const Ei = (-13.6 / (ni ** 2)).toFixed(2);
-    const Ef = (-13.6 / (nf ** 2)).toFixed(2);
-    const deltaE = Math.abs(Ei - Ef).toFixed(2);
+    const Ei = -13.6 / (ni ** 2);
+    const Ef = -13.6 / (nf ** 2);
+    const deltaE = Math.abs(Ei - Ef);
     const lambdaNm = (1239.84 / (deltaE || 0.001)).toFixed(1);
 
     let series = 'Deret Lain';
@@ -101,7 +101,7 @@ export class BohrAtomSimulation {
 
     this.hudElement.innerHTML = `
       <div class="hud-line"><span>Transisi Orbit:</span> <span class="hud-val" style="color: #00f2fe">n = ${ni} ➔ n = ${nf}</span></div>
-      <div class="hud-line"><span>Energi Foton (ΔE):</span> <span class="hud-val" style="color: #f6d365">${deltaE} eV</span></div>
+      <div class="hud-line"><span>Energi Foton (ΔE):</span> <span class="hud-val" style="color: #f6d365">${deltaE.toFixed(3)} eV</span></div>
       <div class="hud-line"><span>Panjang Gelombang (λ):</span> <span class="hud-val">${lambdaNm} nm</span></div>
       <div class="hud-line"><span>Deret Spektrum:</span> <span class="hud-val" style="color: #38ef7d">${series}</span></div>
       <div class="hud-line"><span>Tingkat Dasar (n=1):</span> <span class="hud-val">-13.60 eV</span></div>
@@ -246,9 +246,10 @@ export class BohrAtomSimulation {
     }
   }
 
-  loop = () => {
-    this.update(0.018);
-    this.draw();
+  loop = (now = performance.now()) => {
+    const dt = Math.min(0.04, Math.max(0, (now - (this.lastFrame ?? now))/1000));
+    this.lastFrame = now;
+    if (!document.hidden && !this.animationPaused) { this.update(dt); this.draw(); }
     this.animId = requestAnimationFrame(this.loop);
   };
 

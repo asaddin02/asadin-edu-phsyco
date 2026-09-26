@@ -1,3 +1,5 @@
+import { DOMAIN_REFERENCES } from './provenance.js';
+import { SUPPLEMENTAL_ENTITIES } from './supplemental-entities.js';
 // Asadin Edu Physics · Comprehensive Physics Entity System Catalog (60+ Entities Across All 28 Domains & 14 Types)
 
 export const PHYSICS_ENTITIES = [
@@ -16,7 +18,7 @@ export const PHYSICS_ENTITIES = [
     layers: {
       simple: 'Massa adalah banyaknya materi dalam suatu benda. Massa Anda di Bumi, di Bulan, atau melayang di ruang hampa tetap sama persis, berbeda dengan berat yang berubah tergantung gravitasi.',
       standard: 'Satuan dasar SI untuk massa adalah Kilogram (kg). Sejak 20 Mei 2019, kilogram didefinisikan secara universal melalui nilai eksak Konstanta Planck h = 6.62607015 × 10⁻³⁴ kg·m²·s⁻¹ dengan Timbangan Kibble elektrodinamik.',
-      advanced: 'Prinsip Kesetaraan (Equivalence Principle) membuktikan kesetaraan identik antara massa inersial m_i = F/a dan massa gravitasi m_g = Fr²/(GM) hingga ketelitian 10⁻¹⁵.',
+      advanced: 'Prinsip Kesetaraan (Equivalence Principle) diuji melalui kesetaraan antara massa inersial m_i = F/a dan massa gravitasi m_g = Fr²/(GM) hingga ketelitian 10⁻¹⁵.',
       deepDive: 'Dalam Model Standar, ~1% massa materi tampak berasal dari kopling Yukawa medan Higgs ke quark dan elektron; ~99% sisanya berasal dari energi kinetik dan medan gluon gaya kuat (QCD) melalui rumus E = mc².'
     },
     keyVariables: [{ symbol: 'm', name: 'Massa', unit: 'kg', dimension: '[M]' }],
@@ -96,7 +98,7 @@ export const PHYSICS_ENTITIES = [
     id: 'acceleration',
     name: 'Acceleration',
     indonesianName: 'Percepatan',
-    entityType: 'Concept',
+    entityType: 'Quantity',
     domainId: 'kinematics',
     subdomain: 'Vector Kinematics',
     symbol: 'a⃗',
@@ -147,7 +149,7 @@ export const PHYSICS_ENTITIES = [
       simple: 'Gaya adalah tarikan atau dorongan yang bisa membuat benda bergerak, berhenti, atau berubah bentuk.',
       standard: 'Diukur dalam satuan Newton (N = kg·m·s⁻²). Hukum II Newton menyatakan bahwa resultan gaya neto berbanding lurus dengan laju perubahan momentum: F⃗ = dp⃗/dt = m·a⃗.',
       advanced: 'Untuk medan konservatif, gaya vektor adalah minus gradien dari potensial skalar: F⃗ = -∇U. Dalam mekanika analitik Lagrangian, gaya tergeneralisasi adalah Q_j = d/dt(∂L/∂q̇_j) - ∂L/∂q_j.',
-      deepDive: 'Pada level fundamental, seluruh gaya di alam semesta tereduksi menjadi 4 interaksi: Gravitasi, Elektromagnetisme, Gaya Lemah, dan Gaya Kuat yang dimediasi oleh pertukaran boson tolok.'
+      deepDive: 'Empat interaksi fundamental adalah gravitasi, elektromagnetisme, lemah, dan kuat. Tiga interaksi terakhir dijelaskan Model Standar dengan boson tolok; gravitasi dijelaskan relativitas umum dan teori kuantumnya belum terkonfirmasi.'
     },
     keyVariables: [{ symbol: 'F', name: 'Gaya', unit: 'Newton (N)', dimension: '[M][L][T]⁻²' }],
     commonMisconceptions: ['Gaya tersimpan di dalam benda yang bergerak cepat (benda memiliki momentum/energi, bukan gaya).'],
@@ -168,7 +170,7 @@ export const PHYSICS_ENTITIES = [
       simple: 'Satu Newton kira-kira setara dengan gaya berat gravitasi yang menarik sebuah apel berbobot 100 gram di telapak tangan Anda.',
       standard: '1 N = 1 kg·m·s⁻². Satuan ini diturunkan langsung dari Hukum Kedua Newton F = ma.',
       advanced: 'Dalam satuan dasar CGS: 1 N = 10⁵ dyne. Dalam satuan gravitasi teknik: 1 kgf (kilogram-gaya) ≈ 9.80665 N.',
-      deepDive: 'Dalam elektrostatika kuantum, gaya tarik antara dua elektron berjarak 1 meter di ruang hampa adalah sekitar 2.3 × 10⁻²⁸ N.'
+      deepDive: 'Dalam pendekatan elektrostatik, gaya tolak elektrostatik antara dua elektron berjarak 1 meter di ruang hampa adalah sekitar 2.3 × 10⁻²⁸ N.'
     },
     keyVariables: [{ symbol: 'N', name: 'Newton', unit: 'kg·m·s⁻²', dimension: '[M][L][T]⁻²' }],
     commonMisconceptions: ['Menyamakan 1 kg massa dengan 1 kg berat (berat 1 kg di bumi adalah ~9.8 N).'],
@@ -255,7 +257,7 @@ export const PHYSICS_ENTITIES = [
     domainId: 'work-energy',
     subdomain: 'Conservation of Energy',
     symbol: 'E',
-    summary: 'Besaran skalar invarian yang menyatakan kapasitas suatu sistem fisik untuk melakukan usaha atau memindahkan panas.',
+    summary: 'Besaran skalar yang bergantung kerangka acuan dan menyatakan kapasitas suatu sistem fisik untuk melakukan usaha atau memindahkan panas.',
     layers: {
       simple: 'Energi adalah kemampuan untuk membuat sesuatu terjadi. Energi tidak pernah bisa diciptakan atau dimusnahkan, hanya bisa berubah bentuk.',
       standard: 'Satuan SI energi adalah Joule (J). Bentuk energi mekanik mencakup energi kinetik translasi (½mv²), rotasi (½Iω²), dan potensial (mgh atau ½kx²).',
@@ -322,7 +324,7 @@ export const PHYSICS_ENTITIES = [
     layers: {
       simple: 'Energi tidak dapat dibuat dari ketiadaan dan tidak dapat dihancurkan. Energi hanya berpindah atau berganti wujud.',
       standard: 'ΔE_sistem = Q - W (Hukum I Termodinamika). Untuk sistem mekanik tanpa gesekan: E_mekanik = E_k + E_p = konstan.',
-      advanced: 'Konsekuensi matematis dari simetri invariansi translasi waktu Lagrangian (Teorema Noether Emmy Noether 1915).',
+      advanced: 'Konsekuensi matematis dari simetri invariansi translasi waktu Lagrangian (Teorema Noether Emmy Noether 1918).',
       deepDive: 'Dalam kosmologi metrik FLRW alam semesta yang mengembang, simetri waktu global tidak berlaku kaku, sehingga foton radiasi CMB mengalami pendinginan redshift kosmologis seiring ekspansi ruang.'
     },
     keyVariables: [{ symbol: 'E_total', name: 'Energi Total', unit: 'J', dimension: '[M][L]²[T]⁻²' }],
@@ -442,7 +444,7 @@ export const PHYSICS_ENTITIES = [
       simple: 'Tekanan adalah gaya dorong yang tersebar pada suatu bidang. Mengenakan sepatu hak tinggi menekan lantai jauh lebih kuat daripada sepatu kets datar karena seluruh berat badan terkonsentrasi pada ujung hak yang sangat sempit!',
       standard: 'P = F_tegak / A. Satuan SI: Pascal (1 Pa = 1 N/m²). Tekanan hidrostatis dalam fluida bertambah seiring kedalaman: P = P₀ + ρ·g·h.',
       advanced: 'Dalam mekanika kontinum, tekanan isotropik adalah sepertiga dari jejak tensor tegangan mekanik: P = -⅓ Tr(σ_ij). Menghasilkan gaya gradien volume: f⃗ = -∇P.',
-      deepDive: 'Dalam lubang hitam dan bintang neutron terpadat, tekanan degenerasi kuantum fermion Pauli mengimbangi keruntuhan gravitasi total.'
+      deepDive: 'Tekanan degenerasi membantu menopang katai putih dan bintang neutron hingga batas kestabilannya. Lubang hitam tidak ditopang oleh tekanan degenerasi sebagai bintang statis.'
     },
     keyVariables: [{ symbol: 'P', name: 'Tekanan', unit: 'Pascal (Pa)', dimension: '[M][L]⁻¹[T]⁻²' }],
     commonMisconceptions: ['Bentuk wadah mempengaruhi tekanan di dasar (Paradoks Hidrostatis: tekanan hanya bergantung pada kedalaman h dan massa jenis ρ, bukan volume wadah).'],
@@ -619,10 +621,10 @@ export const PHYSICS_ENTITIES = [
     domainId: 'thermal',
     subdomain: 'Temperature Scales',
     symbol: 'T',
-    summary: 'Besaran pokok yang mengukur energi kinetik translasi rata-rata partikel mikroskopis penyusun suatu zat.',
+    summary: 'Besaran keadaan termodinamika yang menentukan kesetimbangan termal. Hubungan langsung dengan energi kinetik translasi berlaku untuk gas ideal klasik.',
     layers: {
       simple: 'Suhu adalah ukuran seberapa panas atau dingin suatu benda. Suhu tinggi berarti atom-atom di dalam benda bergerak dan bergetar sangat lincah.',
-      standard: 'Satuan dasar SI adalah Kelvin (K). Suhu mutlak nol (0 K = -273.15 °C) adalah batas terendah di mana energi kinetik termal klasik berhenti bergerak total. Hubungan energi gas ideal: ⟨E_k⟩ = 3/2 k_B T.',
+      standard: 'Satuan dasar SI adalah Kelvin (K). Suhu mutlak nol (0 K = -273.15 °C) adalah batas suhu termodinamika biasa; energi titik nol kuantum dapat tetap ada. Hubungan energi gas ideal: ⟨E_k⟩ = 3/2 k_B T.',
       advanced: 'Definisi termodinamika fundamental melalui entropi: 1/T = (∂S/∂U)_(V,N). Suhu mengukur kecenderungan sistem untuk melepaskan energi ke sistem lain.',
       deepDive: 'Dalam sistem kuantum dengan tingkat energi terbatas (seperti spin nuklir dalam medan magnet kuat), populasi dapat terbalik sehingga memunculkan keadaan "Suhu Kelvin Negatif" yang secara termodinamika sebenarnya lebih panas dari suhu tak hingga!'
     },
@@ -642,7 +644,7 @@ export const PHYSICS_ENTITIES = [
     symbol: 'K',
     summary: 'Satuan pokok SI untuk temperatur termodinamika, didefinisikan dengan menetapkan nilai tetap konstanta Boltzmann k_B.',
     layers: {
-      simple: 'Kelvin adalah skala suhu para ilmuwan yang dimulai dari nol mutlak (-273.15 °C), di mana tidak ada lagi suhu di bawah nol Kelvin.',
+      simple: 'Kelvin adalah skala suhu para ilmuwan yang dimulai dari nol mutlak (-273.15 °C), untuk sistem termal biasa. Keadaan suhu negatif khusus tidak berarti lebih dingin dari 0 K.',
       standard: '1 Kelvin didefinisikan dengan menetapkan nilai numerik tetap konstanta Boltzmann k_B = 1.380649 × 10⁻²³ J·K⁻¹.',
       advanced: 'Perubahan 1 Kelvin sama persis dengan perubahan 1 derajat Celsius (ΔT = 1 K = 1 °C), namun T(K) = T(°C) + 273.15.',
       deepDive: 'Ruang angkasa antargalaksi memiliki suhu latar belakang Cosmic Microwave Background sekitar 2.725 Kelvin.'
@@ -754,7 +756,7 @@ export const PHYSICS_ENTITIES = [
     symbol: 'C',
     summary: 'Satuan turunan SI untuk muatan listrik, setara dengan jumlah muatan yang diangkut oleh arus satu Ampere selama satu detik (1 A·s).',
     layers: {
-      simple: 'Satu Coulomb adalah paket muatan yang sangat besar, setara dengan muatan dari sekitar 6.24 triliun triliun elektron.',
+      simple: 'Satu Coulomb adalah paket muatan yang sangat besar, setara dengan muatan dari sekitar 6.24 × 10¹⁸ elektron.',
       standard: '1 C = 1 A·s. Satu mol elektron membawa muatan satu tetapan Faraday F ≈ 96.485 Coulomb.',
       advanced: 'Kapasitansi satu Farad menyimpan muatan satu Coulomb pada beda potensial satu Volt: Q = C · V.',
       deepDive: 'Satu petir kilat petir badai memindahkan sekitar 15 hingga 350 Coulomb muatan antara awan dan tanah dalam sekejap milidetik.'
@@ -913,9 +915,9 @@ export const PHYSICS_ENTITIES = [
     summary: 'Teori gravitasi geometris Albert Einstein yang menggantikan gaya tarik Newton dengan kelengkungan ruang-waktu 4D oleh materi-energi.',
     layers: {
       simple: 'Materi memberitahu ruang-waktu bagaimana melengkung, dan ruang-waktu memberitahu materi bagaimana bergerak.',
-      standard: 'Prinsip Kesetaraan menyatakan gerak di medan gravitasi identik dengan gerak di kerangka terakselerasi. Memprediksi pelensaan gravitasi, dilatasi waktu gravitasi, dan gelombang gravitasi.',
+      standard: 'Prinsip kesetaraan menyamakan efek gravitasi dan percepatan secara lokal; gaya pasang surut mengungkap kelengkungan pada daerah lebih luas. Memprediksi pelensaan gravitasi, dilatasi waktu gravitasi, dan gelombang gravitasi.',
       advanced: 'Persamaan medan Einstein non-linear tensor: R_μν - ½ R g_μν + Λ g_μν = (8πG/c⁴) T_μν. Benda bebas bergerak sepanjang kurva geodetik.',
-      deepDive: 'Diuji dan diverifikasi presisi oleh deteksi langsung gelombang gravitasi tabrakan lubang hitam oleh LIGO/Virgo (2015).'
+      deepDive: 'Diuji dan diverifikasi presisi oleh deteksi GW150914 oleh dua detektor LIGO pada 2015; hasilnya diumumkan pada 2016.'
     },
     keyVariables: [{ symbol: 'G_μν', name: 'Tensor Einstein', unit: 'm⁻²', dimension: '[L]⁻²' }],
     commonMisconceptions: ['Gravitasi adalah gaya tarik jarak jauh mistis tanpa perantara.'],
@@ -982,7 +984,7 @@ export const PHYSICS_ENTITIES = [
       simple: 'Di dunia kuantum yang sangat kecil, aturan biasa tidak berlaku. Partikel dapat berada di beberapa tempat sekaligus sampai diamati, dan energinya bertingkat seperti anak tangga.',
       standard: 'Keadaan fisik digambarkan oleh fungsi gelombang bernilai kompleks Ψ(r⃗, t) di ruang Hilbert. Interpretasi Born: P(r⃗) = |Ψ|² menyatakan kerapatan probabilitas menemukan partikel.',
       advanced: 'Observabel fisik diwakili oleh operator Hermitian linier. Variabel tak-komutatif menghasilkan ketidakpastian Heisenberg: [x̂, p̂] = iℏ.',
-      deepDive: 'Keterikatan kuantum (Quantum Entanglement) melanggar ketidaksamaan Bell lokal-realis, membuktikan bahwa alam semesta bersifat non-lokal di tingkat kuantum.'
+      deepDive: 'Korelasi entanglement dapat melanggar ketidaksamaan Bell, menyingkirkan kelas model variabel tersembunyi lokal dengan asumsi pengujian tersebut. Korelasi ini tidak memungkinkan pengiriman pesan lebih cepat dari cahaya.'
     },
     keyVariables: [{ symbol: 'Ψ', name: 'Fungsi Gelombang', unit: 'm⁻³/²', dimension: '[L]⁻³/²' }],
     commonMisconceptions: ['Mekanika kuantum hanya teori abstrak tanpa bukti (seluruh chip prosesor komputer dan sinar laser bergantung pada mekanika kuantum).'],
@@ -1003,7 +1005,7 @@ export const PHYSICS_ENTITIES = [
       simple: 'Cahaya dan elektron bisa berperilaku seperti bola kelereng padat (bisa menabrak) sekaligus seperti gelombang air (bisa berinterferensi).',
       standard: 'Louis de Broglie mempostulatkan bahwa partikel bermassa memiliki panjang gelombang materi: λ = h / p = h / (mv). Dibuktikan oleh difraksi elektron Davisson-Germer (1927).',
       advanced: 'Prinsip Komplementaritas Niels Bohr menyatakan aspek gelombang dan partikel saling melengkapi dan tidak dapat diamati simultan dalam satu instrumen pengukuran tunggal.',
-      deepDive: 'Eksperimen pilihan tertunda (delayed-choice experiment) John Wheeler membuktikan sifat gelombang atau partikel foton ditentukan saat pengukuran dilakukan di masa depan!'
+      deepDive: 'Dalam eksperimen pilihan tertunda, konfigurasi pengukuran menentukan statistik yang teramati. Ini tidak membuktikan bahwa keputusan masa depan mengubah peristiwa masa lalu.'
     },
     keyVariables: [{ symbol: 'λ', name: 'Panjang Gelombang de Broglie', unit: 'm', dimension: '[L]' }],
     commonMisconceptions: ['Elektron adalah bola keras yang bergerak naik turun berombak.'],
@@ -1022,9 +1024,9 @@ export const PHYSICS_ENTITIES = [
     summary: 'Batas fundamental alam bahwa posisi dan momentum partikel tidak dapat diketahui secara simultan dengan ketelitian tak berhingga.',
     layers: {
       simple: 'Semakin pasti Anda mengetahui di mana posisi sebuah partikel berada, semakin tidak pasti Anda mengetahui seberapa cepat partikel itu bergerak.',
-      standard: 'Δx · Δp ≥ ℏ / 2. Hubungan serupa juga berlaku antara energi dan waktu: ΔE · Δt ≥ ℏ / 2.',
+      standard: 'σ_x · σ_p ≥ ℏ/2 membatasi simpangan baku posisi dan momentum pada keadaan yang sama. Hubungan energi-waktu memerlukan definisi rentang waktu tertentu dan bukan pasangan operator kanonik yang identik.',
       advanced: 'Merupakan sifat matematis intrinsik pasangan variabel kanonik terkonjugasi dari ketidaksamaan Robertson-Schrödinger operator kuantum: σ_A σ_B ≥ ½ |⟨[Â, B̂]⟩|.',
-      deepDive: 'Fluktuasi energi vakum kuantum (ΔE·Δt ≥ ℏ/2) melahirkan pasangan partikel-antipartikel virtual spontan yang memicu Efek Casimir dan radiasi lubang hitam Hawking.'
+      deepDive: 'Ketidakpastian bukan izin untuk melanggar kekekalan energi sementara. Partikel virtual adalah unsur perhitungan teori medan; radiasi Hawking membutuhkan teori medan pada ruang-waktu lengkung.'
     },
     keyVariables: [
       { symbol: 'Δx', name: 'Ketidakpastian Posisi', unit: 'm', dimension: '[L]' },
@@ -1068,8 +1070,8 @@ export const PHYSICS_ENTITIES = [
     layers: {
       simple: 'Paket partikel cahaya terkecil. Berkas cahaya matahari, lampu LED, dan gelombang Wi-Fi tersusun dari butiran-butiran foton yang melesat secepat 300.000 km/s.',
       standard: 'Massa diam nol (m₀ = 0), energi E = h·f, momentum p = h / λ. Merambat pada kelajuan c di ruang hampa.',
-      advanced: 'Merupakan boson tolok U(1)_Y dalam Model Standar. Mematuhi statistik Bose-Einstein dan memiliki 2 keadaan polarisasi helisitas ortogonal (±1).',
-      deepDive: 'Foton tidak mengalami berlalunya waktu; dalam kerangka waktu tepat (proper time) foton, dτ = dt √(1 - v²/c²) = 0.'
+      advanced: 'Merupakan boson tolok U(1)_EM dalam Model Standar. Mematuhi statistik Bose-Einstein dan memiliki 2 keadaan polarisasi helisitas ortogonal (±1).',
+      deepDive: 'Lintasan cahaya memiliki interval ruang-waktu nol. Foton tidak memiliki kerangka diam yang sah; kita tidak dapat mendefinisikan jam atau sudut pandang pengamat yang bergerak bersama foton.'
     },
     keyVariables: [{ symbol: 'E', name: 'Energi Foton', unit: 'Joule (atau eV)', dimension: '[M][L]²[T]⁻²' }],
     commonMisconceptions: ['Cahaya tidak punya massa berarti cahaya tidak bisa mendorong apa pun (foton membawa momentum p = E/c dan menghasilkan tekanan radiasi).'],
@@ -1110,7 +1112,7 @@ export const PHYSICS_ENTITIES = [
     layers: {
       simple: 'Tabel periodik untuk partikel paling dasar penyusun seluruh alam semesta: 6 quark pembentuk inti, 6 lepton (seperti elektron), dan partikel pembawa gaya.',
       standard: 'Menggabungkan Kromodinamika Kuantum (QCD) untuk gaya kuat dan Teori Elektrolemah Glashow-Weinberg-Salam untuk gaya elektromagnetik dan lemah.',
-      advanced: 'Teori medan tolok simetri lokal SU(3)_C × SU(2)_L × U(1)_Y dengan 17 partikel fundamental bebas.',
+      advanced: 'Teori medan tolok simetri lokal SU(3)_C × SU(2)_L × U(1)_Y dengan 6 jenis quark, 6 lepton, foton, gluon, W, Z, dan Higgs (penghitungan jenis konvensional). Quark dan gluon mengalami pengurungan, bukan partikel bebas terisolasi.',
       deepDive: 'Belum menyertakan gravitasi (Relativitas Umum) dan belum menjelaskan eksistensi materi gelap atau osilasi massa neutrino.'
     },
     keyVariables: [{ symbol: 'N_particles', name: 'Jumlah Partikel Fundamental', unit: '17 Partikel Dasar', dimension: '[1]' }],
@@ -1179,7 +1181,7 @@ export const PHYSICS_ENTITIES = [
     scientificStatus: 'ESTABLISHED SCIENCE',
     summary: 'Model kosmologis standar yang menjelaskan asal-usul alam semesta dari keadaan awal yang luar biasa panas dan padat sekitar 13.8 miliar tahun lalu yang kemudian mengembang dan mendingin.',
     layers: {
-      simple: 'Alam semesta tidak abadi statis. Seluruh ruang, waktu, materi, dan energi bermula dari ledakan ekspansi ruang sekitar 13.8 miliar tahun yang lalu dan masih terus mengembang hingga hari ini.',
+      simple: 'Alam semesta tidak abadi statis. Model Big Bang menelusuri alam semesta dari fase awal yang panas dan padat menuju ekspansi dan pendinginan. Model ini tidak membuktikan asal mutlak ruang dan waktu atau suatu ledakan di dalam ruang kosong.',
       standard: 'Didukung oleh 3 pilar bukti empiris terkuat: 1) Hukum pergeseran merah ekspansi Hubble; 2) Fosil radiasi Cosmic Microwave Background (CMB) bersuhu 2.725 K; 3) Kelimpahan primordial unsur hidrogen dan helium (BBN).',
       advanced: 'Diatur oleh persamaan Friedmann yang diturunkan dari metrik FLRW Relativitas Umum: (ȧ/a)² = (8πG/3)ρ - k c²/a² + Λc²/3.',
       deepDive: 'Fase inflasi kosmik eksponensial (t ~ 10⁻³⁶ s) dihipotesiskan untuk menjelaskan mengapa alam semesta tampak sangat datar (flatness problem) dan seragam secara termal (horizon problem).'
@@ -1265,7 +1267,7 @@ export const PHYSICS_ENTITIES = [
     name: 'Speed of Light in Vacuum (c)',
     indonesianName: 'Kelajuan Cahaya dalam Ruang Hampa',
     entityType: 'Constant',
-    domainId: 'relativity',
+    domainId: 'special-relativity',
     subdomain: 'Fundamental Universal Constants',
     symbol: 'c = 299,792,458 m/s',
     scientificStatus: 'ESTABLISHED SCIENCE',
@@ -1302,14 +1304,14 @@ export const PHYSICS_ENTITIES = [
     commonMisconceptions: ['Konstanta Planck hanya relevan bagi cahaya (berlaku universal bagi seluruh partikel bermassa seperti elektron, proton, dan molekul).'],
     historicalContext: 'Diusulkan oleh Max Planck (1900) untuk menyelesaikan fenomena katastrofe ultraviolet pada radiasi benda hitam sempurna.',
     realWorldApplications: ['Perangkat semikonduktor komputer & smartphone', 'Timbangan Kibble standar primer massa internasional', 'Mikroskopi gaya atom dan teknologi laser'],
-    relatedEntityIds: ['quantum', 'uncertainty-principle', 'photon']
+    relatedEntityIds: ['quantum', 'heisenberg-uncertainty-principle', 'photon']
   },
   {
     id: 'equation-mass-energy-rel',
     name: 'Mass-Energy Equivalence Equation',
     indonesianName: 'Persamaan Kesetaraan Massa-Energi (E = mc²)',
     entityType: 'Equation',
-    domainId: 'relativity',
+    domainId: 'special-relativity',
     subdomain: 'Relativistic Dynamics',
     symbol: 'E₀ = m₀ c²',
     scientificStatus: 'ESTABLISHED SCIENCE',
@@ -1334,7 +1336,7 @@ export const PHYSICS_ENTITIES = [
     name: 'Michelson-Morley Interferometer Experiment',
     indonesianName: 'Eksperimen Interferometer Michelson-Morley',
     entityType: 'Experiment',
-    domainId: 'relativity',
+    domainId: 'special-relativity',
     subdomain: 'Aether Drift Null Result',
     symbol: 'Δt = 0 (Null Result)',
     scientificStatus: 'ESTABLISHED SCIENCE',
@@ -1351,4 +1353,10 @@ export const PHYSICS_ENTITIES = [
     realWorldApplications: ['Prinsip dasar detektor gelombang gravitasi laser LIGO dan Virgo', 'Interferometri optik presisi tinggi'],
     relatedEntityIds: ['special-relativity', 'optics', 'speed-of-light']
   }
+  ,...SUPPLEMENTAL_ENTITIES
 ];
+
+for (const record of PHYSICS_ENTITIES) {
+  record.reviewStatus ||= 'PARTIAL';
+  record.sources ||= [{title: 'Bacaan lanjutan: ' + record.domainId, url: DOMAIN_REFERENCES[record.domainId], scope: 'Rujukan domain; bukan bukti bahwa seluruh klaim entri telah diverifikasi.'}];
+}

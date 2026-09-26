@@ -1,3 +1,4 @@
+import { resolveReference } from '../core/catalog.js';
 // Asadin Edu Physics · Interactive Physics Knowledge Graph Visualizer Page
 
 import { PHYSICS_GRAPH_DATA } from '../data/graph-data.js';
@@ -64,11 +65,14 @@ export class GraphVisualizer {
   }
 
   bindEvents() {
-    this.canvas.addEventListener('mousedown', this.onMouseDown);
-    window.addEventListener('mousemove', this.onMouseMove);
-    window.addEventListener('mouseup', this.onMouseUp);
-    this.canvas.addEventListener('wheel', this.onWheel);
-    window.addEventListener('resize', () => this.resize());
+    this.canvas.addEventListener('pointerdown', this.onMouseDown);
+    window.addEventListener('pointermove', this.onMouseMove);
+    window.addEventListener('pointerup', this.onMouseUp);
+    this.canvas.addEventListener('wheel', this.onWheel, {passive:false});
+    this.onCancel = () => { this.draggedNode = null; this.isPanning = false; };
+    window.addEventListener('pointercancel', this.onCancel);
+    this.onResize = () => this.resize();
+    window.addEventListener('resize', this.onResize);
   }
 
   screenToWorld(sx, sy) {
@@ -96,6 +100,8 @@ export class GraphVisualizer {
     const hit = this.getNodeAt(world.x, world.y);
     if (hit) {
       this.draggedNode = hit;
+      this.dragStart = {x:e.clientX, y:e.clientY};
+      this.dragMoved = false;
     } else {
       this.isPanning = true;
       this.lastMouseX = mx;
@@ -110,6 +116,7 @@ export class GraphVisualizer {
     const world = this.screenToWorld(mx, my);
 
     if (this.draggedNode) {
+      if (Math.hypot(e.clientX-this.dragStart.x,e.clientY-this.dragStart.y)>6) this.dragMoved=true;
       this.draggedNode.x = world.x;
       this.draggedNode.y = world.y;
       this.draggedNode.vx = 0;
@@ -136,8 +143,9 @@ export class GraphVisualizer {
       const hit = this.getNodeAt(world.x, world.y);
 
       // If click without large movement, navigate to entity
-      if (hit && hit.id === this.draggedNode.id) {
-        window.location.hash = `#/entity/${hit.id}`;
+      if (hit && hit.id === this.draggedNode.id && !this.dragMoved) {
+        const ref = resolveReference(hit.id);
+        if (ref) window.location.hash = ref.url;
       }
     }
     this.draggedNode = null;
@@ -152,31 +160,25 @@ export class GraphVisualizer {
 
   updateInfoPanel(node) {
     if (!this.infoPanel) return;
-    if (!node) {
-      this.infoPanel.innerHTML = `
-        <div style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.6;">
-          Arahkan kursor atau seret node untuk melihat detail relasi konsep fisik. Klik untuk membuka dossier lengkap.
-        </div>
-      `;
-      return;
-    }
-
+    if (!node || this.infoNodeId === node.id) return;
+    this.infoNodeId = node.id;
+    const ref = resolveReference(node.id);
     const connectedLinks = this.links.filter(l => l.source === node.id || l.target === node.id);
     const connectedNodeIds = connectedLinks.map(l => l.source === node.id ? l.target : l.source);
 
     this.infoPanel.innerHTML = `
       <div>
         <span class="entity-type-badge badge-${node.category}" style="margin-bottom: 8px; display: inline-block;">${node.category}</span>
-        <h3 style="font-size: 1.25rem; color: #fff; margin-bottom: 6px;">${node.label}</h3>
+        <h3 style="font-size: 1.25rem; color: var(--text-primary); margin-bottom: 6px;">${node.label}</h3>
         <div style="font-size: 0.82rem; color: var(--cyan-bright); margin-bottom: 12px;">ID: ${node.id}</div>
         <div style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 10px;">
           Terhubung dengan <strong>${connectedNodeIds.length}</strong> konsep lain:
         </div>
         <div style="display: flex; gap: 6px; flex-wrap: wrap;">
-          ${connectedNodeIds.slice(0, 8).map(id => `<span class="subtag">${id}</span>`).join('')}
+          ${connectedNodeIds.map(resolveReference).filter(Boolean).map(r => `<a class="subtag" href="${r.url}">${r.name}</a>`).join('')}
         </div>
         <div style="margin-top: 14px;">
-          <a href="#/entity/${node.id}" class="btn-primary" style="padding: 6px 14px; font-size: 0.8rem;">
+          <a href="${ref?.url || '#/graph'}" class="btn-primary" style="padding: 6px 14px; font-size: 0.8rem;">
             Buka Dossier Entitas ➔
           </a>
         </div>
@@ -325,17 +327,20 @@ export class GraphVisualizer {
   }
 
   loop = () => {
-    this.simulateForces();
-    this.draw();
+    if (!document.hidden) { this.simulateForces(); this.draw(); }
     this.animId = requestAnimationFrame(this.loop);
   };
 
   destroy() {
     if (this.animId) cancelAnimationFrame(this.animId);
+    window.removeEventListener('resize', this.onResize);
+    window.removeEventListener('pointercancel', this.onCancel);
+    window.removeEventListener('pointermove', this.onMouseMove);
+    window.removeEventListener('pointerup', this.onMouseUp);
   }
 }
 
-export function renderGraphPage(container) {
+export function renderGraphPage(container, params = {}) {
   container.innerHTML = `
     <div class="content-wrap" style="padding-top: 32px; padding-bottom: 80px;">
       <!-- Header -->
@@ -347,10 +352,14 @@ export function renderGraphPage(container) {
         <p>Visualisasi interaktif keterkaitan hukum, besaran, partikel, medan, dan teori fisika. Tidak ada konsep fisika yang berdiri sendiri.</p>
       </div>
 
+<label for="graph-focus">Pilih konsep untuk melihat hubungan:</label>
+      <select id="graph-focus">${PHYSICS_GRAPH_DATA.nodes.map(n=>`<option value="${n.id}" ${params.focus===n.id?'selected':''}>${n.label}</option>`).join('')}</select>
+      <button class="sim-btn" id="graph-zoom-in" aria-label="Perbesar graf">+</button>
+      <button class="sim-btn" id="graph-zoom-out" aria-label="Perkecil graf">−</button>
       <!-- Graph Container & Info HUD -->
-      <div style="display: grid; grid-template-columns: 1fr 300px; gap: 24px; align-items: start;">
+      <div class="dossier-layout" style="display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 24px; align-items: start;">
         <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); height: 600px; position: relative; overflow: hidden;">
-          <canvas id="physics-graph-canvas" style="width: 100%; height: 100%; display: block;"></canvas>
+          <canvas id="physics-graph-canvas" role="img" aria-label="Graf relasi fisika; gunakan daftar navigasi di bawah untuk keyboard." style="touch-action: none; width: 100%; height: 100%; display: block;"></canvas>
           <div style="position: absolute; bottom: 16px; left: 16px; background: rgba(8, 11, 20, 0.85); backdrop-filter: blur(8px); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 8px 14px; font-size: 0.78rem; color: var(--text-muted);">
             💡 Seret node untuk memindahkan · Scroll mouse untuk zoom · Klik node untuk detail
           </div>
@@ -370,4 +379,20 @@ export function renderGraphPage(container) {
   const infoPanel = container.querySelector('#graph-node-info-panel');
   const visualizer = new GraphVisualizer(canvas, infoPanel);
   visualizer.init();
+  visualizer.updateInfoPanel(visualizer.nodes.find(n=>n.id===params.focus) || visualizer.nodes[0]);
+  container.querySelector('#graph-focus').addEventListener('change', e=>{
+    const node=visualizer.nodes.find(n=>n.id===e.target.value);
+    visualizer.hoveredNode=node; visualizer.updateInfoPanel(node);
+    const rect=canvas.getBoundingClientRect(); visualizer.panX=rect.width/2-node.x*visualizer.zoom; visualizer.panY=rect.height/2-node.y*visualizer.zoom;
+  });
+  container.querySelector('#graph-zoom-in').addEventListener('click',()=>visualizer.zoom=Math.min(2.5,visualizer.zoom*1.2));
+  container.querySelector('#graph-zoom-out').addEventListener('click',()=>visualizer.zoom=Math.max(.4,visualizer.zoom/1.2));
+  const list=document.createElement('details'); list.className='graph-accessible';
+  list.innerHTML=`<summary>Navigasi graf sebagai daftar hubungan</summary><ul>${PHYSICS_GRAPH_DATA.nodes.map(node=>{
+    const ref=resolveReference(node.id);
+    const related=PHYSICS_GRAPH_DATA.links.filter(l=>l.source===node.id||l.target===node.id).map(l=>resolveReference(l.source===node.id?l.target:l.source)).filter(Boolean);
+    return `<li><a href="${ref.url}">${node.label}</a> → ${related.map(r=>`<a href="${r.url}">${r.name}</a>`).join(' · ')}</li>`;
+  }).join('')}</ul>`;
+  container.querySelector('.content-wrap').appendChild(list);
+  return () => visualizer.destroy();
 }

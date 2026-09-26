@@ -98,7 +98,7 @@ export class BernoulliFluidSimulation {
     for (const p of this.state.particles) {
       const r = this.getPipeRadiusAt(p.x, w);
       // Velocity inversely proportional to cross-sectional area (A ∝ r^2)
-      const speed = this.params.flowRate * 70 * Math.pow(this.params.wideRadius / r, 1.8);
+      const speed = this.params.flowRate * 70 * Math.pow(this.params.wideRadius / r, 2);
       p.x += speed * dt;
       if (p.x > w + 10) {
         p.x = -10;
@@ -193,9 +193,10 @@ export class BernoulliFluidSimulation {
     this.ctx.fillText(label, x, tubeTopY - 8);
   }
 
-  loop = () => {
-    this.update(0.018);
-    this.draw();
+  loop = (now = performance.now()) => {
+    const dt = Math.min(0.04, Math.max(0, (now - (this.lastFrame ?? now))/1000));
+    this.lastFrame = now;
+    if (!document.hidden && !this.animationPaused) { this.update(dt); this.draw(); }
     this.animId = requestAnimationFrame(this.loop);
   };
 

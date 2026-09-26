@@ -1,16 +1,17 @@
+import { escapeHTML } from '../core/html.js';
 // Asadin Edu Physics · Physical Constants Explorer Page (CODATA & 2019 SI Redefinition)
 
 import { PHYSICAL_CONSTANTS } from '../data/constants.js';
 
-export function renderConstantsPage(container) {
+export function renderConstantsPage(container, params = {}) {
   let activeCategory = 'all';
   let searchQuery = '';
 
-  const categories = ['all', 'Universal & Relativitas', 'Kuantum & Universal', 'Elektromagnetisme', 'Termodinamika', 'Fisika Partikel & Atom'];
+  const categories = ['all', ...new Set(PHYSICAL_CONSTANTS.map(c => c.category))];
 
   function filterConstants() {
     return PHYSICAL_CONSTANTS.filter(c => {
-      const matchCat = activeCategory === 'all' || c.category.includes(activeCategory);
+      const matchCat = activeCategory === 'all' || c.category === activeCategory;
       const matchQuery = !searchQuery ||
         c.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
         c.indonesianName.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -27,7 +28,7 @@ export function renderConstantsPage(container) {
         <!-- Header -->
         <div style="margin-bottom: 28px;">
           <div style="display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; background: rgba(0, 242, 254, 0.1); border-radius: var(--radius-full); color: var(--cyan-bright); font-size: 0.78rem; font-weight: 700; margin-bottom: 12px;">
-            CODATA 2018 / 2022 & SISTEM SATUAN INTERNASIONAL (SI)
+            CODATA 2022 & SISTEM SATUAN INTERNASIONAL (SI)
           </div>
           <h1 style="font-size: 2.2rem; margin-bottom: 8px;">Penjelajah Konstanta Fisika Fundamental</h1>
           <p>Nilai baku, ketidakpastian pengukuran, dan signifikansi fisik konstanta universal yang menopang struktur materi alam semesta.</p>
@@ -40,8 +41,8 @@ export function renderConstantsPage(container) {
             type="text" 
             id="const-search-input" 
             placeholder="Cari berdasarkan simbol (c, h, G, e...), nama konstanta, atau rumus..." 
-            value="${searchQuery}"
-            style="width: 100%; background: rgba(0, 0, 0, 0.4); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 10px 14px; color: #fff; font-size: 0.95rem; outline: none;"
+            value="${escapeHTML(searchQuery)}"
+            style="width: 100%; background: var(--bg-darker); border: 1px solid var(--border-subtle); border-radius: var(--radius-sm); padding: 10px 14px; color: var(--text-primary); font-size: 0.95rem; outline: none;"
           />
 
           <!-- Categories -->
@@ -54,10 +55,11 @@ export function renderConstantsPage(container) {
           </div>
         </div>
 
+        ${list.length ? '' : '<p role="status">Tidak ada konstanta yang cocok. Ubah pencarian atau kategori.</p>'}
         <!-- Constants Cards Grid -->
-        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 20px;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 360px), 1fr)); gap: 20px;">
           ${list.map(c => `
-            <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 24px; display: flex; flex-direction: column;">
+            <div id="constant-${c.id}" tabindex="-1" style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 24px; display: flex; flex-direction: column;">
               <!-- Top Row: Symbol & Status -->
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
                 <div style="display: flex; align-items: center; gap: 10px;">
@@ -65,13 +67,13 @@ export function renderConstantsPage(container) {
                     ${c.symbol}
                   </span>
                   <div>
-                    <h3 style="font-size: 1.15rem; color: #fff;">${c.name}</h3>
+                    <h3 style="font-size: 1.15rem; color: var(--text-primary);">${c.name}</h3>
                     <div style="font-size: 0.82rem; color: var(--text-muted);">${c.indonesianName}</div>
                   </div>
                 </div>
                 ${c.isExact ? `
                   <span style="font-size: 0.68rem; font-weight: 700; background: rgba(56, 239, 125, 0.15); color: var(--emerald-neon); padding: 3px 8px; border-radius: var(--radius-full);">
-                    TEPAT (DEFINISI SI)
+                    EKSAK / KONVENSI (digit tampilan dapat dibulatkan)
                   </span>
                 ` : `
                   <span style="font-size: 0.68rem; font-weight: 700; background: rgba(246, 211, 101, 0.15); color: var(--amber-solar); padding: 3px 8px; border-radius: var(--radius-full);">
@@ -81,8 +83,8 @@ export function renderConstantsPage(container) {
               </div>
 
               <!-- Numerical Value Highlight Box -->
-              <div style="background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: var(--radius-sm); padding: 14px; margin: 10px 0; text-align: center;">
-                <div style="font-family: var(--font-mono); font-size: 1.35rem; font-weight: 700; color: #fff;">
+              <div style="background: var(--bg-darker); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: var(--radius-sm); padding: 14px; margin: 10px 0; text-align: center;">
+                <div style="font-family: var(--font-mono); font-size: 1.35rem; font-weight: 700; color: var(--text-primary);">
                   ${c.scientificNotation || c.value}
                 </div>
                 <div style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--cyan-bright); margin-top: 4px;">
@@ -120,7 +122,7 @@ export function renderConstantsPage(container) {
 
               <!-- Source Attribution -->
               <div style="font-size: 0.72rem; color: var(--text-muted); margin-top: 10px; font-style: italic;">
-                Sumber: ${c.source}
+                Sumber: <a href="${c.sourceUrl}" target="_blank" rel="noopener noreferrer">${c.source}</a><br/>${c.sourceIdentifier}<br/>Ditinjau: ${c.reviewedAt}${c.scientificStatus ? `<br/>${c.scientificStatus}` : ''}
               </div>
             </div>
           `).join('')}
@@ -148,4 +150,9 @@ export function renderConstantsPage(container) {
   }
 
   render();
+  if (params.id) {
+    const target = container.querySelector(`#constant-${CSS.escape(params.id)}`);
+    if (target) requestAnimationFrame(() => { target.scrollIntoView({block:'center'}); target.focus({preventScroll:true}); });
+    else container.insertAdjacentHTML('afterbegin', '<p role="status">Konstanta yang diminta tidak ditemukan.</p>');
+  }
 }

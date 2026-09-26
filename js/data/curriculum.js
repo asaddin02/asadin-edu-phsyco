@@ -100,7 +100,7 @@ export const CURRICULUM_DATA = {
               id: 'smp-1-1',
               title: 'Gerak Lurus Beraturan (GLB) & v = s / t',
               concepts: ['Vektor perpindahan', 'Kelajuan konstan', 'Grafik posisi-waktu linier'],
-              takeaway: 'Pada GLB, kecepatan benda konstan sehingga percepatannya nol dan grafik s terhadap t berbentuk garis lurus menanjak.',
+              takeaway: 'Pada GLB, kecepatan benda konstan sehingga percepatannya nol dan grafik s terhadap t berbentuk garis lurus dengan kemiringan sesuai tanda kecepatan.',
               activity: 'Ukur waktu tempuh sepeda melintasi jarak 50 meter dengan stopwatch untuk menghitung kelajuan rata-ratanya.'
             },
             {
@@ -178,16 +178,16 @@ export const CURRICULUM_DATA = {
             {
               id: 'sma-1-1',
               title: 'Gerak Parabola & Analisis Vektor 2D',
-              concepts: ['v_0x = v_0 cos θ (GLB)', 'v_0y = v_0 sin θ - gt (GLBB)', 'Tinggi maksimum & jarak jangkauan'],
+              concepts: ['v_0x = v_0 cos θ (GLB)', 'v_y = v_0 sin θ - gt (GLBB)', 'Tinggi maksimum & jarak jangkauan'],
               takeaway: 'Gerak parabola adalah perpaduan dua gerak independen: gerak horizontal GLB tanpa percepatan dan gerak vertikal GLBB dengan percepatan gravitasi g.',
               activity: 'Uji simulator proyektil dengan sudut 45° vs 30° dan 60° untuk membuktikan jangkauan maksimum dan sudut komplemen.'
             },
             {
               id: 'sma-1-2',
               title: 'Dinamika Rotasi & Momen Inersia (τ = I · α)',
-              concepts: ['Torsi r × F sin θ', 'Momen inersia silinder pejal vs silinder berongga', 'Kekekalan momentum sudut L = I·ω'],
+              concepts: ['Torsi τ = rF sin θ (magnitudo)', 'Momen inersia silinder pejal vs silinder berongga', 'Kekekalan momentum sudut L = I·ω'],
               takeaway: 'Massa yang terdistribusi lebih jauh dari poros rotasi menghasilkan momen inersia lebih besar dan lebih sulit dipercepat berputar.',
-              activity: 'Lomba menggelindingkan silinder pejal vs cincin berongga pada bidang miring. Silinder pejal selalu menang!'
+              activity: 'Lomba menggelindingkan silinder pejal vs cincin berongga pada bidang miring. Untuk massa dan radius sama, menggelinding tanpa selip dan hambatan lain diabaikan, silinder pejal tiba lebih dahulu.'
             }
           ]
         },
@@ -210,7 +210,7 @@ export const CURRICULUM_DATA = {
               title: 'Gelombang Bunyi & Efek Doppler',
               concepts: ['Cepat rambat bunyi v', 'Taraf intensitas desibel TI = 10 log(I/I_0)', 'f_p = f_s (v ± v_p) / (v ∓ v_s)'],
               takeaway: 'Frekuensi yang didengar bertambah tinggi jika sumber bunyi dan pendengar saling mendekati, dan sebaliknya.',
-              activity: 'Dengarkan demonstrasi audio efek Doppler pada simulator bunyi saat sumber bergerak subsonik dan supersonik.'
+              activity: 'Amati muka gelombang efek Doppler pada simulator bunyi saat sumber bergerak subsonik dan supersonik.'
             }
           ]
         },

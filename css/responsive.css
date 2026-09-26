@@ -87,3 +87,60 @@
     height: 320px;
   }
 }
+
+/* Intrinsic sizing: preserve content without masking horizontal overflow. */
+.content-wrap { overflow-wrap: anywhere; }
+.content-wrap *, .nav-container > *, .search-input-row > * { min-width: 0; }
+select, input, canvas { max-width: 100%; }
+button, a { -webkit-tap-highlight-color: transparent; }
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, summary:focus-visible {
+  outline: 3px solid var(--amber-solar); outline-offset: 3px;
+}
+.sim-tab-item { white-space: normal; text-align: left; background: transparent; font-family: inherit; }
+.equation-math { overflow-x: auto; }
+.sim-header-actions, .sim-stage-header { flex-wrap: wrap; gap: 12px; }
+.sim-hub-layout { grid-template-columns: 280px minmax(0, 1fr); }
+.sim-canvas { touch-action: none; }
+.source-note, .lesson-progress, .sim-explanation { padding: 18px; margin: 18px 0; background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); }
+.source-note li { margin-left: 20px; margin-top: 8px; }
+.resource-links { display: flex; flex-wrap: wrap; gap: 12px; margin: 12px 0; }
+.graph-accessible { margin-top: 24px; }
+.graph-accessible ul { padding-left: 20px; }
+.lesson-card:target, .lesson-card.selected { outline: 2px solid var(--cyan-bright); }
+@media (max-width: 1450px) {
+  .nav-links { display: none; }
+  .mobile-menu-btn { display: flex; }
+  .nav-links.mobile-open { display: flex; position: absolute; top: 100%; left: 0; right: 0; flex-wrap: wrap; padding: 18px; background: #0d1322; max-height: 70vh; overflow-y: auto; }
+}
+@media (max-width: 1024px) {
+  .dossier-layout { grid-template-columns: minmax(0, 1fr) !important; }
+  .sim-hub-layout { grid-template-columns: minmax(0, 1fr); }
+  .sim-sidebar .sim-tab-item { flex: 0 0 210px; }
+}
+@media (max-width: 600px) {
+  .content-wrap { padding-left: 16px; padding-right: 16px; }
+  .nav-container { padding: 0 12px; gap: 8px; }
+  .brand-name { font-size: .85rem; }
+  .brand-sub, .mode-toggle-group, .search-trigger-btn span, .search-trigger-btn kbd { display: none; }
+  .brand-logo-img { width: 28px; height: 28px; }
+  .nav-actions { margin-left: auto; }
+  .search-trigger-btn { min-width: 40px; min-height: 40px; padding: 10px; }
+  .sim-canvas-wrap { height: auto; display: flex; flex-direction: column; }
+  .sim-canvas { height: 400px; flex-shrink: 0; }
+  .sim-hud-overlay { position: static; font-size: .72rem; margin: 8px; }
+  .hud-line { flex-wrap: wrap; gap: 6px; }
+  .sim-stage-header, .sim-controls-panel { padding: 14px; }
+  .sim-sliders-grid { grid-template-columns: minmax(0, 1fr); }
+  .search-input-row { padding: 12px; }
+  .search-result-item { gap: 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
+
+.sim-mobile-picker { display: none; }
+@media (max-width: 1024px) {
+  .sim-sidebar { display: none; }
+  .sim-mobile-picker { display: grid; gap: 8px; }
+  .sim-mobile-picker select { width: 100%; padding: 12px; background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-subtle); border-radius: 8px; font: inherit; }
+}

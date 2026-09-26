@@ -52,9 +52,10 @@ export class OpticsRaySimulation {
   }
 
   bindEvents() {
-    this.canvas.addEventListener('mousedown', this.onMouseDown);
-    window.addEventListener('mousemove', this.onMouseMove);
-    window.addEventListener('mouseup', this.onMouseUp);
+    this.canvas.addEventListener('pointerdown', this.onMouseDown);
+    window.addEventListener('pointermove', this.onMouseMove);
+    window.addEventListener('pointerup', this.onMouseUp);
+    window.addEventListener('pointercancel', this.onMouseUp);
   }
 
   onMouseDown = (e) => {
@@ -311,14 +312,15 @@ export class OpticsRaySimulation {
   }
 
   loop = () => {
-    this.draw();
+    if (!document.hidden && !this.animationPaused) this.draw();
     this.animId = requestAnimationFrame(this.loop);
   };
 
   destroy() {
     if (this.animId) cancelAnimationFrame(this.animId);
     window.removeEventListener('resize', this.onResize);
-    window.removeEventListener('mousemove', this.onMouseMove);
-    window.removeEventListener('mouseup', this.onMouseUp);
+    window.removeEventListener('pointermove', this.onMouseMove);
+    window.removeEventListener('pointerup', this.onMouseUp);
+    window.removeEventListener('pointercancel', this.onMouseUp);
   }
 }

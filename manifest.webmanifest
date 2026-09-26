@@ -1,16 +1,16 @@
 {
   "name": "Asadin Edu Physics",
   "short_name": "AsadinPhysics",
-  "description": "Interactive Physics Encyclopedia + Learning Platform",
+  "description": "Belajar fisika dari SD sampai pengajar",
   "start_url": "./index.html",
   "display": "standalone",
-  "background_color": "#080b14",
-  "theme_color": "#00f2fe",
+  "background_color": "#fffdf9",
+  "theme_color": "#bd382c",
   "icons": [
     {
-      "src": "./assets/brand/icon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml"
+      "src": "./assets/brand/logo-ai.png",
+      "sizes": "1254x1254",
+      "type": "image/png"
     }
   ]
 }

@@ -1,3 +1,4 @@
+import { magneticStep } from './physics-models.js';
 // Asadin Edu Physics · Interactive Simulation: Magnetic Lorentz Force & Cyclotron Motion
 
 export class LorentzForceSimulation {
@@ -9,7 +10,7 @@ export class LorentzForceSimulation {
     this.params = {
       B: 1.5,      // Tesla (positive = into screen ⊗, negative = out ⊙)
       v0: 120,     // m/s
-      q: 1,        // Elementary charge (+1 or -1)
+      q: 1,        // Coulomb (+1 or -1); illustrative particle, not electron/proton
       mass: 1.0    // kg scale
     };
 
@@ -65,14 +66,14 @@ export class LorentzForceSimulation {
 
   updateHUD() {
     if (!this.hudElement) return;
-    const rLarmor = (this.params.mass * this.params.v0) / (Math.abs(this.params.q * this.params.B) || 0.001);
-    const T = (2 * Math.PI * this.params.mass) / (Math.abs(this.params.q * this.params.B) || 0.001);
+    const rLarmor = (this.params.mass * this.params.v0) / (Math.abs(this.params.q * this.params.B) || 0);
+    const T = (2 * Math.PI * this.params.mass) / (Math.abs(this.params.q * this.params.B) || 0);
     const omega = (Math.abs(this.params.q * this.params.B) / this.params.mass).toFixed(2);
 
     this.hudElement.innerHTML = `
       <div class="hud-line"><span>Medan Magnet (B):</span> <span class="hud-val">${this.params.B.toFixed(2)} T (${this.params.B >= 0 ? 'Menembus Layar ⊗' : 'Keluar Layar ⊙'})</span></div>
       <div class="hud-line"><span>Kecepatan (v):</span> <span class="hud-val">${this.params.v0} m/s</span></div>
-      <div class="hud-line"><span>Jari-jari Siklotron (r):</span> <span class="hud-val" style="color: #00f2fe">${rLarmor.toFixed(1)} px</span></div>
+      <div class="hud-line"><span>Jari-jari Siklotron (r):</span> <span class="hud-val" style="color: #00f2fe">${Number.isFinite(rLarmor) ? rLarmor.toFixed(1) + ' m' : '∞ (lintasan lurus)'}</span></div>
       <div class="hud-line"><span>Frekuensi Siklotron (ω):</span> <span class="hud-val" style="color: #f6d365">${omega} rad/s</span></div>
       <div class="hud-line"><span>Periode Putaran (T):</span> <span class="hud-val">${T.toFixed(2)} s</span></div>
     `;
@@ -81,21 +82,7 @@ export class LorentzForceSimulation {
   update(dt) {
     if (!this.state.running) return;
 
-    // F = q * (v x B)
-    // For B along Z axis (into screen, B_z = B):
-    // F_x = q * v_y * B_z
-    // F_y = -q * v_x * B_z
-    const Fx = this.params.q * this.state.vy * this.params.B;
-    const Fy = -this.params.q * this.state.vx * this.params.B;
-
-    const ax = Fx / this.params.mass;
-    const ay = Fy / this.params.mass;
-
-    this.state.vx += ax * dt;
-    this.state.vy += ay * dt;
-
-    this.state.x += this.state.vx * dt;
-    this.state.y += this.state.vy * dt;
+    magneticStep(this.state, this.params, dt);
     this.state.t += dt;
 
     this.state.trail.push({ x: this.state.x, y: this.state.y });
@@ -191,9 +178,10 @@ export class LorentzForceSimulation {
     this.ctx.fillText(label, toX + 10 * Math.cos(angle), toY + 10 * Math.sin(angle));
   }
 
-  loop = () => {
-    this.update(0.018);
-    this.draw();
+  loop = (now = performance.now()) => {
+    const dt = Math.min(0.04, Math.max(0, (now - (this.lastFrame ?? now))/1000));
+    this.lastFrame = now;
+    if (!document.hidden && !this.animationPaused) { this.update(dt); this.draw(); }
     this.animId = requestAnimationFrame(this.loop);
   };
 

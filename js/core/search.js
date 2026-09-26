@@ -1,3 +1,6 @@
+import { topicLabel } from '../data/topic-labels.js';
+import { COURSES } from '../data/courses/index.js';
+import { LESSONS } from './learning.js';
 // Asadin Edu Physics · Global Fast Search Indexing Engine
 
 import { PHYSICS_DOMAINS } from '../data/domains.js';
@@ -68,7 +71,7 @@ class PhysicsSearchEngine {
         subtitle: `${c.indonesianName} (${c.value} ${c.unit})`,
         badge: 'Constant',
         url: `#/constants?id=${c.id}`,
-        searchTerms: `${c.name} ${c.indonesianName} ${c.symbol} ${c.unit} ${c.category} ${c.description}`.toLowerCase()
+        searchTerms: `${c.name} ${(c.aliases || []).join(' ')} ${c.indonesianName} ${c.symbol} ${c.unit} ${c.category} ${c.description}`.toLowerCase()
       });
     }
 
@@ -86,6 +89,12 @@ class PhysicsSearchEngine {
       });
     }
 
+    for (const lesson of LESSONS) {
+      items.push({type:'lesson', id:lesson.id, title:lesson.title, subtitle:`${lesson.levelTitle} · ${lesson.moduleTitle}`, badge:'Lesson',
+        url:`#/learn?level=${lesson.levelId}&lesson=${lesson.id}`,
+        searchTerms:`${lesson.title} ${lesson.concepts.join(' ')} ${lesson.takeaway} ${lesson.levelTitle} lesson pelajaran`.toLowerCase()});
+    }
+    for (const course of COURSES) items.push({type:'lesson',id:course.id,title:course.title,subtitle:course.intuition,badge:'Pelajaran',domainId:course.domainId,url:`#/lesson/${course.id}`,searchTerms:`${course.title} ${course.topics.join(' ')} ${course.topics.map(topicLabel).join(' ')} ${course.intuition} ${course.explanation}`.toLowerCase()});
     this.index = items;
   }
 

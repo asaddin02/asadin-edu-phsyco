@@ -1,3 +1,5 @@
+import { FIELD_EQUATIONS } from './field-equations.js';
+import { DOMAIN_REFERENCES } from './provenance.js';
 // Asadin Edu Physics · Comprehensive Equation Explorer Database with Variable Interactivity & Solvers
 
 export const PHYSICS_EQUATIONS = [
@@ -37,7 +39,7 @@ export const PHYSICS_EQUATIONS = [
       }
     ],
     assumptions: [
-      'Massa benda bernilai konstan (dm/dt = 0; untuk roket bermassa berubah gunakan F_ext = dp/dt = m(dv/dt) + v_rel(dm/dt)).',
+      'Massa benda konstan. Sistem terbuka seperti roket memerlukan neraca momentum yang menyertakan fluks massa dan konvensi kecepatan relatif gas buang.',
       'Kelajuan benda jauh lebih kecil dibanding kelajuan cahaya (v << c; batas non-relativistik).',
       'Diamati dari suatu kerangka acuan inersial (non-akseleratif).'
     ],
@@ -134,7 +136,7 @@ export const PHYSICS_EQUATIONS = [
         symbol: 'G',
         name: 'Gravitational Constant',
         unit: 'N·m²·kg⁻²',
-        quantityId: 'constant-G',
+        quantityId: 'gravitational-constant',
         dimension: '[M]⁻¹[L]³[T]⁻²',
         role: 'Konstanta gravitasi universal (6.6743 × 10⁻¹¹)'
       },
@@ -214,7 +216,7 @@ export const PHYSICS_EQUATIONS = [
         symbol: 'c',
         name: 'Speed of Light in Vacuum',
         unit: 'm·s⁻¹',
-        quantityId: 'constant-c',
+        quantityId: 'speed-of-light',
         dimension: '[L][T]⁻¹',
         role: 'Faktor konversi universal (299,792,458 m/s)'
       }
@@ -223,7 +225,7 @@ export const PHYSICS_EQUATIONS = [
       'Benda berada dalam kerangka diam (momentum p = 0).',
       'Untuk benda yang bergerak dengan momentum p, persamaan lengkapnya adalah E² = (pc)² + (m₀c²)².'
     ],
-    limitations: 'Tidak ada; ini adalah hukum fundamental alam semesta.',
+    limitations: 'E₀ = mc² adalah energi diam. Energi total benda bergerak juga bergantung momentum; jangan memakai energi diam sebagai energi total gerak.',
     exampleProblem: {
       problem: 'Berapakah energi yang dibebaskan jika 1 gram (0.001 kg) materi musnah seluruhnya (misalnya melalui anihilasi materi-antimateri)?',
       solution: 'E = m · c² = 0.001 kg · (3 × 10⁸ m/s)² = 9 × 10¹³ Joule (setara dengan ledakan ~21.5 kiloton TNT).',
@@ -236,7 +238,7 @@ export const PHYSICS_EQUATIONS = [
       output: { key: 'E', label: 'Energi Setara (E)', unit: 'J' },
       compute: (inputs) => inputs.m * Math.pow(299792458, 2)
     },
-    relatedConceptIds: ['relativity', 'energy', 'mass', 'nuclear-fission']
+    relatedConceptIds: ['special-relativity', 'energy', 'mass', 'nuclear-fission']
   },
   {
     id: 'ideal-gas-equation',
@@ -276,8 +278,8 @@ export const PHYSICS_EQUATIONS = [
         symbol: 'R',
         name: 'Universal Gas Constant',
         unit: 'J·mol⁻¹·K⁻¹',
-        quantityId: 'constant-R',
-        dimension: '[M][L]²[T]⁻²[K]⁻¹[N]⁻¹',
+        quantityId: 'gas-constant',
+        dimension: '[M][L]²[T]⁻²[Θ]⁻¹[N]⁻¹',
         role: '8.3145 J/(mol·K)'
       },
       {
@@ -308,7 +310,7 @@ export const PHYSICS_EQUATIONS = [
       output: { key: 'P', label: 'Tekanan Gas (P)', unit: 'Pa' },
       compute: (inputs) => (inputs.n * 8.31446 * inputs.T) / inputs.V
     },
-    relatedConceptIds: ['temperature', 'pressure', 'heat', 'kinetic-theory']
+    relatedConceptIds: ['temperature', 'pressure', 'heat', 'ideal-gas-equation']
   },
   {
     id: 'snells-law-refraction',
@@ -331,7 +333,7 @@ export const PHYSICS_EQUATIONS = [
       {
         symbol: 'θ₁',
         name: 'Angle of Incidence (Sudut Datang)',
-        unit: 'Derajat (°)',
+        unit: 'rad (masukan kalkulator: °)',
         quantityId: 'angle',
         dimension: '[1]',
         role: 'Sudut berkas datang terhadap garis normal'
@@ -347,7 +349,7 @@ export const PHYSICS_EQUATIONS = [
       {
         symbol: 'θ₂',
         name: 'Angle of Refraction (Sudut Bias)',
-        unit: 'Derajat (°)',
+        unit: 'rad (masukan kalkulator: °)',
         quantityId: 'angle',
         dimension: '[1]',
         role: 'Sudut berkas bias terhadap garis normal'
@@ -377,7 +379,7 @@ export const PHYSICS_EQUATIONS = [
         return ((Math.asin(sinVal) * 180) / Math.PI).toFixed(2);
       }
     },
-    relatedConceptIds: ['refraction', 'wave-speed', 'light', 'optics']
+    relatedConceptIds: ['refractive-index', 'wave-speed-frequency', 'light', 'optics']
   },
   {
     id: 'planck-einstein-relation',
@@ -401,7 +403,7 @@ export const PHYSICS_EQUATIONS = [
         symbol: 'h',
         name: 'Planck Constant',
         unit: 'J·s',
-        quantityId: 'constant-h',
+        quantityId: 'planck-constant',
         dimension: '[M][L]²[T]⁻¹',
         role: '6.62607 × 10⁻³⁴ J·s'
       },
@@ -426,7 +428,7 @@ export const PHYSICS_EQUATIONS = [
       'Foton merambat dalam ruang hampa atau medium terdefinisi.',
       'Partikel foton berinteraksi secara diskret 1-lawan-1 dengan elektron (efek fotolistrik).'
     ],
-    limitations: 'Tidak ada; fondasi elektrodinamika kuantum.',
+    limitations: 'E = hf berlaku bagi foton; E = hc/λ memakai panjang gelombang ruang hampa. Proses multifoton dan respons medium perlu model tambahan.',
     exampleProblem: {
       problem: 'Tentukan energi satu foton sinar hijau dengan panjang gelombang λ = 500 nm (500 × 10⁻⁹ m) dalam satuan elektronvolt (eV)!',
       solution: 'E = hc / λ = (6.626 × 10⁻³⁴ · 3 × 10⁸) / (500 × 10⁻⁹) ≈ 3.975 × 10⁻¹⁹ J. Dikonversi ke eV: 3.975 × 10⁻¹⁹ / (1.602 × 10⁻¹⁹) ≈ 2.48 eV.',
@@ -467,7 +469,7 @@ export const PHYSICS_EQUATIONS = [
         symbol: 'k_e',
         name: 'Coulomb Constant',
         unit: 'N·m²·C⁻²',
-        quantityId: 'constant-ke',
+        quantityId: 'coulomb-constant',
         dimension: '[M][L]³[T]⁻⁴[I]⁻²',
         role: '1 / (4πε₀) ≈ 8.98755 × 10⁹ N·m²/C²'
       },
@@ -475,7 +477,7 @@ export const PHYSICS_EQUATIONS = [
         symbol: 'q₁, q₂',
         name: 'Electric Charges (Muatan Listrik)',
         unit: 'Coulomb (C atau μC)',
-        quantityId: 'charge',
+        quantityId: 'electric-charge',
         dimension: '[I][T]',
         role: 'Kuantitas muatan listrik partikel'
       },
@@ -583,7 +585,7 @@ export const PHYSICS_EQUATIONS = [
         return (P2 / 1000).toFixed(2);
       }
     },
-    relatedConceptIds: ['pressure', 'fluids', 'energy', 'bernoulli']
+    relatedConceptIds: ['pressure', 'fluids', 'energy', 'bernoulli-equation']
   },
   {
     id: 'ohms-law',
@@ -626,7 +628,7 @@ export const PHYSICS_EQUATIONS = [
     ],
     limitations: 'Tidak berlaku untuk komponen non-linear seperti semikonduktor (dioda, transistor), gas bertekanan rendah, tabung hampa, dan material superkonduktor.',
     exampleProblem: {
-      problem: 'Sebuah lampu LED memiliki hambatan internal 240 Ω dan dihubungkan dengan sumber tegangan DC 12 V. Berapakah kuat arus listrik yang mengalir?',
+      problem: 'Sebuah resistor ohmik memiliki hambatan 240 Ω dan dihubungkan dengan sumber tegangan DC 12 V. Berapakah kuat arus listrik yang mengalir?',
       solution: 'I = V / R = 12 V / 240 Ω = 0.05 A = 50 mA.',
       resultUnit: 'A'
     },
@@ -752,13 +754,13 @@ export const PHYSICS_EQUATIONS = [
         return eff.toFixed(2);
       }
     },
-    relatedConceptIds: ['entropy', 'thermodynamic-equilibrium', 'temperature', 'energy']
+    relatedConceptIds: ['entropy', 'thermodynamic-laws', 'temperature', 'energy']
   },
   {
     id: 'lorentz-factor',
     name: 'Relativistic Lorentz Factor',
     indonesianName: 'Faktor Lorentz Relativistik',
-    domainId: 'relativity',
+    domainId: 'special-relativity',
     category: 'Relativitas Khusus',
     latexDisplay: '\\gamma = \\frac{1}{\\sqrt{1 - \\frac{v^2}{c^2}}}',
     htmlDisplay: '<strong>γ</strong> = 1 / √(1 - <em>v</em>² / <em>c</em>²)',
@@ -826,7 +828,7 @@ export const PHYSICS_EQUATIONS = [
         symbol: 'N(t)',
         name: 'Remaining Unstable Nuclei (Jumlah Inti Radioaktif Tersisa)',
         unit: 'Inti Atom (Partikel)',
-        quantityId: 'quantity',
+        quantityId: 'particle-count',
         dimension: '[1]',
         role: 'Jumlah populasi inti atom induk yang belum mengalami transmutasi peluruhan'
       },
@@ -834,14 +836,14 @@ export const PHYSICS_EQUATIONS = [
         symbol: 'N₀',
         name: 'Initial Nuclei Count (Jumlah Inti Awal)',
         unit: 'Inti Atom (Partikel)',
-        quantityId: 'quantity',
+        quantityId: 'particle-count',
         dimension: '[1]',
         role: 'Jumlah populasi sampel inti mula-mula pada t = 0'
       },
       {
         symbol: 'T_1/2',
         name: 'Half-Life (Waktu Paruh)',
-        unit: 'Detik / Tahun',
+        unit: 's (kalkulator memakai tahun secara konsisten)',
         quantityId: 'time',
         dimension: '[T]',
         role: 'Waktu yang dibutuhkan separuh populasi inti radioaktif untuk meluruh (T_1/2 = ln(2)/λ)'
@@ -849,7 +851,7 @@ export const PHYSICS_EQUATIONS = [
       {
         symbol: 't',
         name: 'Elapsed Time (Waktu Berjalan)',
-        unit: 'Detik / Tahun',
+        unit: 's (kalkulator memakai tahun secara konsisten)',
         quantityId: 'time',
         dimension: '[T]',
         role: 'Durasi waktu peluruhan'
@@ -881,3 +883,10 @@ export const PHYSICS_EQUATIONS = [
     relatedConceptIds: ['quantum', 'nuclear', 'energy']
   }
 ];
+
+PHYSICS_EQUATIONS.push(...FIELD_EQUATIONS);
+
+for (const record of PHYSICS_EQUATIONS) {
+  record.reviewStatus ||= 'PARTIAL';
+  record.sources ||= [{title: 'Bacaan lanjutan: ' + record.domainId, url: DOMAIN_REFERENCES[record.domainId], scope: 'Rujukan domain; bukan bukti bahwa seluruh klaim entri telah diverifikasi.'}];
+}

@@ -1,3 +1,4 @@
+import { CircuitSimulation } from '../simulations/circuit-sim.js';
 // Asadin Edu Physics · Interactive Virtual Physics Lab Hub (12 High-Precision Simulators)
 
 import { ProjectileSimulation } from '../simulations/projectile-sim.js';
@@ -15,6 +16,7 @@ import { BernoulliFluidSimulation } from '../simulations/bernoulli-fluid-sim.js'
 
 export function renderSimulationsPage(container, params = {}) {
   const simList = [
+    { id: 'circuits', title: 'Rangkaian DC Seri & Paralel', category: 'Listrik', icon: '🔋', SimClass: CircuitSimulation },
     { id: 'projectile', title: 'Gerak Parabola & Balistik', category: 'Kinematika', icon: '🚀', SimClass: ProjectileSimulation },
     { id: 'pendulum', title: 'Bandul & GHS Teredam', category: 'Osilasi & Energi', icon: '⏱️', SimClass: PendulumSimulation },
     { id: 'wave-doppler', title: 'Gelombang & Efek Doppler', category: 'Gelombang & Bunyi', icon: '🔊', SimClass: WaveDopplerSimulation },
@@ -29,7 +31,7 @@ export function renderSimulationsPage(container, params = {}) {
     { id: 'bernoulli-fluid', title: 'Tabung Venturi & Asas Bernoulli', category: 'Mekanika Fluida', icon: '🌊', SimClass: BernoulliFluidSimulation }
   ];
 
-  let activeSimMeta = simList.find(s => s.id === params.sim) || simList[0];
+  let activeSimMeta = simList.find(s => s.id === params.sim) || simList.find(s => s.id === 'projectile');
   let activeSimInstance = null;
 
   function cleanupActiveSim() {
@@ -47,20 +49,23 @@ export function renderSimulationsPage(container, params = {}) {
         <!-- Header -->
         <div style="margin-bottom: 24px;">
           <div style="display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; background: rgba(0, 242, 254, 0.1); border-radius: var(--radius-full); color: var(--cyan-bright); font-size: 0.78rem; font-weight: 700; margin-bottom: 10px;">
-            LABORATORIUM FISIKA INTERAKTIF (60 FPS ENGINE)
+            LABORATORIUM FISIKA INTERAKTIF — MODEL EDUKATIF
           </div>
           <h1 style="font-size: 2.2rem; margin-bottom: 6px;">Laboratorium Virtual & Simulasi Interaktif</h1>
           <p>Ubah variabel fisis, amati grafik dan vektor seketika, serta uji hipotesis ilmiah Anda secara visual.</p>
         </div>
 
         <div class="sim-hub-layout">
-          <!-- Sidebar: 12 Simulators Picker -->
+          <label class="sim-mobile-picker">Pilih modul simulasi
+            <select id="sim-mobile-select">${simList.map(sim => `<option value="${sim.id}" ${sim.id === activeSimMeta.id ? 'selected' : ''}>${sim.title}</option>`).join('')}</select>
+          </label>
+          <!-- Sidebar: simulation picker -->
           <div class="sim-sidebar">
             <div style="font-size: 0.78rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; padding: 6px 12px;">
               Pilih Modul Simulasi:
             </div>
             ${simList.map(sim => `
-              <div 
+              <a href="#/simulations?sim=${sim.id}"
                 class="sim-tab-item ${sim.id === activeSimMeta.id ? 'active' : ''}" 
                 data-sim-id="${sim.id}"
               >
@@ -69,7 +74,7 @@ export function renderSimulationsPage(container, params = {}) {
                   <span style="font-size: 0.88rem; font-weight: 600;">${sim.title}</span>
                   <span style="font-size: 0.75rem; color: var(--text-muted);">${sim.category}</span>
                 </div>
-              </div>
+              </a>
             `).join('')}
           </div>
 
@@ -101,6 +106,8 @@ export function renderSimulationsPage(container, params = {}) {
       </div>
     `;
 
+    container.querySelector('#sim-mobile-select').addEventListener('change', e => { location.hash = `#/simulations?sim=${e.target.value}`; });
+
     // Initialize the canvas and simulator
     const canvas = container.querySelector('#sim-viewport-canvas');
     const hud = container.querySelector('#sim-telemetry-hud');
@@ -113,19 +120,47 @@ export function renderSimulationsPage(container, params = {}) {
     // Build specific control sliders for the active simulator
     buildControlsForSim(activeSimMeta.id, activeSimInstance, controlsWrap, topActions);
 
-    // Sidebar tab clicks
-    const tabs = container.querySelectorAll('.sim-tab-item');
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        const simId = tab.getAttribute('data-sim-id');
-        activeSimMeta = simList.find(s => s.id === simId);
-        render();
-      });
+    const notes = {
+      projectile:'Model partikel 2D, g konstan; hambatan kuadratik a_drag = −k|v|v dengan k bersatuan m⁻¹. Skala gambar menyesuaikan jangkauan tanpa hambatan.',
+      pendulum:'Bandul titik dengan tali tanpa massa; gerak memakai sin θ. T₀ = 2π√(L/g) adalah pendekatan sudut kecil, bukan periode eksak amplitudo besar.',
+      'wave-doppler':'Muka gelombang dalam medium diam homogen. Rumus frekuensi depan hanya berlaku subsonik; kerucut Mach menggambarkan geometri supersonik. Demonstrasi ini tidak mengeluarkan audio.',
+      'double-slit':'Dua celah ideal koheren, pendekatan sudut kecil: Δy = λD/d. Lebar celah dan selubung difraksi tidak dimodelkan; muka gelombang digambar secara skematis.',
+      'electric-field':'Superposisi medan Coulomb yang dilunakkan dekat muatan; satuan gambar arbitrer. Muatan uji memakai redaman visual. Maksimum 30 muatan; tombol bersihkan juga bekerja pada ponsel.',
+      'lorentz-force':'Partikel ilustratif q = ±1 C, m = 1 kg; bukan elektron/proton. B seragam, E = 0, tanpa radiasi. Gerak analitik mempertahankan kelajuan; 1 meter = 1 piksel pada skala gambar.',
+      optics:'Optika sinar untuk medium isotropik dan lensa tipis paraaksial; ukuran lensa dalam satuan gambar. Bayangan sangat jauh dapat berada di luar viewport, nilai jaraknya tetap tersedia.',
+      thermodynamics:'Gas ideal monoatomik n = 1 mol, γ = 5/3, V_A = 0.01 m³, V_B/V_A = 2. Kurva isotermal PV = nRT dan adiabatik PV^γ konstan. Q_H = nRT_H ln 2; sumbu menyesuaikan rentang.',
+      relativity:'Dua jam ditampilkan dalam kerangka laboratorium inersial: Δτ = Δt/γ, L = L₀/γ. Pengubahan slider memulai kondisi kelajuan baru; gambar wahana bersifat ilustratif.',
+      'orbital-gravity':'Model dua benda dengan pusat tetap; parameter massa mewakili GM dalam satuan simulasi. Tanpa gangguan planet lain atau koreksi relativistik; orbit keluar layar tetap dapat dilacak lewat telemetri.',
+      'bohr-atom':'Model Bohr hidrogen: E_n ≈ −13.6/n² eV. Orbit adalah ilustrasi, bukan lintasan elektron dalam mekanika kuantum; jarak dan warna UV tidak berskala fisik. Pembulatan model berbeda dari spektroskopi presisi.',
+      'bernoulli-fluid':'Aliran tunak horizontal, tak termampatkan, tanpa viskositas. A₁v₁ = A₂v₂; ΔP = ρ(v₂²−v₁²)/2. Kolom tekanan adalah ilustrasi kualitatif, bukan manometer berskala.',
+      circuits:'Sumber DC ideal dan dua resistor ohmik pada suhu tetap. Seri: I sama; paralel: V sama. Nilai berasal dari hukum Ohm dan Kirchhoff, tanpa efek pemanasan atau transien.'
+    };
+    const note=document.createElement('div'); note.className='sim-explanation';
+    note.textContent=notes[activeSimMeta.id]; container.querySelector('.sim-stage-container').appendChild(note);
+    if (activeSimMeta.id !== 'circuits') {
+      const pause=document.createElement('button'); pause.className='sim-btn'; pause.id='sim-pause'; pause.textContent='Jeda animasi';
+      pause.setAttribute('aria-pressed','false');
+      pause.addEventListener('click',()=>{activeSimInstance.animationPaused=!activeSimInstance.animationPaused; pause.textContent=activeSimInstance.animationPaused?'Lanjutkan animasi':'Jeda animasi';pause.setAttribute('aria-pressed',String(activeSimInstance.animationPaused));});
+      topActions.parentElement.appendChild(pause);
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) pause.click();
+    }
+    labelControls(controlsWrap);
+
+  }
+
+  function labelControls(controlsWrap) {
+    controlsWrap.querySelectorAll('input[type="range"],select').forEach(input => {
+      const label = input.closest('.sim-control-item')?.querySelector('.sim-control-label');
+      input.setAttribute('aria-label',label?.textContent || input.id);
     });
   }
 
   function buildControlsForSim(simId, sim, controlsWrap, topActions) {
-    if (simId === 'projectile') {
+    if (simId === 'circuits') {
+      controlsWrap.innerHTML=`<div class="sim-sliders-grid">${[['voltage','Tegangan (V)',0,24],['r1','Resistor 1 (Ω)',10,1000],['r2','Resistor 2 (Ω)',10,1000]].map(([key,label,min,max])=>`<label class="sim-control-item">${label}<input type="range" id="circuit-${key}" min="${min}" max="${max}" value="${sim.params[key]}" data-circuit="${key}"><output id="circuit-value-${key}">${sim.params[key]}</output></label>`).join('')}</div><label>Susunan <select id="circuit-topology"><option value="series">Seri</option><option value="parallel">Paralel</option></select></label>`;
+      controlsWrap.querySelectorAll('[data-circuit]').forEach(input=>input.addEventListener('input',()=>{sim.params[input.dataset.circuit]=Number(input.value);controlsWrap.querySelector(`#circuit-value-${input.dataset.circuit}`).textContent=input.value;sim.updateHUD();}));
+      controlsWrap.querySelector('#circuit-topology').addEventListener('change',e=>{sim.params.topology=e.target.value;sim.updateHUD();});
+    } else if (simId === 'projectile') {
       topActions.innerHTML = `
         <button class="sim-btn sim-btn-active" id="btn-fire">🚀 Luncurkan</button>
         <button class="sim-btn" id="btn-reset">↺ Reset</button>
@@ -149,7 +184,7 @@ export function renderSimulationsPage(container, params = {}) {
           </div>
           <div class="sim-control-item">
             <div class="sim-control-label"><span>Gravitasi Planet:</span> <span class="sim-control-val" id="val-g">${sim.params.g} m/s²</span></div>
-            <select id="select-planet-g" style="background: rgba(255,255,255,0.08); border: 1px solid var(--border-subtle); color: #fff; padding: 6px 10px; border-radius: 4px; font-size: 0.85rem; outline: none;">
+            <select id="select-planet-g" style="background: rgba(255,255,255,0.08); border: 1px solid var(--border-subtle); color: var(--text-primary); padding: 6px 10px; border-radius: 4px; font-size: 0.85rem; outline: none;">
               <option value="9.81">Bumi (g = 9.81 m/s²)</option>
               <option value="1.62">Bulan (g = 1.62 m/s²)</option>
               <option value="3.72">Mars (g = 3.72 m/s²)</option>
@@ -298,8 +333,8 @@ export function renderSimulationsPage(container, params = {}) {
 
     } else if (simId === 'electric-field') {
       topActions.innerHTML = `
-        <button class="sim-btn" id="btn-mode-pos" style="color: #ff5858;">+ Tambah (+q)</button>
-        <button class="sim-btn" id="btn-mode-neg" style="color: #00f2fe;">− Tambah (-q)</button>
+        <button class="sim-btn" id="btn-mode-pos" style="color: #b62f2f;">+ Tambah (+q)</button>
+        <button class="sim-btn" id="btn-mode-neg" style="color: var(--cyan-bright);">− Tambah (-q)</button>
         <button class="sim-btn" id="btn-dipole">Preset Dipol</button>
         <button class="sim-btn" id="btn-ef-clear">Bersihkan</button>
       `;
@@ -331,10 +366,10 @@ export function renderSimulationsPage(container, params = {}) {
             <input type="range" class="sim-range-input" id="range-v-lorentz" min="40" max="220" step="10" value="${sim.params.v0}" />
           </div>
           <div class="sim-control-item">
-            <div class="sim-control-label"><span>Muatan Listrik (q):</span> <span class="sim-control-val" id="val-q-lorentz">${sim.params.q > 0 ? '+1e (Proton)' : '-1e (Elektron)'}</span></div>
-            <select id="select-charge-q" style="background: rgba(255,255,255,0.08); border: 1px solid var(--border-subtle); color: #fff; padding: 6px 10px; border-radius: 4px; font-size: 0.85rem; outline: none;">
-              <option value="1">Positif (+1e Proton / Ion)</option>
-              <option value="-1">Negatif (-1e Elektron)</option>
+            <div class="sim-control-label"><span>Muatan Listrik (q):</span> <span class="sim-control-val" id="val-q-lorentz">${sim.params.q > 0 ? '+1 C (model)' : '-1 C (model)'}</span></div>
+            <select id="select-charge-q" style="background: rgba(255,255,255,0.08); border: 1px solid var(--border-subtle); color: var(--text-primary); padding: 6px 10px; border-radius: 4px; font-size: 0.85rem; outline: none;">
+              <option value="1">Positif (+1 C)</option>
+              <option value="-1">Negatif (−1 C)</option>
             </select>
           </div>
         </div>
@@ -343,14 +378,16 @@ export function renderSimulationsPage(container, params = {}) {
       controlsWrap.querySelector('#range-b-field').addEventListener('input', (e) => {
         sim.params.B = parseFloat(e.target.value);
         controlsWrap.querySelector('#val-b-field').textContent = `${sim.params.B} T`;
+        sim.reset();
       });
       controlsWrap.querySelector('#range-v-lorentz').addEventListener('input', (e) => {
         sim.params.v0 = parseFloat(e.target.value);
         controlsWrap.querySelector('#val-v-lorentz').textContent = `${sim.params.v0} m/s`;
+        sim.reset();
       });
       controlsWrap.querySelector('#select-charge-q').addEventListener('change', (e) => {
         sim.params.q = parseInt(e.target.value, 10);
-        controlsWrap.querySelector('#val-q-lorentz').textContent = sim.params.q > 0 ? '+1e (Proton)' : '-1e (Elektron)';
+        controlsWrap.querySelector('#val-q-lorentz').textContent = sim.params.q > 0 ? '+1 C (model)' : '-1 C (model)';
         sim.reset();
       });
 
@@ -362,11 +399,13 @@ export function renderSimulationsPage(container, params = {}) {
       topActions.querySelector('#btn-opt-refr').addEventListener('click', () => {
         sim.mode = 'refraction';
         buildControlsForSim('optics', sim, controlsWrap, topActions);
+        labelControls(controlsWrap);
         sim.updateHUD();
       });
       topActions.querySelector('#btn-opt-lens').addEventListener('click', () => {
         sim.mode = 'lens';
         buildControlsForSim('optics', sim, controlsWrap, topActions);
+        labelControls(controlsWrap);
         sim.updateHUD();
       });
 
@@ -439,7 +478,7 @@ export function renderSimulationsPage(container, params = {}) {
           </div>
           <div class="sim-control-item">
             <div class="sim-control-label"><span>Suhu Reservoir Dingin (T_C):</span> <span class="sim-control-val" id="val-tc">${sim.params.Tc} K</span></div>
-            <input type="range" class="sim-range-input" id="range-tc" min="150" max="400" step="10" value="${sim.params.Tc}" />
+            <input type="range" class="sim-range-input" id="range-tc" min="150" max="380" step="10" value="${sim.params.Tc}" />
           </div>
         </div>
       `;
@@ -468,6 +507,7 @@ export function renderSimulationsPage(container, params = {}) {
       `;
       controlsWrap.querySelector('#range-beta').addEventListener('input', (e) => {
         sim.params.beta = parseFloat(e.target.value);
+        sim.state.tRest = 0; sim.state.tMoving = 0;
         controlsWrap.querySelector('#val-beta').textContent = `${(sim.params.beta * 100).toFixed(0)}% c`;
         sim.updateHUD();
       });
@@ -478,14 +518,21 @@ export function renderSimulationsPage(container, params = {}) {
         <button class="sim-btn" id="btn-orb-esc">Kecepatan Lepas</button>
         <button class="sim-btn" id="btn-orb-reset">↺ Reset</button>
       `;
+      function syncOrbitControls() {
+        const slider=controlsWrap.querySelector('#range-v-orb');
+        slider.max=Math.max(4.5,sim.params.v0); slider.step='any'; slider.value=sim.params.v0;
+        controlsWrap.querySelector('#val-v-orb').textContent=sim.params.v0.toFixed(3);
+      }
       topActions.querySelector('#btn-orb-circ').addEventListener('click', () => {
         const r = sim.params.r0;
         sim.params.v0 = Math.sqrt(sim.params.centralMass / r);
+        syncOrbitControls();
         sim.reset();
       });
       topActions.querySelector('#btn-orb-esc').addEventListener('click', () => {
         const r = sim.params.r0;
         sim.params.v0 = Math.sqrt(2 * sim.params.centralMass / r) * 1.05;
+        syncOrbitControls();
         sim.reset();
       });
       topActions.querySelector('#btn-orb-reset').addEventListener('click', () => sim.reset());
@@ -555,4 +602,5 @@ export function renderSimulationsPage(container, params = {}) {
   }
 
   render();
+  return cleanupActiveSim;
 }

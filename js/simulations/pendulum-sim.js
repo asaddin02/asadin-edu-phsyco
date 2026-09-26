@@ -81,7 +81,7 @@ export class PendulumSimulation {
     this.hudElement.innerHTML = `
       <div class="hud-line"><span>Sudut Simpangan (θ):</span> <span class="hud-val">${deg}°</span></div>
       <div class="hud-line"><span>Kecepatan Sudut (ω):</span> <span class="hud-val">${this.state.omega.toFixed(2)} rad/s</span></div>
-      <div class="hud-line"><span>Periode Alami (T):</span> <span class="hud-val">${period} s</span></div>
+      <div class="hud-line"><span>Periode sudut kecil (T₀):</span> <span class="hud-val">${period} s</span></div>
       <div class="hud-line"><span>Energi Kinetik (Ek):</span> <span class="hud-val">${this.state.Ek.toFixed(2)} J</span></div>
       <div class="hud-line"><span>Energi Potensial (Ep):</span> <span class="hud-val">${this.state.Ep.toFixed(2)} J</span></div>
       <div class="hud-line"><span>Energi Mekanik Total:</span> <span class="hud-val">${this.state.Etotal.toFixed(2)} J</span></div>
@@ -122,6 +122,7 @@ export class PendulumSimulation {
     this.ctx.arc(this.pivotX, this.pivotY, 6, 0, Math.PI * 2);
     this.ctx.fill();
 
+    this.scale = Math.min(110, (h - this.pivotY - 50) / this.params.length, (w / 2 - 25) / this.params.length);
     // 2. Bob position
     const bobX = this.pivotX + Math.sin(this.state.theta) * (this.params.length * this.scale);
     const bobY = this.pivotY + Math.cos(this.state.theta) * (this.params.length * this.scale);
@@ -197,9 +198,10 @@ export class PendulumSimulation {
     this.ctx.fillText('Etot', x + 102, y + height - 8);
   }
 
-  loop = () => {
-    this.update(0.018);
-    this.draw();
+  loop = (now = performance.now()) => {
+    const dt = Math.min(0.04, Math.max(0, (now - (this.lastFrame ?? now))/1000));
+    this.lastFrame = now;
+    if (!document.hidden && !this.animationPaused) { this.update(dt); this.draw(); }
     this.animId = requestAnimationFrame(this.loop);
   };
 

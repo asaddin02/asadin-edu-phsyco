@@ -31,56 +31,44 @@ const MIME_TYPES = {
   '.txt': 'text/plain; charset=utf-8'
 };
 
-const server = http.createServer((req, res) => {
-  // CORS & Security headers
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS');
+const server = http.createServer(async (req, res) => {
   res.setHeader('X-Content-Type-Options', 'nosniff');
-
-  if (req.method === 'OPTIONS') {
-    res.writeHead(204);
-    res.end();
-    return;
+  res.setHeader('Referrer-Policy', 'no-referrer');
+  res.setHeader('Content-Security-Policy', "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'");
+  const reply = (status, message) => { res.writeHead(status, { 'Content-Type': 'text/plain; charset=utf-8' }); res.end(req.method === 'HEAD' ? undefined : message); };
+  if (!['GET', 'HEAD'].includes(req.method)) {
+    res.setHeader('Allow', 'GET, HEAD'); reply(405, 'Method Not Allowed'); return;
   }
-
-  let reqPath = decodeURIComponent(req.url.split('?')[0]);
-  if (reqPath === '/' || reqPath === '') reqPath = '/index.html';
-
-  const safePath = path.normalize(reqPath).replace(/^(\.\.[/\\])+/, '');
-  let filePath = path.join(rootDir, safePath);
-
-  fs.stat(filePath, (err, stats) => {
-    if (err || !stats.isFile()) {
-      // Check if fallback to index.html is appropriate (SPA routing support)
-      if (!path.extname(reqPath)) {
-        filePath = path.join(rootDir, 'index.html');
-      } else {
-        res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
-        res.end('404 Not Found: ' + reqPath);
-        return;
-      }
-    }
-
+  let reqPath;
+  try { reqPath = decodeURIComponent(req.url.split('?')[0]); }
+  catch { reply(400, 'Invalid URL encoding'); return; }
+  if (reqPath === '/') reqPath = '/index.html';
+  if (reqPath.includes('\\') || reqPath.includes('\0') || reqPath.split('/').some(part => part.startsWith('.'))) {
+    reply(403, 'Forbidden'); return;
+  }
+  // This hash-routed application only needs public assets; never expose the repo/server/tests.
+  if (!['/index.html', '/manifest.webmanifest'].includes(reqPath) && !/^\/(js|css|assets)\//.test(reqPath)) {
+    reply(404, 'Not Found'); return;
+  }
+  try {
+    const filePath = await fs.promises.realpath(path.join(rootDir, reqPath));
+    if (!filePath.startsWith(rootDir + path.sep)) { reply(403, 'Forbidden'); return; }
+    const publicFile = path.relative(rootDir, filePath).replaceAll(path.sep, '/');
+    if (!['index.html', 'manifest.webmanifest'].includes(publicFile) && !/^(js|css|assets)\//.test(publicFile)) { reply(403, 'Forbidden'); return; }
+    const stats = await fs.promises.stat(filePath);
+    if (!stats.isFile()) { reply(404, 'Not Found'); return; }
     const ext = path.extname(filePath).toLowerCase();
-    const contentType = MIME_TYPES[ext] || 'application/octet-stream';
-
-    // Cache control
-    if (ext === '.html') {
-      res.setHeader('Cache-Control', 'no-cache, must-revalidate');
-    } else {
-      res.setHeader('Cache-Control', 'public, max-age=86400');
-    }
-
-    res.writeHead(200, { 'Content-Type': contentType });
+    if (!MIME_TYPES[ext]) { reply(404, 'Not Found'); return; }
+    res.setHeader('Cache-Control', 'no-cache');
+    res.setHeader('Content-Type', MIME_TYPES[ext]);
+    res.setHeader('Content-Length', stats.size);
+    if (req.method === 'HEAD') { res.end(); return; }
     const stream = fs.createReadStream(filePath);
+    stream.on('error', () => { if (!res.headersSent) reply(500, 'Internal Server Error'); else res.destroy(); });
     stream.pipe(res);
-    stream.on('error', () => {
-      if (!res.headersSent) {
-        res.writeHead(500, { 'Content-Type': 'text/plain' });
-        res.end('Internal Server Error');
-      }
-    });
-  });
+  } catch (error) {
+    reply(error.code === 'ENOENT' || error.code === 'ENOTDIR' ? 404 : 500, 'File unavailable');
+  }
 });
 
 server.listen(PORT, HOST, () => {

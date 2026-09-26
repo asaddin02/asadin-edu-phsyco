@@ -1,3 +1,6 @@
+import { resolveReference } from '../core/catalog.js';
+import { renderSources } from '../components/sources.js';
+import { solveEquation } from '../core/solver.js';
 // Asadin Edu Physics · Equation Explorer Page with Interactive Variable Inspector & Live Solver
 
 import { PHYSICS_EQUATIONS } from '../data/equations.js';
@@ -6,6 +9,10 @@ import { PHYSICS_DOMAINS } from '../data/domains.js';
 export function renderEquationsPage(container, params = {}) {
   let selectedEqId = params.id || (PHYSICS_EQUATIONS[0] ? PHYSICS_EQUATIONS[0].id : null);
   let activeEq = PHYSICS_EQUATIONS.find(e => e.id === selectedEqId) || PHYSICS_EQUATIONS[0];
+  if (params.id && !PHYSICS_EQUATIONS.some(e => e.id === params.id)) {
+    container.innerHTML = '<div class="content-wrap"><h1>Persamaan tidak ditemukan</h1><a href="#/equations">Kembali ke daftar</a></div>';
+    return;
+  }
   let solverInputs = {};
 
   // Initialize default solver input values
@@ -18,7 +25,7 @@ export function renderEquationsPage(container, params = {}) {
   function render() {
     let computedResult = null;
     if (activeEq && activeEq.calculator) {
-      computedResult = activeEq.calculator.compute(solverInputs);
+      computedResult = solveEquation(activeEq, solverInputs);
     }
 
     container.innerHTML = `
@@ -29,21 +36,21 @@ export function renderEquationsPage(container, params = {}) {
           <p>Jelajahi setiap variabel, satuan SI, batas keberlakuan, dan hitung langsung nilai numerik secara interaktif.</p>
         </div>
 
-        <div style="display: grid; grid-template-columns: 300px 1fr; gap: 28px; align-items: start;">
+        <div class="dossier-layout" style="display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 28px; align-items: start;">
           <!-- Left Sidebar: Equations List -->
           <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 16px; display: flex; flex-direction: column; gap: 6px; max-height: 80vh; overflow-y: auto;">
             <div style="font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; padding: 6px 10px;">
               Daftar Persamaan Utama:
             </div>
             ${PHYSICS_EQUATIONS.map(eq => `
-              <div 
+              <a href="#/equations?id=${eq.id}"
                 class="sim-tab-item ${eq.id === activeEq.id ? 'active' : ''}" 
                 data-eq-id="${eq.id}"
                 style="display: flex; flex-direction: column; align-items: flex-start; gap: 3px;"
               >
                 <span style="font-weight: 600; font-size: 0.92rem;">${eq.name}</span>
-                <span style="font-family: var(--font-mono); font-size: 0.82rem; color: var(--cyan-bright);">${eq.latexDisplay}</span>
-              </div>
+                <span style="font-family: var(--font-mono); font-size: 0.82rem; color: var(--cyan-bright);">${eq.htmlDisplay}</span>
+              </a>
             `).join('')}
           </div>
 
@@ -64,7 +71,7 @@ export function renderEquationsPage(container, params = {}) {
                 <div class="equation-display-box">
                   <div class="equation-math">${activeEq.htmlDisplay}</div>
                   <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: 8px;">
-                    Notasi Baku: <code>${activeEq.latexDisplay}</code>
+                    Notasi LaTeX: <code>${activeEq.latexDisplay}</code>
                   </div>
                 </div>
 
@@ -80,7 +87,7 @@ export function renderEquationsPage(container, params = {}) {
                   </h3>
                   <div class="variables-inspector-grid">
                     ${activeEq.variables.map(v => `
-                      <a href="${v.quantityId ? `#/entity/${v.quantityId}` : '#/explore'}" class="variable-pill" style="text-decoration: none; display: flex; flex-direction: column;" title="Buka entitas fisis ${v.name}">
+                      <a href="${resolveReference(v.quantityId)?.url || '#/equations'}" class="variable-pill" style="text-decoration: none; display: flex; flex-direction: column;" title="Buka entitas fisis ${v.name}">
                         <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
                           <div class="variable-sym">${v.symbol}</div>
                           <span style="font-size: 0.72rem; color: var(--cyan-bright); font-weight: 600;">Lihat Entitas ➔</span>
@@ -114,7 +121,7 @@ export function renderEquationsPage(container, params = {}) {
                             class="solver-input" 
                             data-key="${inp.key}"
                             value="${solverInputs[inp.key]}"
-                            step="${inp.step || 1}"
+                            step="any" min="${inp.min}" max="${inp.max}"
                           />
                         </div>
                       `).join('')}
@@ -136,8 +143,10 @@ export function renderEquationsPage(container, params = {}) {
                   </div>
                 ` : ''}
 
+                ${renderSources(activeEq)}
+                <div class="resource-links">${activeEq.relatedConceptIds.map(resolveReference).filter(Boolean).map(r => `<a href="${r.url}">${r.name}</a>`).join('')}</div>
                 <!-- Assumptions & Limitations -->
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 28px;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 20px; margin-top: 28px;">
                   <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 20px;">
                     <h4 style="font-size: 1rem; color: var(--emerald-neon); margin-bottom: 8px;">
                       Asumsi & Kondisi Keberlakuan:
@@ -148,7 +157,7 @@ export function renderEquationsPage(container, params = {}) {
                   </div>
 
                   <div style="background: rgba(255, 65, 108, 0.05); border: 1px solid rgba(255, 65, 108, 0.25); border-radius: var(--radius-md); padding: 20px;">
-                    <h4 style="font-size: 1rem; color: #ff5858; margin-bottom: 8px;">
+                    <h4 style="font-size: 1rem; color: #b62f2f; margin-bottom: 8px;">
                       Batasan & Kapan Tidak Berlaku:
                     </h4>
                     <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6;">
@@ -163,10 +172,10 @@ export function renderEquationsPage(container, params = {}) {
                     <h4 style="font-size: 1.05rem; color: var(--amber-solar); margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
                       <span>📝</span> Contoh Soal Penerapan
                     </h4>
-                    <p style="font-weight: 500; font-size: 0.95rem; margin-bottom: 12px; color: #fff;">
+                    <p style="font-weight: 500; font-size: 0.95rem; margin-bottom: 12px; color: var(--text-primary);">
                       ${activeEq.exampleProblem.problem}
                     </p>
-                    <div style="background: rgba(0, 0, 0, 0.4); border-left: 3px solid var(--amber-solar); padding: 12px 16px; border-radius: 4px; font-size: 0.9rem; color: var(--text-secondary);">
+                    <div style="background: var(--bg-darker); border-left: 3px solid var(--amber-solar); padding: 12px 16px; border-radius: 4px; font-size: 0.9rem; color: var(--text-secondary);">
                       <strong>Langkah Penyelesaian:</strong><br/>
                       ${activeEq.exampleProblem.solution}
                     </div>
@@ -179,30 +188,13 @@ export function renderEquationsPage(container, params = {}) {
       </div>
     `;
 
-    // Attach equation switcher clicks
-    const items = container.querySelectorAll('.sim-tab-item');
-    items.forEach(item => {
-      item.addEventListener('click', () => {
-        const eqId = item.getAttribute('data-eq-id');
-        activeEq = PHYSICS_EQUATIONS.find(e => e.id === eqId);
-        // Reset solver inputs
-        if (activeEq && activeEq.calculator) {
-          solverInputs = {};
-          activeEq.calculator.inputs.forEach(inp => {
-            solverInputs[inp.key] = inp.default;
-          });
-        }
-        render();
-      });
-    });
-
     // Attach solver input changes
     const inputs = container.querySelectorAll('.solver-input');
     inputs.forEach(inp => {
       inp.addEventListener('input', (e) => {
         const key = e.target.getAttribute('data-key');
-        solverInputs[key] = parseFloat(e.target.value) || 0;
-        const resultVal = activeEq.calculator.compute(solverInputs);
+        solverInputs[key] = e.target.value === '' ? NaN : Number(e.target.value);
+        const resultVal = solveEquation(activeEq, solverInputs);
         const resElem = container.querySelector('.solver-result-val');
         if (resElem) {
           resElem.textContent = `${resultVal} ${activeEq.calculator.output.unit}`;

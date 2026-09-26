@@ -143,6 +143,10 @@ export class ProjectileSimulation {
 
     this.ctx.clearRect(0, 0, w, h);
 
+    const rad = this.params.angle * Math.PI/180;
+    const range = this.params.v0**2 * Math.sin(2*rad)/this.params.g;
+    const height = this.params.h0 + (this.params.v0*Math.sin(rad))**2/(2*this.params.g);
+    this.scale = Math.min(4.5, (w-this.originX-30)/Math.max(10,range), (this.originY-25)/Math.max(10,height));
     // 1. Draw Grid lines & ground
     this.ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
     this.ctx.lineWidth = 1;
@@ -237,9 +241,10 @@ export class ProjectileSimulation {
     this.ctx.fill();
   }
 
-  loop = () => {
-    this.update(0.018); // ~60fps step
-    this.draw();
+  loop = (now = performance.now()) => {
+    const dt = Math.min(0.04, Math.max(0, (now - (this.lastFrame ?? now))/1000));
+    this.lastFrame = now;
+    if (!document.hidden && !this.animationPaused) { this.update(dt); this.draw(); }
     this.animId = requestAnimationFrame(this.loop);
   };
 

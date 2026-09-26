@@ -1,0 +1,90 @@
+{
+  "Knowledge Coverage": {
+    "score": 38.7,
+    "denominator": 252,
+    "verified": 0,
+    "partial": 195,
+    "missing": 57
+  },
+  "Scientific Accuracy (verification coverage)": {
+    "score": 50.0,
+    "denominator": 9,
+    "verified": 0,
+    "partial": 9,
+    "missing": 0
+  },
+  "Data Quality": {
+    "score": 72.7,
+    "denominator": 22,
+    "verified": 10,
+    "partial": 12,
+    "missing": 0
+  },
+  "Entity System": {
+    "score": 50.0,
+    "denominator": 14,
+    "verified": 0,
+    "partial": 14,
+    "missing": 0
+  },
+  "Educational System": {
+    "score": 34.1,
+    "denominator": 41,
+    "verified": 0,
+    "partial": 28,
+    "missing": 13
+  },
+  "Interactivity": {
+    "score": 68.4,
+    "denominator": 19,
+    "verified": 7,
+    "partial": 12,
+    "missing": 0
+  },
+  "Search": {
+    "score": 100.0,
+    "denominator": 10,
+    "verified": 10,
+    "partial": 0,
+    "missing": 0
+  },
+  "Knowledge Graph": {
+    "score": 100.0,
+    "denominator": 1,
+    "verified": 1,
+    "partial": 0,
+    "missing": 0
+  },
+  "UX/UI": {
+    "score": 50.0,
+    "denominator": 27,
+    "verified": 0,
+    "partial": 27,
+    "missing": 0
+  },
+  "Performance": {
+    "score": 50.0,
+    "denominator": 9,
+    "verified": 0,
+    "partial": 9,
+    "missing": 0
+  },
+  "Code Quality": {
+    "score": 50.0,
+    "denominator": 10,
+    "verified": 0,
+    "partial": 10,
+    "missing": 0
+  },
+  "Overall Requirement Compliance": {
+    "score": 48.6,
+    "denominator": 506,
+    "verified": 56,
+    "partial": 380,
+    "missing": 70
+  },
+  "Feature Coverage": {
+    "score": 72.2,
+    "denominator": 9
+  }
+}

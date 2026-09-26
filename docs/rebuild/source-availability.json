@@ -1,0 +1,411 @@
+{
+  "checkedAt": "2026-09-26",
+  "method": "Python urllib GET, Mozilla/5.0 user-agent, up to 8 concurrent requests, 18 s timeout; availability only, not scientific verification",
+  "counts": {
+    "uniqueUrls": 60,
+    "http200": 50,
+    "blocked403": 10
+  },
+  "results": [
+    {
+      "url": "https://www.feynmanlectures.caltech.edu/I_01.html",
+      "error": "HTTP Error 403: Forbidden",
+      "interpretation": "HTTP 403 in automated fetch; not a successful availability check and not proof the page is missing."
+    },
+    {
+      "url": "https://www.feynmanlectures.caltech.edu/I_09.html",
+      "error": "HTTP Error 403: Forbidden",
+      "interpretation": "HTTP 403 in automated fetch; not a successful availability check and not proof the page is missing."
+    },
+    {
+      "url": "https://www.feynmanlectures.caltech.edu/I_04.html",
+      "error": "HTTP Error 403: Forbidden",
+      "interpretation": "HTTP 403 in automated fetch; not a successful availability check and not proof the page is missing."
+    },
+    {
+      "url": "https://www.feynmanlectures.caltech.edu/I_26.html",
+      "error": "HTTP Error 403: Forbidden",
+      "interpretation": "HTTP 403 in automated fetch; not a successful availability check and not proof the page is missing."
+    },
+    {
+      "url": "https://www.feynmanlectures.caltech.edu/I_47.html",
+      "error": "HTTP Error 403: Forbidden",
+      "interpretation": "HTTP 403 in automated fetch; not a successful availability check and not proof the page is missing."
+    },
+    {
+      "url": "https://www.feynmanlectures.caltech.edu/I_39.html",
+      "error": "HTTP Error 403: Forbidden",
+      "interpretation": "HTTP 403 in automated fetch; not a successful availability check and not proof the page is missing."
+    },
+    {
+      "url": "https://www.feynmanlectures.caltech.edu/II_13.html",
+      "error": "HTTP Error 403: Forbidden",
+      "interpretation": "HTTP 403 in automated fetch; not a successful availability check and not proof the page is missing."
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/1-2-units-and-standards",
+      "status": 200,
+      "bytes": 327321,
+      "title": "Search",
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/1-2-units-and-standards"
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/1-6-significant-figures",
+      "status": 200,
+      "bytes": 315866,
+      "title": "Search",
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/1-6-significant-figures"
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/1-4-dimensional-analysis",
+      "status": 200,
+      "bytes": 324432,
+      "title": "Search",
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/1-4-dimensional-analysis"
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/2-1-scalars-and-vectors",
+      "status": 200,
+      "bytes": 493089,
+      "title": "Search",
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/2-1-scalars-and-vectors"
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/3-1-position-displacement-and-average-velocity",
+      "status": 200,
+      "bytes": 328760,
+      "title": "Search",
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/3-1-position-displacement-and-average-velocity"
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/4-3-projectile-motion",
+      "status": 200,
+      "bytes": 415514,
+      "title": "Search",
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/4-3-projectile-motion"
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/5-6-common-forces",
+      "status": 200,
+      "bytes": 388268,
+      "title": "Search",
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/5-6-common-forces"
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/6-4-drag-force-and-terminal-speed",
+      "status": 200,
+      "bytes": 363841,
+      "title": "Search",
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/6-4-drag-force-and-terminal-speed"
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/8-3-conservation-of-energy",
+      "status": 200,
+      "bytes": 343753,
+      "title": "Search",
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/8-3-conservation-of-energy"
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/9-4-types-of-collisions",
+      "status": 200,
+      "bytes": 357924,
+      "title": "Search",
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/9-4-types-of-collisions"
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/10-6-torque",
+      "status": 200,
+      "bytes": 353701,
+      "title": "Search",
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/10-6-torque"
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/13-4-satellite-orbits-and-energy",
+      "status": 200,
+      "bytes": 376086,
+      "title": "Search",
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/13-4-satellite-orbits-and-energy"
+    },
+    {
+      "url": "https://ocw.mit.edu/courses/8-09-classical-mechanics-iii-fall-2014/",
+      "status": 200,
+      "bytes": 41053,
+      "title": "Classical Mechanics III | Physics | MIT OpenCourseWare",
+      "finalUrl": "https://ocw.mit.edu/courses/8-09-classical-mechanics-iii-fall-2014/"
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/14-4-archimedes-principle-and-buoyancy",
+      "status": 200,
+      "bytes": 315263,
+      "title": "Search",
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/14-4-archimedes-principle-and-buoyancy"
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/14-6-bernoullis-equation",
+      "status": 200,
+      "bytes": 348804,
+      "title": "Search",
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/14-6-bernoullis-equation"
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/15-6-forced-oscillations",
+      "status": 200,
+      "bytes": 315520,
+      "title": "Search",
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/15-6-forced-oscillations"
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/16-1-traveling-waves",
+      "status": 200,
+      "bytes": 334858,
+      "title": "Search",
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/16-1-traveling-waves"
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/16-6-standing-waves-and-resonance",
+      "status": 200,
+      "bytes": 366976,
+      "title": "Search",
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/16-6-standing-waves-and-resonance"
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-1/pages/17-2-speed-of-sound",
+      "status": 200,
+      "bytes": 370379,
+      "title": "Search",
+      "finalUrl": "https://openstax.org/books/university-physics-volume-1/pages/17-2-speed-of-sound"
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/1-5-phase-changes",
+      "status": 200,
+      "bytes": 363268,
+      "title": "Search",
+      "finalUrl": "https://openstax.org/books/university-physics-volume-2/pages/1-5-phase-changes"
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/1-6-mechanisms-of-heat-transfer",
+      "status": 200,
+      "bytes": 413494,
+      "title": "Search",
+      "finalUrl": "https://openstax.org/books/university-physics-volume-2/pages/1-6-mechanisms-of-heat-transfer"
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/3-3-first-law-of-thermodynamics",
+      "status": 200,
+      "bytes": 352868,
+      "title": "Search",
+      "finalUrl": "https://openstax.org/books/university-physics-volume-2/pages/3-3-first-law-of-thermodynamics"
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/4-5-the-carnot-cycle",
+      "status": 200,
+      "bytes": 331504,
+      "title": "Search",
+      "finalUrl": "https://openstax.org/books/university-physics-volume-2/pages/4-5-the-carnot-cycle"
+    },
+    {
+      "url": "https://ocw.mit.edu/courses/8-044-statistical-physics-i-spring-2013/",
+      "status": 200,
+      "bytes": 46038,
+      "title": "Statistical Physics I | Physics | MIT OpenCourseWare",
+      "finalUrl": "https://ocw.mit.edu/courses/8-044-statistical-physics-i-spring-2013/"
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/5-4-electric-field",
+      "status": 200,
+      "bytes": 369421,
+      "title": "Search",
+      "finalUrl": "https://openstax.org/books/university-physics-volume-2/pages/5-4-electric-field"
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/8-3-energy-stored-in-a-capacitor",
+      "status": 200,
+      "bytes": 323703,
+      "title": "Search",
+      "finalUrl": "https://openstax.org/books/university-physics-volume-2/pages/8-3-energy-stored-in-a-capacitor"
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/10-2-resistors-in-series-and-parallel",
+      "status": 200,
+      "bytes": 434859,
+      "title": "Search",
+      "finalUrl": "https://openstax.org/books/university-physics-volume-2/pages/10-2-resistors-in-series-and-parallel"
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/11-3-motion-of-a-charged-particle-in-a-magnetic-field",
+      "status": 200,
+      "bytes": 317448,
+      "title": "Search",
+      "finalUrl": "https://openstax.org/books/university-physics-volume-2/pages/11-3-motion-of-a-charged-particle-in-a-magnetic-field"
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/13-1-faradays-law",
+      "status": 200,
+      "bytes": 312938,
+      "title": "Search",
+      "finalUrl": "https://openstax.org/books/university-physics-volume-2/pages/13-1-faradays-law"
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/15-1-ac-sources",
+      "status": 200,
+      "bytes": 296796,
+      "title": "Search",
+      "finalUrl": "https://openstax.org/books/university-physics-volume-2/pages/15-1-ac-sources"
+    },
+    {
+      "url": "https://www.feynmanlectures.caltech.edu/II_18.html",
+      "error": "HTTP Error 403: Forbidden",
+      "interpretation": "HTTP 403 in automated fetch; not a successful availability check and not proof the page is missing."
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-3/pages/2-4-thin-lenses",
+      "status": 200,
+      "bytes": 381520,
+      "title": "Search",
+      "finalUrl": "https://openstax.org/books/university-physics-volume-3/pages/2-4-thin-lenses"
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-3/pages/1-7-polarization",
+      "status": 200,
+      "bytes": 348566,
+      "title": "Search",
+      "finalUrl": "https://openstax.org/books/university-physics-volume-3/pages/1-7-polarization"
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-3/pages/5-6-relativistic-velocity-transformation",
+      "status": 200,
+      "bytes": 300477,
+      "title": "Search",
+      "finalUrl": "https://openstax.org/books/university-physics-volume-3/pages/5-6-relativistic-velocity-transformation"
+    },
+    {
+      "url": "https://www.einstein-online.info/en/spotlight/equivalence_principle/",
+      "status": 200,
+      "bytes": 101772,
+      "title": "The elevator, the rocket, and gravity: the equivalence principle &laquo;  Einstein-Online",
+      "finalUrl": "https://www.einstein-online.info/en/spotlight/equivalence_principle/"
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-3/pages/7-2-the-heisenberg-uncertainty-principle",
+      "status": 200,
+      "bytes": 309723,
+      "title": "Search",
+      "finalUrl": "https://openstax.org/books/university-physics-volume-3/pages/7-2-the-heisenberg-uncertainty-principle"
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-3/pages/7-4-the-quantum-particle-in-a-box",
+      "status": 200,
+      "bytes": 353811,
+      "title": "Search",
+      "finalUrl": "https://openstax.org/books/university-physics-volume-3/pages/7-4-the-quantum-particle-in-a-box"
+    },
+    {
+      "url": "https://ocw.mit.edu/courses/8-05-quantum-physics-ii-fall-2013/pages/lecture-notes/",
+      "status": 200,
+      "bytes": 48878,
+      "title": "Lecture Notes | Quantum Physics II | Physics | MIT OpenCourseWare",
+      "finalUrl": "https://ocw.mit.edu/courses/8-05-quantum-physics-ii-fall-2013/pages/lecture-notes/"
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-3/pages/8-6-lasers",
+      "status": 200,
+      "bytes": 284375,
+      "title": "Search",
+      "finalUrl": "https://openstax.org/books/university-physics-volume-3/pages/8-6-lasers"
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-3/pages/10-3-radioactive-decay",
+      "status": 200,
+      "bytes": 332872,
+      "title": "Search",
+      "finalUrl": "https://openstax.org/books/university-physics-volume-3/pages/10-3-radioactive-decay"
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-3/pages/10-6-nuclear-fusion",
+      "status": 200,
+      "bytes": 313712,
+      "title": "Search",
+      "finalUrl": "https://openstax.org/books/university-physics-volume-3/pages/10-6-nuclear-fusion"
+    },
+    {
+      "url": "https://home.cern/science/physics/standard-model/",
+      "status": 200,
+      "bytes": 251153,
+      "title": "The Standard Model &#8211; Home | CERN",
+      "finalUrl": "https://home.cern/science/physics/standard-model/"
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-3/pages/9-6-semiconductors-and-doping",
+      "status": 200,
+      "bytes": 288626,
+      "title": "Search",
+      "finalUrl": "https://openstax.org/books/university-physics-volume-3/pages/9-6-semiconductors-and-doping"
+    },
+    {
+      "url": "https://openstax.org/books/university-physics-volume-3/pages/9-8-superconductivity",
+      "status": 200,
+      "bytes": 317111,
+      "title": "Search",
+      "finalUrl": "https://openstax.org/books/university-physics-volume-3/pages/9-8-superconductivity"
+    },
+    {
+      "url": "https://www.pppl.gov/about/about-plasmas-and-fusion",
+      "error": "HTTP Error 403: Forbidden",
+      "interpretation": "HTTP 403 in automated fetch; not a successful availability check and not proof the page is missing."
+    },
+    {
+      "url": "https://science.nasa.gov/universe/stars/",
+      "status": 200,
+      "bytes": 306200,
+      "title": "Stars - NASA Science",
+      "finalUrl": "https://science.nasa.gov/universe/stars/"
+    },
+    {
+      "url": "https://home.cern/science/physics/cosmic-rays-particles-outer-space",
+      "status": 200,
+      "bytes": 248053,
+      "title": "Cosmic rays: particles from outer space &#8211; Home | CERN",
+      "finalUrl": "https://home.cern/science/physics/cosmic-rays-particles-outer-space/"
+    },
+    {
+      "url": "https://science.nasa.gov/universe/overview/",
+      "status": 200,
+      "bytes": 308287,
+      "title": "Overview - NASA Science",
+      "finalUrl": "https://science.nasa.gov/universe/overview/"
+    },
+    {
+      "url": "https://www.usgs.gov/programs/earthquake-hazards/science-earthquakes",
+      "error": "HTTP Error 403: Forbidden",
+      "interpretation": "HTTP 403 in automated fetch; not a successful availability check and not proof the page is missing."
+    },
+    {
+      "url": "https://www.nibib.nih.gov/science-education/science-topics",
+      "status": 200,
+      "bytes": 89142,
+      "title": "Science Topics | National Institute of Biomedical Imaging and Bioengineering",
+      "finalUrl": "https://www.nibib.nih.gov/science-education/science-topics"
+    },
+    {
+      "url": "https://home.cern/how-accelerator-works/",
+      "status": 200,
+      "bytes": 241991,
+      "title": "How an accelerator works &#8211; Home | CERN",
+      "finalUrl": "https://home.cern/how-accelerator-works/"
+    },
+    {
+      "url": "https://ies.ed.gov/ncee/wwc/PracticeGuide/1",
+      "status": 200,
+      "bytes": 61499,
+      "title": "WWC | Organizing Instruction and Study to Improve Student Learning",
+      "finalUrl": "https://ies.ed.gov/ncee/wwc/PracticeGuide/1"
+    },
+    {
+      "url": "https://www.aapt.org/Resources/Recommendations-for-the-Undergraduate-Physics-Laboratory-Curriculum.cfm",
+      "status": 200,
+      "bytes": 4730,
+      "title": "Error Occurred While Processing Request",
+      "finalUrl": "https://www.aapt.org/Resources/Recommendations-for-the-Undergraduate-Physics-Laboratory-Curriculum.cfm"
+    }
+  ]
+}

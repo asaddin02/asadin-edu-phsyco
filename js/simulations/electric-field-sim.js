@@ -37,6 +37,7 @@ export class ElectricFieldSimulation {
     this.hudElement = hudElement;
 
     this.resize();
+    this.resetDipole();
     this.bindEvents();
     window.addEventListener('resize', this.onResize);
     this.loop();
@@ -58,9 +59,10 @@ export class ElectricFieldSimulation {
   }
 
   bindEvents() {
-    this.canvas.addEventListener('mousedown', this.onMouseDown);
-    window.addEventListener('mousemove', this.onMouseMove);
-    window.addEventListener('mouseup', this.onMouseUp);
+    this.canvas.addEventListener('pointerdown', this.onMouseDown);
+    window.addEventListener('pointermove', this.onMouseMove);
+    window.addEventListener('pointerup', this.onMouseUp);
+    window.addEventListener('pointercancel', this.onMouseUp);
     this.canvas.addEventListener('contextmenu', (e) => e.preventDefault());
   }
 
@@ -85,7 +87,7 @@ export class ElectricFieldSimulation {
     }
 
     // Otherwise add new charge based on mode
-    if (e.button === 0) {
+    if (e.button === 0 && this.charges.length < 30) {
       const qVal = this.mouseMode === 'addNeg' ? -1 : +1;
       this.charges.push({
         id: Date.now(),
@@ -252,16 +254,18 @@ export class ElectricFieldSimulation {
     }
   }
 
-  loop = () => {
-    this.update(0.018);
-    this.draw();
+  loop = (now = performance.now()) => {
+    const dt = Math.min(0.04, Math.max(0, (now - (this.lastFrame ?? now))/1000));
+    this.lastFrame = now;
+    if (!document.hidden && !this.animationPaused) { this.update(dt); this.draw(); }
     this.animId = requestAnimationFrame(this.loop);
   };
 
   destroy() {
     if (this.animId) cancelAnimationFrame(this.animId);
     window.removeEventListener('resize', this.onResize);
-    window.removeEventListener('mousemove', this.onMouseMove);
-    window.removeEventListener('mouseup', this.onMouseUp);
+    window.removeEventListener('pointermove', this.onMouseMove);
+    window.removeEventListener('pointerup', this.onMouseUp);
+    window.removeEventListener('pointercancel', this.onMouseUp);
   }
 }

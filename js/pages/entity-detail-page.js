@@ -1,3 +1,7 @@
+import { COURSES } from '../data/courses/index.js';
+import { resolveReference } from '../core/catalog.js';
+import { renderSources } from '../components/sources.js';
+import { escapeHTML } from '../core/html.js';
 // Asadin Edu Physics · Entity Detail Page (Full Scientific Dossier & 4-Layer Depth)
 
 import { PHYSICS_ENTITIES } from '../data/entities.js';
@@ -14,7 +18,7 @@ export function renderEntityDetailPage(container, params = {}) {
     container.innerHTML = `
       <div class="content-wrap" style="padding: 80px 20px; text-align: center;">
         <h2 style="font-size: 2rem; margin-bottom: 12px;">Entitas Fisika Tidak Ditemukan</h2>
-        <p style="margin-bottom: 24px;">Entitas '${entityId}' belum terdaftar atau telah dipindahkan.</p>
+        <p style="margin-bottom: 24px;">Entitas '${escapeHTML(entityId)}' belum terdaftar atau telah dipindahkan.</p>
         <a href="#/explore" class="btn-primary">Kembali ke Atlas Fisika</a>
       </div>
     `;
@@ -36,15 +40,15 @@ export function renderEntityDetailPage(container, params = {}) {
       deepDive: 'Lapisan 4: Garis Depan Riset, Teori Kuantum/Relativistik & Batas Fisika'
     };
     const layerColors = {
-      simple: '#38ef7d',
-      standard: '#00f2fe',
-      advanced: '#f6d365',
-      deepDive: '#b388ff'
+      simple: '#28745a',
+      standard: '#b4382b',
+      advanced: '#916017',
+      deepDive: '#76549b'
     };
 
     // Find related entities for knowledge graph linking
     const relatedEntities = (entity.relatedEntityIds || [])
-      .map(id => PHYSICS_ENTITIES.find(e => e.id === id))
+      .map(resolveReference)
       .filter(Boolean);
 
     container.innerHTML = `
@@ -90,9 +94,9 @@ export function renderEntityDetailPage(container, params = {}) {
           </p>
 
           ${entity.symbol ? `
-            <div style="display: inline-flex; align-items: center; gap: 10px; background: rgba(0, 0, 0, 0.45); border: 1px solid var(--border-subtle); padding: 8px 16px; border-radius: var(--radius-sm); margin-top: 16px;">
+            <div style="display: inline-flex; align-items: center; gap: 10px; background: var(--bg-darker); border: 1px solid var(--border-subtle); padding: 8px 16px; border-radius: var(--radius-sm); margin-top: 16px;">
               <span style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase;">Simbol / Notasi:</span>
-              <span style="font-family: var(--font-mono); font-size: 1.1rem; color: #fff; font-weight: 600;">${entity.symbol}</span>
+              <span style="font-family: var(--font-mono); font-size: 1.1rem; color: var(--text-primary); font-weight: 600;">${entity.symbol}</span>
             </div>
           ` : ''}
         </div>
@@ -110,6 +114,7 @@ export function renderEntityDetailPage(container, params = {}) {
           </div>
         </div>
 
+        <section class="entity-study-links"><h2>Pelajari dengan contoh & latihan</h2><div class="resource-links">${COURSES.filter(c=>c.domainId===entity.domainId && c.level!=='sd').slice(0,4).map(c=>`<a href="#/lesson/${c.id}">${escapeHTML(c.title)} →</a>`).join('')}</div></section>
         <!-- KEY VARIABLES BREAKDOWN (IF APPLICABLE) -->
         ${(entity.keyVariables && entity.keyVariables.length > 0) ? `
           <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 28px; margin-bottom: 28px;">
@@ -132,7 +137,7 @@ export function renderEntityDetailPage(container, params = {}) {
         <!-- COMMON MISCONCEPTIONS BUSTED -->
         ${(entity.commonMisconceptions && entity.commonMisconceptions.length > 0) ? `
           <div style="background: rgba(255, 65, 108, 0.08); border: 1px solid rgba(255, 65, 108, 0.3); border-radius: var(--radius-lg); padding: 24px; margin-bottom: 28px;">
-            <h3 style="font-size: 1.15rem; color: #ff5858; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+            <h3 style="font-size: 1.15rem; color: #b62f2f; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
               <span>⚠️</span> Klarifikasi Miskonsepsi Umum
             </h3>
             <ul style="padding-left: 20px; display: flex; flex-direction: column; gap: 10px; color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6;">
@@ -142,7 +147,7 @@ export function renderEntityDetailPage(container, params = {}) {
         ` : ''}
 
         <!-- HISTORICAL CONTEXT & REAL WORLD APPLICATIONS -->
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 28px;">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 20px; margin-bottom: 28px;">
           ${entity.historicalContext ? `
             <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-md); padding: 22px;">
               <h4 style="font-size: 1.05rem; margin-bottom: 10px; color: var(--amber-solar); display: flex; align-items: center; gap: 8px;">
@@ -164,23 +169,24 @@ export function renderEntityDetailPage(container, params = {}) {
           ` : ''}
         </div>
 
-        <!-- KNOWLEDGE GRAPH CONNECTIONS (NO DEAD-ENDS) -->
+        ${renderSources(entity)}
+        <!-- KNOWLEDGE GRAPH CONNECTIONS -->
         ${relatedEntities.length > 0 ? `
           <div style="background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius-lg); padding: 28px;">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
               <h3 style="font-size: 1.2rem; display: flex; align-items: center; gap: 8px;">
                 <span>🕸️</span> Jejaring Konsep Terhubung (Knowledge Graph)
               </h3>
-              <a href="#/graph" style="font-size: 0.85rem; font-weight: 600;">Lihat Peta Graf Penuh ➔</a>
+              <a href="#/graph?focus=${entity.id}" style="font-size: 0.85rem; font-weight: 600;">Lihat Peta Graf Penuh ➔</a>
             </div>
             <p style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 16px;">
               Fisika adalah satu kesatuan yang utuh. Jelajahi entitas lain yang berinteraksi langsung dengan konsep ini:
             </p>
             <div style="display: flex; flex-wrap: wrap; gap: 10px;">
               ${relatedEntities.map(re => `
-                <a href="#/entity/${re.id}" class="variable-pill" style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none; padding: 8px 14px;">
+                <a href="${re.url}" class="variable-pill" style="display: inline-flex; align-items: center; gap: 8px; text-decoration: none; padding: 8px 14px;">
                   <span class="entity-type-badge badge-${re.entityType.toLowerCase()}" style="font-size: 0.65rem;">${re.entityType}</span>
-                  <span style="font-weight: 600; color: #fff;">${re.name}</span>
+                  <span style="font-weight: 600; color: var(--text-primary);">${re.name}</span>
                   <span style="color: var(--cyan-bright); font-size: 0.8rem;">➔</span>
                 </a>
               `).join('')}

@@ -1,0 +1,12 @@
+{
+  "domains": 28,
+  "entities": 86,
+  "equations": 19,
+  "calculators": 14,
+  "constants": 19,
+  "experiments": 6,
+  "lessonCards": 23,
+  "simulations": 13,
+  "graphNodes": 45,
+  "graphLinks": 51
+}

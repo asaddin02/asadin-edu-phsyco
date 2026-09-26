@@ -1,0 +1,381 @@
+{
+  "date": "2026-09-26T06:24:09.439Z",
+  "standard": "axe automated WCAG 2 A/AA and 2.1 AA checks; not a full conformance certification",
+  "scans": [
+    {
+      "name": "#/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 7
+        }
+      ]
+    },
+    {
+      "name": "#/learn?level=sd",
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "#/learn?level=educator",
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "#/lesson/sd-motion",
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "#/lesson/maxwell-course?level=university",
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "#/lesson/teacher-design?level=educator",
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "#/explore",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 1
+        }
+      ]
+    },
+    {
+      "name": "#/entity/gravity",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 4
+        }
+      ]
+    },
+    {
+      "name": "#/entity/electron",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 3
+        }
+      ]
+    },
+    {
+      "name": "#/constants",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 1
+        }
+      ]
+    },
+    {
+      "name": "#/experiments",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 4
+        }
+      ]
+    },
+    {
+      "name": "#/graph",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 2
+        }
+      ]
+    },
+    {
+      "name": "#/about",
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "#/equations?id=newton-second-law",
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "#/equations?id=kinetic-energy-classic",
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "#/equations?id=universal-gravitation",
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "#/equations?id=mass-energy-equivalence",
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "#/equations?id=ideal-gas-equation",
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "#/equations?id=snells-law-refraction",
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "#/equations?id=planck-einstein-relation",
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "#/equations?id=coulombs-law",
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "#/equations?id=bernoulli-equation",
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "#/equations?id=ohms-law",
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "#/equations?id=wave-speed-frequency",
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "#/equations?id=carnot-efficiency",
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "#/equations?id=lorentz-factor",
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "#/equations?id=radioactive-decay-law",
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "#/equations?id=maxwell-gauss-electric",
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "#/equations?id=maxwell-gauss-magnetic",
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "#/equations?id=maxwell-faraday",
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "#/equations?id=maxwell-ampere",
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "#/equations?id=schrodinger-equation",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 1
+        }
+      ]
+    },
+    {
+      "name": "#/simulations?sim=circuits",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 10
+        }
+      ]
+    },
+    {
+      "name": "#/simulations?sim=projectile",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 10
+        }
+      ]
+    },
+    {
+      "name": "#/simulations?sim=pendulum",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 12
+        }
+      ]
+    },
+    {
+      "name": "#/simulations?sim=wave-doppler",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 10
+        }
+      ]
+    },
+    {
+      "name": "#/simulations?sim=double-slit",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 10
+        }
+      ]
+    },
+    {
+      "name": "#/simulations?sim=electric-field",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 8
+        }
+      ]
+    },
+    {
+      "name": "#/simulations?sim=lorentz-force",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 10
+        }
+      ]
+    },
+    {
+      "name": "#/simulations?sim=optics",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 10
+        }
+      ]
+    },
+    {
+      "name": "#/simulations?sim=thermodynamics",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 10
+        }
+      ]
+    },
+    {
+      "name": "#/simulations?sim=relativity",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 10
+        }
+      ]
+    },
+    {
+      "name": "#/simulations?sim=orbital-gravity",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 10
+        }
+      ]
+    },
+    {
+      "name": "#/simulations?sim=bohr-atom",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 10
+        }
+      ]
+    },
+    {
+      "name": "#/simulations?sim=bernoulli-fluid",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 10
+        }
+      ]
+    },
+    {
+      "name": "Quiz feedback",
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "Search dialog results",
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "Mobile #/",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 6
+        }
+      ]
+    },
+    {
+      "name": "Mobile #/learn?level=educator",
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "Mobile #/lesson/maxwell-course?level=university",
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "Mobile #/simulations?sim=electric-field",
+      "violations": [],
+      "incomplete": []
+    },
+    {
+      "name": "Mobile expanded navigation",
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "nodes": 5
+        }
+      ]
+    }
+  ]
+}

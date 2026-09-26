@@ -1,0 +1,403 @@
+{
+  "date": "2026-09-26T04:01:54.862Z",
+  "browser": "152.0.7977.64",
+  "checks": [
+    {
+      "name": "Server restricts private files, malformed paths, methods and traversal",
+      "status": "PASS"
+    },
+    {
+      "name": "All 130 catalogue destinations render without missing-page fallback",
+      "status": "PASS",
+      "detail": {
+        "destinations": 130
+      }
+    },
+    {
+      "name": "Every equation variable has a navigable canonical destination",
+      "status": "PASS",
+      "detail": {
+        "variables": 70
+      }
+    },
+    {
+      "name": "Global search escapes HTML, traps focus, closes with Escape and restores focus",
+      "status": "PASS"
+    },
+    {
+      "name": "Search result clicks open concept, law, equation, constant, unit, particle, phenomenon, experiment, instrument and lesson",
+      "status": "PASS"
+    },
+    {
+      "name": "Learn completion persists, can be undone, and levels navigate",
+      "status": "PASS"
+    },
+    {
+      "name": "Atlas type/domain filters, empty state/reset and constant categories work",
+      "status": "PASS"
+    },
+    {
+      "name": "Four layers differ, bookmarks persist, quiz feedback and back navigation work",
+      "status": "PASS"
+    },
+    {
+      "name": "13 simulations render; all range extremes, select options and action buttons execute",
+      "status": "PASS",
+      "detail": {
+        "simulations": 13,
+        "controlActions": 84
+      }
+    },
+    {
+      "name": "Knowledge graph supports selection, dragging, zoom, related navigation and cleanup",
+      "status": "PASS"
+    },
+    {
+      "name": "Invalid routes and unknown dossier IDs show safe errors",
+      "status": "PASS"
+    },
+    {
+      "name": "Responsive routes at 320, 375, 414, 768, 1366 and 1920 px have no document overflow",
+      "status": "PASS"
+    },
+    {
+      "name": "Touch interaction and reduced-motion pause work",
+      "status": "PASS"
+    },
+    {
+      "name": "Repeated lab navigation releases animation callbacks and records post-GC heap",
+      "status": "PASS",
+      "detail": {
+        "postGCHeapBytes": [
+          4000276,
+          4000308
+        ]
+      }
+    },
+    {
+      "name": "No uncaught JavaScript or render errors during browser audit",
+      "status": "PASS"
+    }
+  ],
+  "responsive": [
+    {
+      "route": "#/",
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "route": "#/explore",
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "route": "#/entity/gravity",
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "route": "#/equations",
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "route": "#/constants",
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "route": "#/experiments",
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "route": "#/simulations",
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "route": "#/learn",
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "route": "#/graph",
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "route": "#/about",
+      "width": 320,
+      "scrollWidth": 320
+    },
+    {
+      "route": "#/",
+      "width": 375,
+      "scrollWidth": 375
+    },
+    {
+      "route": "#/explore",
+      "width": 375,
+      "scrollWidth": 375
+    },
+    {
+      "route": "#/entity/gravity",
+      "width": 375,
+      "scrollWidth": 375
+    },
+    {
+      "route": "#/equations",
+      "width": 375,
+      "scrollWidth": 375
+    },
+    {
+      "route": "#/constants",
+      "width": 375,
+      "scrollWidth": 375
+    },
+    {
+      "route": "#/experiments",
+      "width": 375,
+      "scrollWidth": 375
+    },
+    {
+      "route": "#/simulations",
+      "width": 375,
+      "scrollWidth": 375
+    },
+    {
+      "route": "#/learn",
+      "width": 375,
+      "scrollWidth": 375
+    },
+    {
+      "route": "#/graph",
+      "width": 375,
+      "scrollWidth": 375
+    },
+    {
+      "route": "#/about",
+      "width": 375,
+      "scrollWidth": 375
+    },
+    {
+      "route": "#/",
+      "width": 414,
+      "scrollWidth": 414
+    },
+    {
+      "route": "#/explore",
+      "width": 414,
+      "scrollWidth": 414
+    },
+    {
+      "route": "#/entity/gravity",
+      "width": 414,
+      "scrollWidth": 414
+    },
+    {
+      "route": "#/equations",
+      "width": 414,
+      "scrollWidth": 414
+    },
+    {
+      "route": "#/constants",
+      "width": 414,
+      "scrollWidth": 414
+    },
+    {
+      "route": "#/experiments",
+      "width": 414,
+      "scrollWidth": 414
+    },
+    {
+      "route": "#/simulations",
+      "width": 414,
+      "scrollWidth": 414
+    },
+    {
+      "route": "#/learn",
+      "width": 414,
+      "scrollWidth": 414
+    },
+    {
+      "route": "#/graph",
+      "width": 414,
+      "scrollWidth": 414
+    },
+    {
+      "route": "#/about",
+      "width": 414,
+      "scrollWidth": 414
+    },
+    {
+      "route": "#/",
+      "width": 768,
+      "scrollWidth": 768
+    },
+    {
+      "route": "#/explore",
+      "width": 768,
+      "scrollWidth": 768
+    },
+    {
+      "route": "#/entity/gravity",
+      "width": 768,
+      "scrollWidth": 768
+    },
+    {
+      "route": "#/equations",
+      "width": 768,
+      "scrollWidth": 768
+    },
+    {
+      "route": "#/constants",
+      "width": 768,
+      "scrollWidth": 768
+    },
+    {
+      "route": "#/experiments",
+      "width": 768,
+      "scrollWidth": 768
+    },
+    {
+      "route": "#/simulations",
+      "width": 768,
+      "scrollWidth": 768
+    },
+    {
+      "route": "#/learn",
+      "width": 768,
+      "scrollWidth": 768
+    },
+    {
+      "route": "#/graph",
+      "width": 768,
+      "scrollWidth": 768
+    },
+    {
+      "route": "#/about",
+      "width": 768,
+      "scrollWidth": 768
+    },
+    {
+      "route": "#/",
+      "width": 1366,
+      "scrollWidth": 1366
+    },
+    {
+      "route": "#/explore",
+      "width": 1366,
+      "scrollWidth": 1366
+    },
+    {
+      "route": "#/entity/gravity",
+      "width": 1366,
+      "scrollWidth": 1366
+    },
+    {
+      "route": "#/equations",
+      "width": 1366,
+      "scrollWidth": 1366
+    },
+    {
+      "route": "#/constants",
+      "width": 1366,
+      "scrollWidth": 1366
+    },
+    {
+      "route": "#/experiments",
+      "width": 1366,
+      "scrollWidth": 1366
+    },
+    {
+      "route": "#/simulations",
+      "width": 1366,
+      "scrollWidth": 1366
+    },
+    {
+      "route": "#/learn",
+      "width": 1366,
+      "scrollWidth": 1366
+    },
+    {
+      "route": "#/graph",
+      "width": 1366,
+      "scrollWidth": 1366
+    },
+    {
+      "route": "#/about",
+      "width": 1366,
+      "scrollWidth": 1366
+    },
+    {
+      "route": "#/",
+      "width": 1920,
+      "scrollWidth": 1920
+    },
+    {
+      "route": "#/explore",
+      "width": 1920,
+      "scrollWidth": 1920
+    },
+    {
+      "route": "#/entity/gravity",
+      "width": 1920,
+      "scrollWidth": 1920
+    },
+    {
+      "route": "#/equations",
+      "width": 1920,
+      "scrollWidth": 1920
+    },
+    {
+      "route": "#/constants",
+      "width": 1920,
+      "scrollWidth": 1920
+    },
+    {
+      "route": "#/experiments",
+      "width": 1920,
+      "scrollWidth": 1920
+    },
+    {
+      "route": "#/simulations",
+      "width": 1920,
+      "scrollWidth": 1920
+    },
+    {
+      "route": "#/learn",
+      "width": 1920,
+      "scrollWidth": 1920
+    },
+    {
+      "route": "#/graph",
+      "width": 1920,
+      "scrollWidth": 1920
+    },
+    {
+      "route": "#/about",
+      "width": 1920,
+      "scrollWidth": 1920
+    }
+  ],
+  "errors": [],
+  "performance": {
+    "domNodes": 337,
+    "resources": 54,
+    "resourceBytes": 560325,
+    "domContentLoadedMs": 418.40000000037253,
+    "heapBytes": 3770809,
+    "frameSample": {
+      "module": "electric-field",
+      "frames": 90,
+      "meanMs": 31.110000000000017,
+      "p95Ms": 49.900000000001455
+    },
+    "postGCHeapBytes": [
+      4000276,
+      4000308
+    ],
+    "finalHeapBytes": 4553147
+  }
+}

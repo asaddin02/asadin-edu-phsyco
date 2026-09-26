@@ -25,11 +25,11 @@ function test(name, fn) {
 }
 
 console.log('\n======================================================');
-console.log('🧪 RUNNING ASADIN EDU PHYSICS SCIENTIFIC AUDIT SUITE');
+console.log('🧪 RUNNING ASADIN EDU PHYSICS DATA STRUCTURE & BASELINE CALCULATOR CHECKS');
 console.log('======================================================\n');
 
 // 1. Audit Physics Domains (Foundations -> Cosmology)
-test('Domains: All 28 major physics domains are present and valid', () => {
+test('Domains: 28 domain descriptors have required fields', () => {
   assert.strictEqual(PHYSICS_DOMAINS.length, 28, 'Should have exactly 28 physics domains');
   const requiredDomains = [
     'foundations', 'kinematics', 'dynamics', 'work-energy', 'momentum', 'rotation',
@@ -47,7 +47,7 @@ test('Domains: All 28 major physics domains are present and valid', () => {
 });
 
 // 2. Audit Entities & Multi-Layer Depth
-test('Entities: Entities have valid 4-tier layer content and variables', () => {
+test('Entities: Entities have names, summary and four nonempty layer fields', () => {
   assert.ok(PHYSICS_ENTITIES.length >= 15, 'Should have a substantial catalog of physical entities');
   for (const ent of PHYSICS_ENTITIES) {
     assert.ok(ent.id, 'Entity must have an id');
@@ -56,26 +56,25 @@ test('Entities: Entities have valid 4-tier layer content and variables', () => {
     assert.ok(ent.layers, `Entity '${ent.id}' must have layers object`);
     assert.ok(ent.layers.simple, `Entity '${ent.id}' must have a simple layer`);
     assert.ok(ent.layers.standard, `Entity '${ent.id}' must have a standard layer`);
+    assert.ok(ent.layers.deepDive, `Entity '${ent.id}' must have a deepDive layer`);
     assert.ok(ent.layers.advanced, `Entity '${ent.id}' must have an advanced layer`);
   }
 });
 
 // 3. Audit Physical Constants (CODATA & 2019 SI)
-test('Constants: Standard physical constants values and symbols are accurate', () => {
-  import('../js/data/constants.js').then(module => {
-    const constants = module.PHYSICAL_CONSTANTS;
-    assert.ok(constants.length >= 15, 'Should have at least 15 fundamental constants');
-    const cConst = constants.find(c => c.symbol === 'c');
-    assert.ok(cConst && cConst.isExact, 'Speed of light c must be exact');
-    const hConst = constants.find(c => c.symbol === 'h');
-    assert.ok(hConst && hConst.isExact, 'Planck constant h must be exact (2019 SI)');
-    const GConst = constants.find(c => c.symbol === 'G');
-    assert.ok(GConst && !GConst.isExact, 'G must have experimental uncertainty');
-  });
+test('Constants: Selected constant values and exactness flags match references', () => {
+  assert.ok(PHYSICAL_CONSTANTS.length >= 18);
+  const c = PHYSICAL_CONSTANTS.find(c => c.symbol === 'c');
+  assert.equal(c.value, '299,792,458');
+  assert.equal(c.isExact, true);
+  assert.equal(PHYSICAL_CONSTANTS.find(c => c.symbol === 'h').isExact, true);
+  assert.equal(PHYSICAL_CONSTANTS.find(c => c.symbol === 'G').isExact, false);
+  assert.equal(PHYSICAL_CONSTANTS.find(c => c.id === 'electron-mass').value, '9.1093837139 × 10⁻³¹');
+  assert.equal(PHYSICAL_CONSTANTS.find(c => c.id === 'vacuum-permeability').isExact, false);
 });
 
 // 4. Audit Equation Explorer & Interactive Solvers
-test('Equations: Solvers execute and produce accurate numerical physics outputs', () => {
+test('Equations: Default solvers return finite output; Newton and kinetic energy examples match', () => {
   for (const eq of PHYSICS_EQUATIONS) {
     assert.ok(eq.id && eq.latexDisplay, `Equation '${eq.id}' must have a formula`);
     assert.ok(eq.variables && eq.variables.length >= 2, `Equation '${eq.id}' must have variables`);
@@ -84,7 +83,7 @@ test('Equations: Solvers execute and produce accurate numerical physics outputs'
       const defaultInputs = {};
       eq.calculator.inputs.forEach(inp => defaultInputs[inp.key] = inp.default);
       const res = eq.calculator.compute(defaultInputs);
-      assert.ok(res !== null && res !== undefined && !Number.isNaN(res), `Equation '${eq.id}' compute should return valid value`);
+      assert.ok(res !== null && res !== undefined && !/NaN|Infinity/.test(String(res)), `Equation '${eq.id}' compute should return valid value`);
     }
   }
 
@@ -98,7 +97,7 @@ test('Equations: Solvers execute and produce accurate numerical physics outputs'
 });
 
 // 5. Audit Landmark Experiments
-test('Experiments: Historical and modern experiments contain apparatus, variables and interpretation', () => {
+test('Experiments: Six experiment dossiers contain apparatus, variables and interpretation', () => {
   assert.ok(PHYSICS_EXPERIMENTS.length >= 6, 'Should have at least 6 landmark experiments');
   for (const exp of PHYSICS_EXPERIMENTS) {
     assert.ok(exp.scientist && exp.year, `Experiment '${exp.id}' must have scientist and year`);
@@ -141,7 +140,7 @@ console.log(`📊 RESULTS: ${passed} PASSED | ${failed} FAILED`);
 console.log(`======================================================\n`);
 
 if (failed > 0) {
-  process.exit(1);
+  process.exitCode = 1;
 } else {
-  process.exit(0);
+  process.exitCode = 0;
 }

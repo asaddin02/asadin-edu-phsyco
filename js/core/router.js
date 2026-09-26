@@ -19,7 +19,10 @@ export class PhysicsRouter {
 
   handleRoute() {
     const rawHash = window.location.hash.slice(1) || '/';
-    const [pathPart, queryPart] = rawHash.split('?');
+    const queryIndex = rawHash.indexOf('?');
+    const pathPart = queryIndex < 0 ? rawHash : rawHash.slice(0, queryIndex);
+    const queryPart = queryIndex < 0 ? '' : rawHash.slice(queryIndex + 1);
+    try { decodeURIComponent(pathPart); } catch { this.notFoundHandler?.('URL tidak valid'); return; }
     const path = pathPart.startsWith('/') ? pathPart : `/${pathPart}`;
 
     const params = {};

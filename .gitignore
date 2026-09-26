@@ -1,6 +1,5 @@
 # Dependencies
 node_modules/
-package-lock.json
 
 # Logs & Temporary files
 *.log
@@ -15,3 +14,6 @@ yarn-error.log*
 dist/
 build/
 .cache/
+
+# Transient browser output (audit reports are tracked separately)
+test-results/

@@ -164,3 +164,35 @@ export const PHYSICS_EXPERIMENTS = [
     educationalExplanation: 'Bayangkan Anda menimbang banyak kantung kelereng tertutup tanpa bisa melihat isinya. Jika bobot bersih kantung-kantung itu selalu bernilai 5 gram, 10 gram, 15 gram, atau 20 gram, Anda dapat menyimpulkan dengan pasti bahwa sebutir kelereng memiliki massa tepat 5 gram.'
   }
 ];
+
+// Source scope is explicit: teaching summaries are not verbatim reconstructions of apparatus.
+const experimentSources = {
+  'young-double-slit': ['Feynman I.30 — Interference', 'https://www.feynmanlectures.caltech.edu/I_30.html'],
+  'cavendish-torsion-balance': ['Cavendish 1798 — Royal Society archive', 'https://makingscience.royalsociety.org/items/l-and-p_11_68/paper-experiments-to-determine-the-density-of-the-earth-by-henry-cavendish'],
+  'photoelectric-effect-exp': ['OpenStax University Physics 3 §6.2', 'https://openstax.org/books/university-physics-volume-3/pages/6-2-photoelectric-effect'],
+  'rutherford-gold-foil': ['Rutherford — Nobel biography', 'https://www.nobelprize.org/prizes/chemistry/1908/rutherford/biographical/'],
+  'michelson-morley': ['Feynman I.15 — Special Relativity', 'https://www.feynmanlectures.caltech.edu/I_15.html'],
+  'millikan-oil-drop': ['Millikan — Nobel lecture', 'https://www.nobelprize.org/prizes/physics/1923/millikan/lecture/']
+};
+for (const record of PHYSICS_EXPERIMENTS) {
+  const [title, url] = experimentSources[record.id];
+  record.sources = [{title, url, scope: 'Prinsip dan konteks eksperimen; rincian historis/peralatan belum seluruhnya diverifikasi.'}];
+  record.reviewStatus = 'PARTIAL';
+}
+const michelson = PHYSICS_EXPERIMENTS.find(e => e.id === 'michelson-morley');
+michelson.results = 'Pergeseran interferensi jauh lebih kecil daripada prediksi model eter diam sederhana; hasil disebut null dalam sensitivitas eksperimen.';
+michelson.interpretation = 'Hasil menantang model angin eter yang diuji dan konsisten dengan relativitas khusus. Satu eksperimen tidak membuktikan semua kemungkinan model eter mustahil atau mengukur setiap postulat relativitas secara terpisah.';
+michelson.historicalSignificance = 'Menjadi salah satu hasil penting dalam perkembangan elektrodinamika dan relativitas. Hubungan pengaruh langsung pada Einstein tidak disimpulkan hanya dari hasil eksperimen ini.';
+const young = PHYSICS_EXPERIMENTS.find(e => e.id === 'young-double-slit');
+young.year = '1801 (cahaya; eksperimen elektron dikembangkan kemudian)';
+young.scientist = 'Thomas Young (versi optik)';
+const cavendish = PHYSICS_EXPERIMENTS.find(e => e.id === 'cavendish-torsion-balance');
+cavendish.results = 'Eksperimen mengestimasi densitas rata-rata Bumi sekitar 5.5 kali densitas air. Dalam notasi modern, metode neraca torsi juga dapat digunakan untuk menentukan G.';
+cavendish.apparatus[3] = 'Sistem pembacaan defleksi batang dari luar ruang tertutup; rincian alat asli perlu dicocokkan dengan naskah 1798.';
+const photo = PHYSICS_EXPERIMENTS.find(e => e.id === 'photoelectric-effect-exp');
+photo.observations = 'Di atas frekuensi ambang bahan, emisi terjadi tanpa jeda yang diprediksi pemanasan klasik. Pada rezim satu foton, menaikkan intensitas menambah arus fotoelektron; energi maksimum mengikuti frekuensi. Ambang warna bergantung jenis material.';
+photo.interpretation = 'Absorpsi energi terkuantisasi memberi K_max = hf − Φ. Model satu foton menjelaskan frekuensi ambang dan potensial henti; bukan pernyataan bahwa cahaya tidak pernah menunjukkan sifat gelombang.';
+photo.results = 'Potensial henti mengikuti eV_s = hf − Φ dalam model ideal, dengan kemiringan h/e dan ketidakpastian eksperimen.';
+const millikan = PHYSICS_EXPERIMENTS.find(e => e.id === 'millikan-oil-drop');
+millikan.objective = 'Menentukan muatan elementer dari tetesan minyak bermuatan dan menguji pola kelipatan diskret muatan bebas.';
+millikan.interpretation = 'Muatan tetesan yang teramati sesuai kelipatan muatan elementer. Quark memiliki muatan pecahan e tetapi tidak diamati sebagai partikel bebas terisolasi.';

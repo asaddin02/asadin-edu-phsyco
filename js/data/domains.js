@@ -371,7 +371,7 @@ export const PHYSICS_DOMAINS = [
     keyQuestions: [
       'Mengapa proton-proton bermuatan positif di dalam inti atom tidak terpental terpisah akibat gaya tolak elektrostatik Coulomb?',
       'Mengapa pembelahan satu gram Uranium-235 mampu menghasilkan energi jutaan kali lebih besar dibanding pembakaran batubara?',
-      'Bagaimana reaksi fusi hidrogen menjadi helium menjadi sumber abadi cahaya dan energi Matahari selama milyaran tahun?'
+      'Bagaimana reaksi fusi hidrogen menjadi helium menjadi sumber cahaya dan energi Matahari selama milyaran tahun?'
     ],
     subdomains: ['Nuclear Structure & Isotopes', 'Binding Energy Curve', 'Radioactivity & Half-life', 'Nuclear Fission & Reactors', 'Thermonuclear Fusion']
   },
@@ -418,7 +418,7 @@ export const PHYSICS_DOMAINS = [
     color: '#ff416c',
     accentGrad: 'linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%)',
     scale: '10⁻⁶ m – 10¹⁰ m',
-    description: 'Wujud zat keempat: gas terionisasi penuh yang terdiri dari ion bebas dan elektron bergerak bebas dengan perilaku kolektif kuasi-netral, panjang screening Debye, gelombang plasma, kurungan magnetik (reaktor Tokamak), aurora borealis, dan plasma astrofisika.',
+    description: 'Wujud zat keempat: gas terionisasi sebagian atau penuh yang terdiri dari ion bebas dan elektron bergerak bebas dengan perilaku kolektif kuasi-netral, panjang screening Debye, gelombang plasma, kurungan magnetik (reaktor Tokamak), aurora borealis, dan plasma astrofisika.',
     keyQuestions: [
       'Mengapa 99% materi teramati di seluruh alam semesta berada dalam wujud plasma, bukan padat, cair, atau gas biasa?',
       'Bagaimana botol medan magnet dalam reaktor Tokamak (seperti ITER) dapat mengurung plasma bersuhu 150 juta derajat Celsius tanpa melelehkan dinding reaktor?',
