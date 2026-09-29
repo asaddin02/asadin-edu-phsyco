@@ -1,4 +1,4 @@
-// Asadin Edu Physics · Physics Knowledge Graph Network Data
+// Phsyco · Physics Knowledge Graph Network Data
 
 export const PHYSICS_GRAPH_DATA = {
   nodes: [

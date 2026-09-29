@@ -1,7 +1,7 @@
 import { topicLabel } from '../data/topic-labels.js';
 import { COURSES } from '../data/courses/index.js';
 import { LESSONS } from './learning.js';
-// Asadin Edu Physics · Global Fast Search Indexing Engine
+// Phsyco · Global Fast Search Indexing Engine
 
 import { PHYSICS_DOMAINS } from '../data/domains.js';
 import { PHYSICS_ENTITIES } from '../data/entities.js';

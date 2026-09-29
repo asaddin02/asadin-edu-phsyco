@@ -1,4 +1,4 @@
-// Asadin Edu Physics · Interactive Simulation: Coulomb Electric Field & Charges Sandbox
+// Phsyco · Interactive Simulation: Coulomb Electric Field & Charges Sandbox
 
 export class ElectricFieldSimulation {
   constructor() {

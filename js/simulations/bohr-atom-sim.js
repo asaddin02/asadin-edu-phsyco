@@ -1,4 +1,4 @@
-// Asadin Edu Physics · Interactive Simulation: Quantum Bohr Atom & Hydrogen Spectral Lines
+// Phsyco · Interactive Simulation: Quantum Bohr Atom & Hydrogen Spectral Lines
 
 export class BohrAtomSimulation {
   constructor() {

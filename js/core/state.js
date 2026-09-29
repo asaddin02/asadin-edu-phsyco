@@ -1,4 +1,4 @@
-// Asadin Edu Physics · Reactive Application State Store
+// Phsyco · Reactive Application State Store
 
 class PhysicsState {
   constructor() {

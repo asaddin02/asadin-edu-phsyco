@@ -1,5 +1,5 @@
 import { CircuitSimulation } from '../simulations/circuit-sim.js';
-// Asadin Edu Physics · Interactive Virtual Physics Lab Hub (12 High-Precision Simulators)
+// Phsyco · Interactive Virtual Physics Lab Hub (12 High-Precision Simulators)
 
 import { ProjectileSimulation } from '../simulations/projectile-sim.js';
 import { PendulumSimulation } from '../simulations/pendulum-sim.js';

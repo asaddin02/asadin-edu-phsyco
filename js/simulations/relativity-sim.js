@@ -1,4 +1,4 @@
-// Asadin Edu Physics · Interactive Simulation: Special Relativity (Time Dilation & Length Contraction)
+// Phsyco · Interactive Simulation: Special Relativity (Time Dilation & Length Contraction)
 
 export class RelativitySimulation {
   constructor() {

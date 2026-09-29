@@ -1,4 +1,4 @@
-// Asadin Edu Physics · Physical Domains Catalog (28 Comprehensive Domains)
+// Phsyco · Physical Domains Catalog (28 Comprehensive Domains)
 
 export const PHYSICS_DOMAINS = [
   {

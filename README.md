@@ -1,6 +1,6 @@
-# Asadin Edu Physics
+# Phsyco
 
-Ruang belajar fisika berbahasa Indonesia untuk **SD, SMP, SMA, universitas, dan pengajar**, dengan tema terang, aksen merah dan logo AI baru. JavaScript ES modules, CSS dan Canvas; tidak ada dependensi runtime pihak ketiga.
+**Phsyco**, bagian dari Asadin Edu, adalah ruang belajar fisika berbahasa Indonesia untuk **SD, SMP, SMA, universitas, dan pengajar**, dengan tema terang, aksen merah dan logo AI baru. JavaScript ES modules, CSS dan Canvas; tidak ada dependensi runtime pihak ketiga.
 
 ## Belajar dan menjelajah
 
@@ -48,7 +48,15 @@ Tes mencakup integritas isi, model numerik, keamanan server, 191 tujuan katalog,
 npm run build
 ```
 
-Unggah **isi `dist/`** ke hosting statis yang mendukung ES modules dan MIME JavaScript/CSS yang benar. Folder ini hanya berisi HTML, manifest, CSS, JavaScript dan aset publik. Routing memakai hash (`#/learn`), sehingga tidak membutuhkan rewrite semua URL ke index. Aset relatif juga mendukung pemasangan dalam subdirektori. Tidak perlu mengunggah source server, tes, docs atau `node_modules`.
+Unggah **isi `dist/`** ke hosting statis yang mendukung ES modules dan MIME JavaScript/CSS yang benar. Folder ini hanya berisi HTML, manifest, CSS, JavaScript, aset publik, `robots.txt`, dan `_headers` (CSP serta header keamanan yang sama dengan server Node; dibaca Cloudflare Pages dan Netlify). Routing memakai hash (`#/learn`), sehingga tidak membutuhkan rewrite semua URL ke index. Aset relatif juga mendukung pemasangan dalam subdirektori. Tidak perlu mengunggah source server, tes, docs atau `node_modules`. `SITE_URL=https://alamat-situs npm run build` menambahkan canonical, `og:url`, dan `og:image` absolut untuk pratinjau tautan.
+
+### Cloudflare Pages (disarankan)
+
+1. Buat API token Cloudflare dengan izin **Account · Cloudflare Pages · Edit**, lalu salin **Account ID** dari **Workers & Pages**.
+2. Di GitHub, buka **Settings → Secrets and variables → Actions**. Isi secret `CLOUDFLARE_API_TOKEN` dan `CLOUDFLARE_ACCOUNT_ID`, serta variable `CLOUDFLARE_PAGES_PROJECT` (misalnya `asadin-phsyco`, menjadi `https://asadin-phsyco.pages.dev`). Opsional: variable `SITE_URL` untuk domain sendiri.
+3. Workflow [Deploy](.github/workflows/deploy.yml) berjalan setiap **Application checks** lulus di `main`, atau jalankan manual dari tab **Actions**. Sebelum variable diisi, workflow ini dilewati.
+
+Tanpa GitHub Actions: `npm run build`, lalu unggah folder `dist/` lewat **Workers & Pages → Create → Pages → Upload assets**, atau `npx wrangler pages deploy dist --project-name <nama>`.
 
 Alternatif server Node:
 
@@ -56,6 +64,6 @@ Alternatif server Node:
 HOST=0.0.0.0 PORT=8088 NODE_ENV=production npm start
 ```
 
-Letakkan di belakang HTTPS/reverse proxy untuk penggunaan publik. Server menyediakan CSP, nosniff, pembatasan GET/HEAD dan perlindungan traversal. Pada hosting statis, konfigurasikan header setara melalui pengaturan provider. Tombol salin menggunakan Clipboard API pada secure context dan memberikan petunjuk salin manual bila tidak tersedia.
+Letakkan di belakang HTTPS/reverse proxy untuk penggunaan publik. Server menyediakan CSP, nosniff, pembatasan GET/HEAD dan perlindungan traversal. Pada hosting statis tanpa dukungan `_headers`, konfigurasikan header setara melalui pengaturan provider. Tombol salin menggunakan Clipboard API pada secure context dan memberikan petunjuk salin manual bila tidak tersedia.
 
 Perombakan ini menyiapkan paket deploy lokal; belum menerbitkan aplikasi ke domain/hosting publik. [Logo](assets/brand/logo-ai.png) dibuat melalui tool imagegen bawaan; [prompt dan provenance](docs/rebuild/BRAND_PROMPT.md) disimpan bersama proyek.

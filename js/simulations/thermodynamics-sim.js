@@ -1,5 +1,5 @@
 import { carnotModel } from './physics-models.js';
-// Asadin Edu Physics · Interactive Simulation: Thermodynamic Cycles & Carnot Heat Engine Lab
+// Phsyco · Interactive Simulation: Thermodynamic Cycles & Carnot Heat Engine Lab
 
 export class ThermodynamicsSimulation {
   constructor() {

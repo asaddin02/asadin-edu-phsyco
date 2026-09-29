@@ -1,7 +1,7 @@
 import { CATALOG } from '../core/catalog.js';
 import { DOMAIN_REFERENCES } from '../data/provenance.js';
 import { escapeHTML } from '../core/html.js';
-// Asadin Edu Physics · Explore Page (Domain & Entity Atlas)
+// Phsyco · Explore Page (Domain & Entity Atlas)
 
 import { PHYSICS_DOMAINS } from '../data/domains.js';
 import { PHYSICS_ENTITIES } from '../data/entities.js';

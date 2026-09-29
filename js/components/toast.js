@@ -1,4 +1,4 @@
-// Asadin Edu Physics · Toast Notification Utility
+// Phsyco · Toast Notification Utility
 
 export function showToast(message, duration = 3000) {
   let container = document.querySelector('.toast-container');

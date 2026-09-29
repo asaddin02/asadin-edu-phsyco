@@ -1,4 +1,4 @@
-// Asadin Edu Physics · Standalone High-Performance Node.js Dev & Production Server
+// Phsyco · Standalone High-Performance Node.js Dev & Production Server
 import http from 'http';
 import fs from 'fs';
 import path from 'path';
@@ -73,7 +73,7 @@ const server = http.createServer(async (req, res) => {
 
 server.listen(PORT, HOST, () => {
   console.log(`\n======================================================`);
-  console.log(`🚀 Asadin Edu Physics Server is running!`);
+  console.log(`🚀 Phsyco Server is running!`);
   console.log(`📡 URL: http://${HOST}:${PORT}`);
   console.log(`🌌 Interactive Physics Encyclopedia + Learning Platform`);
   console.log(`======================================================\n`);

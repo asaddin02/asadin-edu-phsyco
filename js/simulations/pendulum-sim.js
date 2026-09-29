@@ -1,4 +1,4 @@
-// Asadin Edu Physics · Interactive Simulation: Simple & Damped Harmonic Pendulum Lab
+// Phsyco · Interactive Simulation: Simple & Damped Harmonic Pendulum Lab
 
 export class PendulumSimulation {
   constructor() {

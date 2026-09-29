@@ -1,4 +1,4 @@
-// Asadin Edu Physics · Multi-Layer Depth Switcher Component
+// Phsyco · Multi-Layer Depth Switcher Component
 
 export function renderLayerToggle(currentLayer, onLayerChange) {
   const container = document.createElement('div');

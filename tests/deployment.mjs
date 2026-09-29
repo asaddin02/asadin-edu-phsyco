@@ -5,7 +5,7 @@ import path from 'node:path';
 import assert from 'node:assert/strict';
 
 const root=path.resolve('dist');
-assert.deepEqual(fs.readdirSync(root).sort(),['assets','css','index.html','js','manifest.webmanifest']);
+assert.deepEqual(fs.readdirSync(root).sort(),['_headers','assets','css','index.html','js','manifest.webmanifest','robots.txt']);
 const mime={'.html':'text/html','.js':'application/javascript','.css':'text/css','.png':'image/png','.svg':'image/svg+xml','.webmanifest':'application/manifest+json'};
 // A separate static host proves the export does not depend on the development server.
 const server=http.createServer((req,res)=>{let url=new URL(req.url,'http://local').pathname;if(url.startsWith('/physics/'))url=url.slice(8);if(url.endsWith('/'))url+='index.html';const file=path.resolve(root,'.'+url);if(!file.startsWith(root+path.sep)||!fs.existsSync(file)||!fs.statSync(file).isFile()){res.writeHead(404);res.end();return;}res.setHeader('Content-Type',mime[path.extname(file)]||'application/octet-stream');fs.createReadStream(file).pipe(res);});

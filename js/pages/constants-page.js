@@ -1,5 +1,5 @@
 import { escapeHTML } from '../core/html.js';
-// Asadin Edu Physics · Physical Constants Explorer Page (CODATA & 2019 SI Redefinition)
+// Phsyco · Physical Constants Explorer Page (CODATA & 2019 SI Redefinition)
 
 import { PHYSICAL_CONSTANTS } from '../data/constants.js';
 

@@ -1,4 +1,4 @@
-// Asadin Edu Physics · Interactive Simulation: Young’s Double-Slit Wave Interference & Diffraction
+// Phsyco · Interactive Simulation: Young’s Double-Slit Wave Interference & Diffraction
 
 export class DoubleSlitSimulation {
   constructor() {

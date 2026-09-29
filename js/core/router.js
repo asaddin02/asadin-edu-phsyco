@@ -1,4 +1,4 @@
-// Asadin Edu Physics · Hash-Based SPA Router
+// Phsyco · Hash-Based SPA Router
 
 export class PhysicsRouter {
   constructor(routes, notFoundHandler) {

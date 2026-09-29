@@ -1,5 +1,5 @@
 import { resolveReference } from '../core/catalog.js';
-// Asadin Edu Physics · Interactive Physics Knowledge Graph Visualizer Page
+// Phsyco · Interactive Physics Knowledge Graph Visualizer Page
 
 import { PHYSICS_GRAPH_DATA } from '../data/graph-data.js';
 

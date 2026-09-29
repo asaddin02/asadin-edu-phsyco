@@ -1,4 +1,4 @@
-// Asadin Edu Physics · Interactive Simulation: Orbital Mechanics & Keplerian Gravity Lab
+// Phsyco · Interactive Simulation: Orbital Mechanics & Keplerian Gravity Lab
 
 export class OrbitalGravitySimulation {
   constructor() {

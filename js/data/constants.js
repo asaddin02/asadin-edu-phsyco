@@ -1,4 +1,4 @@
-// Asadin Edu Physics · Comprehensive Physical Constants Database (CODATA 2022 & 2019 SI Redefinition)
+// Phsyco · Comprehensive Physical Constants Database (CODATA 2022 & 2019 SI Redefinition)
 
 export const PHYSICAL_CONSTANTS = [
   {

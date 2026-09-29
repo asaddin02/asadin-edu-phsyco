@@ -1,4 +1,4 @@
-// Asadin Edu Physics · Interactive Simulation: Projectile Motion & Kinematics Lab
+// Phsyco · Interactive Simulation: Projectile Motion & Kinematics Lab
 
 export class ProjectileSimulation {
   constructor() {

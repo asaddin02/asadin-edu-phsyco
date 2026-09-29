@@ -1,5 +1,5 @@
 import { magneticStep } from './physics-models.js';
-// Asadin Edu Physics · Interactive Simulation: Magnetic Lorentz Force & Cyclotron Motion
+// Phsyco · Interactive Simulation: Magnetic Lorentz Force & Cyclotron Motion
 
 export class LorentzForceSimulation {
   constructor() {

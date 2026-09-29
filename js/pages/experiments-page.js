@@ -1,5 +1,5 @@
 import { renderSources } from '../components/sources.js';
-// Asadin Edu Physics · Landmark Experiments Explorer Page
+// Phsyco · Landmark Experiments Explorer Page
 
 import { PHYSICS_EXPERIMENTS } from '../data/experiments.js';
 

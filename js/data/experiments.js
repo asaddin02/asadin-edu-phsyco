@@ -1,4 +1,4 @@
-// Asadin Edu Physics · Landmark Historical & Modern Experiments Explorer
+// Phsyco · Landmark Historical & Modern Experiments Explorer
 
 export const PHYSICS_EXPERIMENTS = [
   {

@@ -1,4 +1,4 @@
-// Asadin Edu Physics · Interactive Simulation: Optics & Ray Tracing (Snell's Law & Thin Lens Ray Diagram)
+// Phsyco · Interactive Simulation: Optics & Ray Tracing (Snell's Law & Thin Lens Ray Diagram)
 
 export class OpticsRaySimulation {
   constructor() {

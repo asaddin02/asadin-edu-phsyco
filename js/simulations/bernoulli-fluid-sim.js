@@ -1,4 +1,4 @@
-// Asadin Edu Physics · Interactive Simulation: Fluid Dynamics & Bernoulli Venturi Tube Lab
+// Phsyco · Interactive Simulation: Fluid Dynamics & Bernoulli Venturi Tube Lab
 
 export class BernoulliFluidSimulation {
   constructor() {

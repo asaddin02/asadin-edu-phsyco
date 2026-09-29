@@ -1,6 +1,6 @@
 import { DOMAIN_REFERENCES } from './provenance.js';
 import { SUPPLEMENTAL_ENTITIES } from './supplemental-entities.js';
-// Asadin Edu Physics · Comprehensive Physics Entity System Catalog (60+ Entities Across All 28 Domains & 14 Types)
+// Phsyco · Comprehensive Physics Entity System Catalog (60+ Entities Across All 28 Domains & 14 Types)
 
 export const PHYSICS_ENTITIES = [
   // =========================================================================
