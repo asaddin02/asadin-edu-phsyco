@@ -17,6 +17,7 @@ import { renderSimulationsPage } from './pages/simulations-page.js';
 import { renderLessonPage } from './pages/lesson-page.js';
 import { renderLearnPage } from './pages/learn-page.js';
 import { renderGraphPage } from './pages/graph-page.js';
+import { renderSupportPage } from './pages/support-page.js';
 import { renderAboutPage } from './pages/about-page.js';
 
 class PhsycoApp {
@@ -40,6 +41,7 @@ class PhsycoApp {
 
     // 2. Define SPA Routes
     const routes = [
+      { path: '/dukung', handler: (params) => this.renderPage(renderSupportPage, params, '/dukung') },
       { path: '/', handler: (params) => this.renderPage(renderHomePage, params, '/') },
       { path: '/explore', handler: (params) => this.renderPage(renderExplorePage, params, '/explore') },
       { path: '/entity/:id', handler: (params) => this.renderPage(renderEntityDetailPage, params, '/entity') },
